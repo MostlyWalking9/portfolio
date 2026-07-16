@@ -27,6 +27,7 @@
         ? items.map(cardMarkup).join('')
         : `<p class="empty-state">No ${domain} projects yet — add entries to projects.json.</p>`;
     });
+    document.dispatchEvent(new CustomEvent('content-injected'));
   }
 
   function renderWorkGrid(projects) {
@@ -50,6 +51,7 @@
       filterBtns.forEach((btn) => {
         btn.classList.toggle('is-active', btn.dataset.filter === activeFilter);
       });
+      document.dispatchEvent(new CustomEvent('content-injected'));
     }
 
     filterBtns.forEach((btn) => {
