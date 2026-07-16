@@ -74,7 +74,7 @@ This is a local tool, not a hosted CMS — it edits files on your machine. Commi
 
 ## Status
 
-- [ ] CV uploaded (About section is placeholder until then)
+- [x] CV uploaded — About section rewritten (bio, skills, languages). No home address/phone put on site.
 - [ ] Logo/wordmark file (placeholder monogram in use)
 - [ ] Accent colors confirmed (`#C9553D` / `#3D8FC9` / `#7CC93D` — see `docs/design-document.md`)
 - [ ] Bilingual approach confirmed (assumed: toggle, same URL)
