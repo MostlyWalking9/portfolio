@@ -1,1 +1,42 @@
-/* responsive.css — placeholder, populate per style guide */
+/* ==========================================================================
+   Responsive — 480 / 768 / 1024 / 1280 / 1440
+   ========================================================================== */
+
+@media (max-width: 1280px) {
+  .project-grid, .work-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1024px) {
+  .chapter__head { grid-template-columns: 1fr; gap: var(--space-3); }
+  .chapter__intro { align-self: start; }
+  .project-grid, .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-5); }
+}
+
+@media (max-width: 768px) {
+  .site-nav__links { gap: var(--space-3); }
+  .project-detail__meta { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .project-grid, .work-grid { grid-template-columns: 1fr; }
+  .site-nav__links a:not(.lang-toggle *) { display: none; }
+  .site-nav__toggle {
+    display: inline-flex;
+    font-family: var(--font-mono);
+    font-size: var(--type-scale-small);
+    text-transform: uppercase;
+  }
+  .site-nav.is-menu-open .site-nav__links a { display: inline; }
+  .site-nav.is-menu-open .site-nav__links {
+    position: fixed;
+    inset: var(--nav-height) 0 0 0;
+    background: var(--color-bg);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--space-5) var(--content-pad);
+    gap: var(--space-4);
+  }
+  .project-detail__meta { grid-template-columns: 1fr; }
+  .hero__title { max-width: 100%; }
+}

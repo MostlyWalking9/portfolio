@@ -3,21 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art deBeaufort — Portfolio</title>
+  <title>About — Art deBeaufort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
   <link rel="stylesheet" href="../src/css/components.css">
+  <link rel="stylesheet" href="../src/css/animations.css">
   <link rel="stylesheet" href="../src/css/responsive.css">
 </head>
 <body>
-  <!-- PLACEHOLDER PAGE — scaffold only -->
+
+  <header class="site-nav is-scrolled">
+    <a class="site-nav__mark" href="index.html">Art deBeaufort</a>
+    <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <ul class="site-nav__links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html" class="is-active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en">EN</button>
+        <button data-lang-btn="de">DE</button>
+      </li>
+    </ul>
+  </header>
+
   <main>
-    <h1>about</h1>
+    <section class="page-header container">
+      <span class="eyebrow" data-en="About" data-de="Über mich">About</span>
+      <h1 data-en="Art deBeaufort" data-de="Art deBeaufort">Art deBeaufort</h1>
+    </section>
+
+    <section class="about-grid container">
+      <div data-reveal>
+        <!-- TODO: replace with a real portrait once supplied -->
+        <div style="aspect-ratio: 4/5; background: var(--color-surface); border: 1px solid var(--color-border); display:flex; align-items:center; justify-content:center; color: var(--color-text-muted); font-family: var(--font-mono); font-size: var(--type-scale-caption); text-transform: uppercase;">
+          Portrait — TODO
+        </div>
+      </div>
+      <div data-reveal>
+        <p data-en="Placeholder bio. Once a CV is uploaded, this section is rewritten directly from it — role history, skills, and background, in the site's own editorial voice rather than a resume format."
+           data-de="Platzhalter-Biografie. Sobald ein Lebenslauf hochgeladen wird, wird dieser Abschnitt direkt daraus neu geschrieben — Werdegang, Fähigkeiten und Hintergrund, im redaktionellen Ton der Website statt als Lebenslauf-Format.">
+          Placeholder bio. Once a CV is uploaded, this section is rewritten directly from it — role history, skills, and background, in the site's own editorial voice rather than a resume format.
+        </p>
+        <ul class="skills-list">
+          <li>Concept Art</li>
+          <li>Illustration</li>
+          <li>Branding</li>
+          <li>Motion Design</li>
+          <li>UI/UX</li>
+          <li>Web Development</li>
+          <li>Automation</li>
+          <li>AI Systems</li>
+        </ul>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer container">
+    <span>&copy; 2026 Art deBeaufort</span>
+    <ul class="site-footer__links">
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+    </ul>
+  </footer>
+
   <script src="../src/js/scroll-reveal.js"></script>
   <script src="../src/js/language-toggle.js"></script>
-  <script src="../src/js/work-filter.js"></script>
   <script src="../src/js/form.js"></script>
 </body>
 </html>

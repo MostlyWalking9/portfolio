@@ -1,1 +1,46 @@
-/* components.css — placeholder, populate per style guide */
+/* ==========================================================================
+   Components — small reusable pieces not covered by layout.css
+   ========================================================================== */
+
+.lang-toggle {
+  display: flex;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--type-scale-caption);
+  letter-spacing: 0.06em;
+}
+
+.lang-toggle button {
+  color: var(--color-text-muted);
+  padding: 2px 4px;
+}
+
+.lang-toggle button.is-active {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--accent-current);
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: var(--type-scale-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border);
+  border: none;
+  margin: 0;
+}
+
+/* Empty state (used by work-filter.js when a filter yields nothing) */
+.empty-state {
+  padding-block: var(--space-6);
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--type-scale-small);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}

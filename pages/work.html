@@ -3,18 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art deBeaufort — Portfolio</title>
+  <title>Work — Art deBeaufort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
   <link rel="stylesheet" href="../src/css/components.css">
+  <link rel="stylesheet" href="../src/css/animations.css">
   <link rel="stylesheet" href="../src/css/responsive.css">
 </head>
 <body>
-  <!-- PLACEHOLDER PAGE — scaffold only -->
+
+  <header class="site-nav is-scrolled">
+    <a class="site-nav__mark" href="index.html">Art deBeaufort</a>
+    <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <ul class="site-nav__links">
+      <li><a href="work.html" class="is-active">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en">EN</button>
+        <button data-lang-btn="de">DE</button>
+      </li>
+    </ul>
+  </header>
+
   <main>
-    <h1>work</h1>
+    <section class="work-header container">
+      <span class="eyebrow" data-en="Work" data-de="Arbeiten">Work</span>
+      <h1 data-en="Full project index" data-de="Vollständiger Projektindex">Full project index</h1>
+      <div class="work-filters" role="group" aria-label="Filter by discipline">
+        <button data-filter="all" data-en="All" data-de="Alle">All</button>
+        <button data-filter="creative" data-en="Creative" data-de="Kreativ">Creative</button>
+        <button data-filter="design" data-en="Design" data-de="Design">Design</button>
+        <button data-filter="technical" data-en="Technical" data-de="Technisch">Technical</button>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="work-grid" data-work-grid></div>
+    </section>
   </main>
+
+  <footer class="site-footer container">
+    <span>&copy; 2026 Art deBeaufort</span>
+    <ul class="site-footer__links">
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+    </ul>
+  </footer>
+
   <script src="../src/js/scroll-reveal.js"></script>
   <script src="../src/js/language-toggle.js"></script>
   <script src="../src/js/work-filter.js"></script>

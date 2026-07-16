@@ -4,17 +4,149 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Art deBeaufort — Portfolio</title>
+  <meta name="description" content="Art deBeaufort — concept art, design, and technical work, one creative practice across three disciplines.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
   <link rel="stylesheet" href="../src/css/components.css">
+  <link rel="stylesheet" href="../src/css/animations.css">
   <link rel="stylesheet" href="../src/css/responsive.css">
 </head>
 <body>
-  <!-- PLACEHOLDER PAGE — scaffold only -->
+
+  <header class="site-nav">
+    <a class="site-nav__mark" href="index.html">Art deBeaufort</a>
+    <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <ul class="site-nav__links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en">EN</button>
+        <button data-lang-btn="de">DE</button>
+      </li>
+    </ul>
+  </header>
+
   <main>
-    <h1>index</h1>
+
+    <!-- Hero -->
+    <section class="hero">
+      <span class="hero__eyebrow" data-en="Portfolio — 2026" data-de="Portfolio — 2026">Portfolio — 2026</span>
+      <h1 class="hero__title"
+          data-en="One practice, three disciplines."
+          data-de="Eine Praxis, drei Disziplinen.">One practice, three disciplines.</h1>
+      <p class="hero__line"
+         data-en="Concept art, design, and code — built by the same hand, for people who need range without compromise."
+         data-de="Konzeptkunst, Design und Code — aus einer Hand, für alle, die Vielseitigkeit ohne Kompromisse suchen.">
+        Concept art, design, and code — built by the same hand, for people who need range without compromise.
+      </p>
+      <div class="hero__scroll-cue">
+        <span class="hero__scroll-cue-line"></span>
+        <span data-en="Scroll" data-de="Scrollen">Scroll</span>
+      </div>
+    </section>
+
+    <!-- Chapter 01 — Creative -->
+    <section class="chapter" data-chapter="creative">
+      <div class="container">
+        <div class="chapter__head">
+          <div>
+            <span class="chapter__eyebrow" data-en="Chapter 01" data-de="Kapitel 01">Chapter 01</span>
+            <h2 class="chapter__title" data-reveal
+                data-en="Creative / Artistic"
+                data-de="Kreativ / Künstlerisch">Creative / Artistic</h2>
+          </div>
+          <p class="chapter__intro" data-reveal
+             data-en="Concept art, character and environment design, illustration — work built for games and film, where a single image has to carry a whole world."
+             data-de="Konzeptkunst, Charakter- und Umgebungsdesign, Illustration — Arbeiten für Spiele und Film, bei denen ein einzelnes Bild eine ganze Welt tragen muss.">
+            Concept art, character and environment design, illustration — work built for games and film, where a single image has to carry a whole world.
+          </p>
+        </div>
+        <div class="project-grid" data-project-grid="creative"></div>
+        <a class="chapter__cta" href="work.html?filter=creative" data-en="See all creative work →" data-de="Alle kreativen Arbeiten →">See all creative work →</a>
+      </div>
+    </section>
+
+    <!-- Chapter 02 — Design -->
+    <section class="chapter" data-chapter="design">
+      <div class="container">
+        <div class="chapter__head">
+          <div>
+            <span class="chapter__eyebrow" data-en="Chapter 02" data-de="Kapitel 02">Chapter 02</span>
+            <h2 class="chapter__title" data-reveal
+                data-en="Design / Production"
+                data-de="Design / Produktion">Design / Production</h2>
+          </div>
+          <p class="chapter__intro" data-reveal
+             data-en="Branding, motion, UI/UX, product design — the layer where craft meets a client's actual problem, and has to hold up under real constraints."
+             data-de="Branding, Motion, UI/UX, Produktdesign — die Ebene, auf der Gestaltung auf das eigentliche Problem eines Kunden trifft und realen Anforderungen standhalten muss.">
+            Branding, motion, UI/UX, product design — the layer where craft meets a client's actual problem, and has to hold up under real constraints.
+          </p>
+        </div>
+        <div class="project-grid" data-project-grid="design"></div>
+        <a class="chapter__cta" href="work.html?filter=design" data-en="See all design work →" data-de="Alle Design-Arbeiten →">See all design work →</a>
+      </div>
+    </section>
+
+    <!-- Chapter 03 — Technical -->
+    <section class="chapter" data-chapter="technical">
+      <div class="container">
+        <div class="chapter__head">
+          <div>
+            <span class="chapter__eyebrow" data-en="Chapter 03" data-de="Kapitel 03">Chapter 03</span>
+            <h2 class="chapter__title" data-reveal
+                data-en="Technical / IT"
+                data-de="Technisch / IT">Technical / IT</h2>
+          </div>
+          <p class="chapter__intro" data-reveal
+             data-en="Web development, automation, and AI systems — the infrastructure underneath the visual work, and often what makes the other two disciplines scale."
+             data-de="Webentwicklung, Automatisierung und KI-Systeme — die Infrastruktur hinter der visuellen Arbeit, die den anderen beiden Disziplinen oft erst zur Skalierung verhilft.">
+            Web development, automation, and AI systems — the infrastructure underneath the visual work, and often what makes the other two disciplines scale.
+          </p>
+        </div>
+        <div class="project-grid" data-project-grid="technical"></div>
+        <a class="chapter__cta" href="work.html?filter=technical" data-en="See all technical work →" data-de="Alle technischen Arbeiten →">See all technical work →</a>
+      </div>
+    </section>
+
+    <!-- About teaser -->
+    <section class="section-block">
+      <div class="container section-block__inner" data-reveal>
+        <span class="eyebrow" data-en="About" data-de="Über mich">About</span>
+        <h2 data-en="Three disciplines. One way of thinking." data-de="Drei Disziplinen. Eine Denkweise.">
+          Three disciplines. One way of thinking.
+        </h2>
+        <p style="margin-top: var(--space-3); color: var(--color-text-muted);"
+           data-en="Bio placeholder — will be rewritten directly from Art's CV once uploaded."
+           data-de="Platzhalter-Biografie — wird nach Hochladen des Lebenslaufs direkt daraus übernommen.">
+          Bio placeholder — will be rewritten directly from Art's CV once uploaded.
+        </p>
+        <a class="btn" href="about.html" data-en="Read full bio" data-de="Ganze Biografie lesen">Read full bio</a>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="section-block" style="border-top: none;">
+      <div class="container section-block__inner" data-reveal>
+        <span class="eyebrow" data-en="Get in touch" data-de="Kontakt">Get in touch</span>
+        <h2 data-en="Have a project in mind?" data-de="Haben Sie ein Projekt im Kopf?">Have a project in mind?</h2>
+        <a class="btn" href="contact.html" data-en="Contact" data-de="Kontakt">Contact</a>
+      </div>
+    </section>
+
   </main>
+
+  <footer class="site-footer container">
+    <span>&copy; 2026 Art deBeaufort</span>
+    <ul class="site-footer__links">
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+    </ul>
+  </footer>
+
   <script src="../src/js/scroll-reveal.js"></script>
   <script src="../src/js/language-toggle.js"></script>
   <script src="../src/js/work-filter.js"></script>

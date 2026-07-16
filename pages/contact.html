@@ -3,21 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Art deBeaufort — Portfolio</title>
+  <title>Contact — Art deBeaufort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
   <link rel="stylesheet" href="../src/css/components.css">
+  <link rel="stylesheet" href="../src/css/animations.css">
   <link rel="stylesheet" href="../src/css/responsive.css">
 </head>
 <body>
-  <!-- PLACEHOLDER PAGE — scaffold only -->
+
+  <header class="site-nav is-scrolled">
+    <a class="site-nav__mark" href="index.html">Art deBeaufort</a>
+    <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <ul class="site-nav__links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="is-active">Contact</a></li>
+      <li class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en">EN</button>
+        <button data-lang-btn="de">DE</button>
+      </li>
+    </ul>
+  </header>
+
   <main>
-    <h1>contact</h1>
+    <section class="page-header container">
+      <span class="eyebrow" data-en="Contact" data-de="Kontakt">Contact</span>
+      <h1 data-en="Let's talk about your project" data-de="Sprechen wir über Ihr Projekt">Let's talk about your project</h1>
+    </section>
+
+    <section class="contact-grid container">
+      <div data-reveal>
+        <p style="color: var(--color-text-muted); max-width: 45ch;"
+           data-en="Whether it's concept art, a brand system, or a technical build — reach out directly or use the form."
+           data-de="Ob Konzeptkunst, ein Markensystem oder eine technische Umsetzung — schreiben Sie direkt oder nutzen Sie das Formular.">
+          Whether it's concept art, a brand system, or a technical build — reach out directly or use the form.
+        </p>
+        <p style="margin-top: var(--space-4);">
+          <a href="mailto:hello@example.com" style="border-bottom: 1px solid var(--accent-current);">hello@example.com</a>
+        </p>
+      </div>
+
+      <form data-contact-form data-reveal novalidate>
+        <div class="form-field">
+          <label for="name" data-en="Name" data-de="Name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="email" data-en="Email" data-de="E-Mail">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="message" data-en="Message" data-de="Nachricht">Message</label>
+          <textarea id="message" name="message" rows="5"></textarea>
+        </div>
+        <button class="btn" type="submit" data-en="Send message" data-de="Nachricht senden">Send message</button>
+        <p class="form-status" data-form-status role="status"></p>
+      </form>
+    </section>
   </main>
+
+  <footer class="site-footer container">
+    <span>&copy; 2026 Art deBeaufort</span>
+    <ul class="site-footer__links">
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+    </ul>
+  </footer>
+
   <script src="../src/js/scroll-reveal.js"></script>
   <script src="../src/js/language-toggle.js"></script>
-  <script src="../src/js/work-filter.js"></script>
   <script src="../src/js/form.js"></script>
 </body>
 </html>

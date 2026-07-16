@@ -29,6 +29,18 @@ assets/images/creative/forest-scene-concept/
 
 Workflow: drop raw work into `work-source/`, then export optimized versions into `assets/` under the matching domain + slug. Once assets exist, register the project in `src/data/projects.json` (schema below) — the site reads from there, no HTML editing needed per project.
 
+## Editing projects without touching code
+
+Open `admin/editor.html` in **Chrome or Edge** (Live Server or just double-click the file). It uses the File System Access API to connect directly to this repo folder on disk:
+
+- **Connect to project folder** → pick the `portfolio-scaffold` root once per session
+- Add a project: fill the form, attach thumb/hero/gallery images — files are copied into `assets/images/<domain>/<slug>/` automatically
+- Edit an existing project's images: **Edit images** → add more, or remove individual gallery images (deletes the file too)
+- Remove a project: pulls it out of the list; image files are left on disk (delete the folder manually in `assets/images/` if you want those gone)
+- **Save projects.json** writes changes back to `src/data/projects.json` — nothing is final until you hit this
+
+This is a local tool, not a hosted CMS — it edits files on your machine. Commit and push afterward like any other change. Safari/Firefox don't support the underlying API; edit `projects.json` by hand there instead.
+
 ## `projects.json` schema
 
 ```json

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Art deBeaufort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../src/css/variables.css">
+  <link rel="stylesheet" href="../src/css/base.css">
+  <link rel="stylesheet" href="../src/css/layout.css">
+  <link rel="stylesheet" href="../src/css/components.css">
+  <link rel="stylesheet" href="../src/css/animations.css">
+  <link rel="stylesheet" href="../src/css/responsive.css">
+</head>
+<body>
+
+  <header class="site-nav is-scrolled">
+    <a class="site-nav__mark" href="index.html">Art deBeaufort</a>
+    <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <ul class="site-nav__links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang-btn="en">EN</button>
+        <button data-lang-btn="de">DE</button>
+      </li>
+    </ul>
+  </header>
+
+  <main data-project-detail>
+    <!-- Populated by work-filter.js from ?slug= param -->
+  </main>
+
+  <footer class="site-footer container">
+    <span>&copy; 2026 Art deBeaufort</span>
+    <ul class="site-footer__links">
+      <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+    </ul>
+  </footer>
+
+  <script src="../src/js/scroll-reveal.js"></script>
+  <script src="../src/js/language-toggle.js"></script>
+  <script src="../src/js/work-filter.js"></script>
+  <script src="../src/js/form.js"></script>
+</body>
+</html>

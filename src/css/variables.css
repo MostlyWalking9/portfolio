@@ -1,1 +1,80 @@
-/* variables.css — placeholder, populate per style guide */
+/* ==========================================================================
+   Design tokens — Concept A: Editorial Cinematic Scroll
+   ========================================================================== */
+
+:root {
+  /* --- Base palette --- */
+  --color-bg:            #0E0D0C;
+  --color-surface:       #171615;
+  --color-surface-raised:#1D1B19;
+  --color-text:          #F2EFE9;
+  --color-text-muted:    #9A968C;
+  --color-border:        #2B2925;
+
+  /* --- Domain accents (chapter identity) --- */
+  --accent-creative:   #C9553D; /* warm ember — concept art / illustration */
+  --accent-design:     #3D8FC9; /* cool cyan-blue — design / production */
+  --accent-technical:  #7CC93D; /* signal green — code / systems */
+
+  /* current chapter accent — reassigned by scroll-reveal.js as user scrolls */
+  --accent-current: var(--accent-creative);
+
+  /* --- Status --- */
+  --color-success: #4CAF6D;
+  --color-error:   #D9534F;
+
+  /* --- Typography --- */
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+  --type-scale-hero:    clamp(2.75rem, 7vw, 6.5rem);
+  --type-scale-h1:      clamp(2.25rem, 5vw, 4rem);
+  --type-scale-h2:      clamp(1.75rem, 3.4vw, 2.75rem);
+  --type-scale-h3:      clamp(1.25rem, 2vw, 1.6rem);
+  --type-scale-body:    1.0625rem;
+  --type-scale-small:   0.875rem;
+  --type-scale-caption: 0.75rem;
+
+  --leading-tight: 1.05;
+  --leading-snug:  1.25;
+  --leading-body:  1.6;
+
+  /* --- Spacing scale --- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --space-6: 4rem;
+  --space-7: 6.5rem;
+  --space-8: 10rem;
+
+  /* --- Layout --- */
+  --content-max: 1400px;
+  --content-pad: clamp(1.25rem, 4vw, 4rem);
+  --nav-height: 72px;
+
+  /* --- Motion --- */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-slow:   1100ms;
+  --duration-medium: 650ms;
+  --duration-fast:   280ms;
+
+  /* --- Radius --- */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+}
+
+/* Chapter accent context — set on <section> via JS as it enters view,
+   inherited by nested elements that use var(--accent-current) */
+[data-chapter="creative"]  { --accent-current: var(--accent-creative); }
+[data-chapter="design"]    { --accent-current: var(--accent-design); }
+[data-chapter="technical"] { --accent-current: var(--accent-technical); }
+
+/* Body-level mirror so fixed elements (nav) outside the chapter's DOM
+   subtree — which don't inherit from it — also pick up the active accent.
+   Set by scroll-reveal.js as each chapter enters view. */
+body[data-active-chapter="creative"]  { --accent-current: var(--accent-creative); }
+body[data-active-chapter="design"]    { --accent-current: var(--accent-design); }
+body[data-active-chapter="technical"] { --accent-current: var(--accent-technical); }

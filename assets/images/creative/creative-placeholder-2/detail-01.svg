@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#171615"/>
+  <rect width="1600" height="1000" fill="#C9553D" opacity="0.16"/>
+  <line x1="0" y1="0" x2="1600" y2="1000" stroke="#C9553D" stroke-width="1" opacity="0.4"/>
+  <line x1="1600" y1="0" x2="0" y2="1000" stroke="#C9553D" stroke-width="1" opacity="0.4"/>
+  <text x="50%" y="50%" fill="#C9553D" font-family="monospace" font-size="18" text-anchor="middle" dominant-baseline="middle">creative 02 — DETAIL 01</text>
+</svg>
