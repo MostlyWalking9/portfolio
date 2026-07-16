@@ -71,13 +71,14 @@
   display: none;
 }
 
-/* --- Hero --- */
+/* --- Hero / principle selector --- */
 .hero {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-inline: var(--content-pad);
+  padding-block: calc(var(--nav-height) + var(--space-5)) var(--space-5);
   position: relative;
 }
 
@@ -87,27 +88,16 @@
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-text-muted);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 
 .hero__title {
-  font-size: var(--type-scale-hero);
-  max-width: 18ch;
-}
-
-.hero__line {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: var(--color-text-muted);
-  max-width: 42ch;
-  margin-top: var(--space-4);
-  font-family: var(--font-body);
-  line-height: var(--leading-snug);
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  max-width: 22ch;
+  margin-bottom: var(--space-6);
 }
 
 .hero__scroll-cue {
-  position: absolute;
-  bottom: var(--space-6);
-  left: var(--content-pad);
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -116,6 +106,7 @@
   color: var(--color-text-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  margin-top: var(--space-6);
 }
 
 .hero__scroll-cue-line {
@@ -125,10 +116,133 @@
   animation: scrollcue 2.2s var(--ease-editorial) infinite;
 }
 
+/* --- Principle grid: the 3 domain-select cards --- */
+.principle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.principle-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: transform var(--duration-medium) var(--ease-editorial),
+              border-color var(--duration-medium) var(--ease-editorial),
+              background var(--duration-medium) var(--ease-editorial);
+  min-height: 320px;
+}
+
+.principle-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--type-scale-caption);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.principle-card__title {
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  margin-bottom: var(--space-3);
+}
+
+.principle-card__desc {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: var(--leading-body);
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+/* Creative — warm, painterly, organic corners */
+.principle-card--creative {
+  border-radius: 28px 6px 28px 6px;
+  border-color: rgba(201, 85, 61, 0.25);
+}
+.principle-card--creative .principle-card__eyebrow { color: var(--accent-creative); }
+.principle-card--creative .principle-card__title {
+  font-family: var(--font-display-creative);
+  font-style: italic;
+  font-weight: 600;
+}
+.principle-card--creative:hover {
+  transform: rotate(-0.6deg) translateY(-4px);
+  border-color: var(--accent-creative);
+  background: var(--color-surface-raised);
+}
+
+/* Design — crisp, geometric, branding-forward */
+.principle-card--design {
+  border-radius: 0;
+  border-width: 2px;
+  border-color: var(--color-border);
+}
+.principle-card--design .principle-card__eyebrow { color: var(--accent-design); }
+.principle-card--design .principle-card__title {
+  font-family: var(--font-display-design);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+.principle-card--design:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-design);
+  background: var(--accent-design);
+}
+.principle-card--design:hover .principle-card__eyebrow,
+.principle-card--design:hover .principle-card__title,
+.principle-card--design:hover .principle-card__desc {
+  color: var(--color-bg);
+}
+
+/* Technical — terminal / systems register */
+.principle-card--technical {
+  border-radius: 2px;
+  border-style: dashed;
+  border-color: rgba(124, 201, 61, 0.35);
+  background: var(--color-surface);
+}
+.principle-card--technical .principle-card__eyebrow { color: var(--accent-technical); }
+.principle-card--technical .principle-card__title {
+  font-family: var(--font-display-technical);
+  font-weight: 500;
+  text-transform: lowercase;
+}
+.principle-card--technical .principle-card__title::before {
+  content: '> ';
+  color: var(--accent-technical);
+}
+.principle-card--technical .principle-card__title::after {
+  content: '_';
+  color: var(--accent-technical);
+  animation: blink 1.1s step-end infinite;
+}
+.principle-card--technical .principle-card__desc { font-family: var(--font-mono); font-size: 0.82rem; }
+.principle-card--technical:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-technical);
+  border-style: solid;
+  background: var(--color-surface-raised);
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
 /* --- Chapters --- */
 .chapter {
   padding-block: var(--space-8);
   border-top: 1px solid var(--color-border);
+  scroll-margin-top: var(--nav-height);
+}
+
+[data-chapter="creative"] { border-top: 1px solid var(--color-border); }
+[data-chapter="design"] { border-top: 2px solid var(--color-border); }
+[data-chapter="technical"] {
+  border-top: 1px dashed var(--color-border);
 }
 
 .chapter__head {
@@ -150,6 +264,46 @@
 .chapter__title {
   font-size: var(--type-scale-h2);
 }
+
+/* --- Per-chapter identity: distinct type, not just a recolored accent --- */
+
+/* Creative — warm, painterly, italic serif */
+[data-chapter="creative"] .chapter__title {
+  font-family: var(--font-display-creative);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* Design — crisp, geometric, branding-forward */
+[data-chapter="design"] .chapter__title {
+  font-family: var(--font-display-design);
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* Technical — terminal / systems register */
+[data-chapter="technical"] .chapter__title {
+  font-family: var(--font-display-technical);
+  font-style: normal;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+[data-chapter="technical"] .chapter__title::before {
+  content: '> ';
+  color: var(--accent-technical);
+}
+[data-chapter="technical"] .chapter__eyebrow {
+  font-family: var(--font-display-technical);
+}
+
+/* Card labels inherit the chapter's identity too, at reading size */
+[data-chapter="creative"] .project-card__label h3 { font-family: var(--font-display-creative); font-style: italic; }
+[data-chapter="design"] .project-card__label h3 { font-family: var(--font-display-design); font-weight: 600; }
+[data-chapter="technical"] .project-card__label h3 { font-family: var(--font-display-technical); font-weight: 500; }
 
 .chapter__intro {
   color: var(--color-text-muted);

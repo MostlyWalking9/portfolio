@@ -28,6 +28,12 @@
   --font-body:    'Inter', -apple-system, sans-serif;
   --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
 
+  /* Per-domain display faces — each chapter gets a genuinely distinct
+     typographic identity, not just a recolored accent. */
+  --font-display-creative:  'Fraunces', 'Georgia', serif;       /* warm, painterly, italic-leaning */
+  --font-display-design:    'Space Grotesk', 'Inter', sans-serif; /* crisp, geometric, branding-forward */
+  --font-display-technical: 'JetBrains Mono', 'IBM Plex Mono', monospace; /* systems / terminal register */
+
   --type-scale-hero:    clamp(2.75rem, 7vw, 6.5rem);
   --type-scale-h1:      clamp(2.25rem, 5vw, 4rem);
   --type-scale-h2:      clamp(1.75rem, 3.4vw, 2.75rem);

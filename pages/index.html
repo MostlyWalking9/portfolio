@@ -7,7 +7,7 @@
   <meta name="description" content="Art deBeaufort — concept art, design, and technical work, one creative practice across three disciplines.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
@@ -33,17 +33,45 @@
 
   <main>
 
-    <!-- Hero -->
+    <!-- Hero / principle selector — first thing visible, all 3 disciplines up front -->
     <section class="hero">
       <span class="hero__eyebrow" data-en="Portfolio — 2026" data-de="Portfolio — 2026">Portfolio — 2026</span>
       <h1 class="hero__title"
-          data-en="One practice, three disciplines."
-          data-de="Eine Praxis, drei Disziplinen.">One practice, three disciplines.</h1>
-      <p class="hero__line"
-         data-en="Concept art, design, and code — built by the same hand, for people who need range without compromise."
-         data-de="Konzeptkunst, Design und Code — aus einer Hand, für alle, die Vielseitigkeit ohne Kompromisse suchen.">
-        Concept art, design, and code — built by the same hand, for people who need range without compromise.
-      </p>
+          data-en="One practice, three disciplines. Pick where to start."
+          data-de="Eine Praxis, drei Disziplinen. Wählen Sie Ihren Einstieg.">One practice, three disciplines. Pick where to start.</h1>
+
+      <div class="principle-grid" data-reveal-group>
+        <a class="principle-card principle-card--creative" href="#creative">
+          <span class="principle-card__eyebrow" data-en="Chapter 01" data-de="Kapitel 01">Chapter 01</span>
+          <h2 class="principle-card__title" data-en="Creative / Digital Art" data-de="Kreativ / Digitale Kunst">Creative / Digital Art</h2>
+          <p class="principle-card__desc"
+             data-en="Game Art, Concept Art, Illustrations, 2D/3D artwork, Game Engines, Texturing, Rigging, Animation, Modelling, Rendering"
+             data-de="Game Art, Concept Art, Illustrationen, 2D/3D-Grafik, Game Engines, Texturing, Rigging, Animation, Modellierung, Rendering">
+            Game Art, Concept Art, Illustrations, 2D/3D artwork, Game Engines, Texturing, Rigging, Animation, Modelling, Rendering
+          </p>
+        </a>
+
+        <a class="principle-card principle-card--design" href="#design">
+          <span class="principle-card__eyebrow" data-en="Chapter 02" data-de="Kapitel 02">Chapter 02</span>
+          <h2 class="principle-card__title" data-en="Design / Production / Branding" data-de="Design / Produktion / Branding">Design / Production / Branding</h2>
+          <p class="principle-card__desc"
+             data-en="Graphic Design, Motion Design, Video &amp; Photo Content Creation, UI/UX Design, Visual Branding &amp; Marketing"
+             data-de="Grafikdesign, Motion Design, Video- &amp; Fotoproduktion, UI/UX-Design, visuelles Branding &amp; Marketing">
+            Graphic Design, Motion Design, Video &amp; Photo Content Creation, UI/UX Design, Visual Branding &amp; Marketing
+          </p>
+        </a>
+
+        <a class="principle-card principle-card--technical" href="#technical">
+          <span class="principle-card__eyebrow" data-en="Chapter 03" data-de="Kapitel 03">Chapter 03</span>
+          <h2 class="principle-card__title" data-en="Technical / IT / Developer" data-de="Technisch / IT / Entwicklung">Technical / IT / Developer</h2>
+          <p class="principle-card__desc"
+             data-en="Webdesign, Software Development, AI Specialist, Fully automated workflows, Scripting"
+             data-de="Webdesign, Softwareentwicklung, KI-Spezialist, vollautomatisierte Workflows, Scripting">
+            Webdesign, Software Development, AI Specialist, Fully automated workflows, Scripting
+          </p>
+        </a>
+      </div>
+
       <div class="hero__scroll-cue">
         <span class="hero__scroll-cue-line"></span>
         <span data-en="Scroll" data-de="Scrollen">Scroll</span>
@@ -51,7 +79,7 @@
     </section>
 
     <!-- Chapter 01 — Creative -->
-    <section class="chapter" data-chapter="creative">
+    <section class="chapter" id="creative" data-chapter="creative">
       <div class="container">
         <div class="chapter__head">
           <div>
@@ -72,7 +100,7 @@
     </section>
 
     <!-- Chapter 02 — Design -->
-    <section class="chapter" data-chapter="design">
+    <section class="chapter" id="design" data-chapter="design">
       <div class="container">
         <div class="chapter__head">
           <div>
@@ -93,7 +121,7 @@
     </section>
 
     <!-- Chapter 03 — Technical -->
-    <section class="chapter" data-chapter="technical">
+    <section class="chapter" id="technical" data-chapter="technical">
       <div class="container">
         <div class="chapter__head">
           <div>

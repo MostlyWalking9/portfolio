@@ -40,14 +40,13 @@
 [data-reveal-group].is-visible > *:nth-child(6) { transition-delay: 450ms; }
 
 /* Hero load-in */
-.hero__eyebrow, .hero__title, .hero__line {
+.hero__eyebrow, .hero__title {
   opacity: 0;
   transform: translateY(24px);
   animation: heroIn var(--duration-slow) var(--ease-editorial) forwards;
 }
 .hero__eyebrow { animation-delay: 100ms; }
-.hero__title   { animation-delay: 250ms; }
-.hero__line    { animation-delay: 450ms; }
+.hero__title   { animation-delay: 220ms; }
 
 @keyframes heroIn {
   to { opacity: 1; transform: translateY(0); }
@@ -55,7 +54,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], [data-reveal-group] > *,
-  .hero__eyebrow, .hero__title, .hero__line {
+  .hero__eyebrow, .hero__title {
     animation: none !important;
     transition: opacity var(--duration-fast) linear !important;
     transform: none !important;
@@ -63,4 +62,7 @@
   }
   .hero__scroll-cue-line { animation: none !important; }
   .project-card img { transition: none !important; }
+  .principle-card { transition: none !important; }
+  .principle-card:hover { transform: none !important; }
+  .principle-card--technical .principle-card__title::after { animation: none !important; opacity: 1; }
 }

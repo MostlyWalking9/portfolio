@@ -11,6 +11,8 @@
   .chapter__intro { align-self: start; }
   .project-grid, .work-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .principle-grid { grid-template-columns: 1fr; }
+  .principle-card { min-height: unset; }
 }
 
 @media (max-width: 768px) {
