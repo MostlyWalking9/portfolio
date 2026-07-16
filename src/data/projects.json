@@ -103,7 +103,7 @@
     "tools": ["HTML", "CSS", "JavaScript", "Python", "Figma"],
     "process": "Led concept, design, and development of a mobile-first digital platform for Bohl Entertainment — a custom full-viewport slider architecture (not a standard scroll page), a scalable design system built in Figma, and a reusable component/animation layer written in vanilla JS. Tour dates pull live from a connected spreadsheet feed.",
     "outcome": "In active development — homepage and core navigation are live; several content subpages are still placeholders pending copy and asset delivery.",
-    "liveUrl": "",
+    "liveUrl": "https://digletto-bot.github.io/drbohl-website/",
     "thumb": "../assets/images/technical/drbohl-website/thumb.png",
     "hero": "../assets/images/technical/drbohl-website/hero.png",
     "gallery": ["../assets/images/technical/drbohl-website/detail-01.png", "../assets/images/technical/drbohl-website/detail-02.png"]
