@@ -96,6 +96,19 @@
     "gallery": ["../assets/images/design/design-placeholder-4/detail-01.svg", "../assets/images/design/design-placeholder-4/detail-02.svg"]
   },
   {
+    "slug": "drbohl-website",
+    "domain": "technical",
+    "title": "Dr.Bohl — Official Website",
+    "role": "Creative Web Designer & Frontend Developer",
+    "tools": ["HTML", "CSS", "JavaScript", "Python", "Figma"],
+    "process": "Led concept, design, and development of a mobile-first digital platform for Bohl Entertainment — a custom full-viewport slider architecture (not a standard scroll page), a scalable design system built in Figma, and a reusable component/animation layer written in vanilla JS. Tour dates pull live from a connected spreadsheet feed.",
+    "outcome": "In active development — homepage and core navigation are live; several content subpages are still placeholders pending copy and asset delivery.",
+    "liveUrl": "",
+    "thumb": "../assets/images/technical/drbohl-website/thumb.png",
+    "hero": "../assets/images/technical/drbohl-website/hero.png",
+    "gallery": ["../assets/images/technical/drbohl-website/detail-01.png", "../assets/images/technical/drbohl-website/detail-02.png"]
+  },
+  {
     "slug": "technical-placeholder-1",
     "domain": "technical",
     "title": "Placeholder — Technical 01",

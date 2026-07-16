@@ -52,11 +52,14 @@ This is a local tool, not a hosted CMS — it edits files on your machine. Commi
   "tools": ["Photoshop", "Blender"],
   "process": "Short note on approach/pipeline.",
   "outcome": "Short note on result/use.",
+  "liveUrl": "",
   "thumb": "assets/images/creative/forest-scene-concept/thumb.webp",
   "hero": "assets/images/creative/forest-scene-concept/hero.webp",
   "gallery": ["assets/images/creative/forest-scene-concept/detail-01.webp"]
 }
 ```
+
+`liveUrl` is optional — when set, the project detail page shows a "Visit live site ↗" button. Use this for shipped websites/apps instead of trying to embed them: a live iframe embed is fragile (most production sites block framing via `X-Frame-Options`/CSP) and awkward for multi-page sites, so screenshots + a direct link to the real thing is the more reliable pattern. Leave it empty (`""`) for work that isn't live yet or isn't web-based.
 
 `domain` must be one of `creative`, `design`, `technical` — drives accent color and chapter placement automatically.
 

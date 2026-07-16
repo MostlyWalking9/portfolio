@@ -96,6 +96,7 @@
           <div><dt>Outcome</dt><dd>${project.outcome || '—'}</dd></div>
         </dl>
         ${project.process ? `<p style="margin-top:var(--space-4); max-width:65ch; color:var(--color-text-muted);">${project.process}</p>` : ''}
+        ${project.liveUrl ? `<a class="btn" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" style="margin-top: var(--space-4);">Visit live site ↗</a>` : ''}
       </section>
       <div class="project-detail__gallery container" data-chapter="${project.domain}">
         ${project.hero ? `<img src="${project.hero}" alt="${project.title}" data-reveal>` : ''}
