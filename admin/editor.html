@@ -119,12 +119,16 @@
       <textarea id="newProcess" rows="2" placeholder="Short note on approach / pipeline"></textarea>
       <label>Outcome note</label>
       <textarea id="newOutcome" rows="2" placeholder="Short note on result / use"></textarea>
-      <label>Thumbnail image</label>
-      <input type="file" id="newThumb" accept="image/*">
-      <label>Hero image</label>
-      <input type="file" id="newHero" accept="image/*">
-      <label>Gallery images (multiple)</label>
-      <input type="file" id="newGallery" accept="image/*" multiple>
+      <label>Tasks (one per line — rendered as a bullet list on the project page)</label>
+      <textarea id="newTasks" rows="4" placeholder="Concept sketches&#10;Client revisions&#10;Final delivery"></textarea>
+      <label>Live URL (optional — shows a "Visit live site" button)</label>
+      <input id="newLiveUrl" placeholder="https://...">
+      <label>Thumbnail (image or video)</label>
+      <input type="file" id="newThumb" accept="image/*,video/*">
+      <label>Hero (image or video)</label>
+      <input type="file" id="newHero" accept="image/*,video/*">
+      <label>Gallery (images or videos, multiple)</label>
+      <input type="file" id="newGallery" accept="image/*,video/*" multiple>
       <div style="margin-top:1.2rem;">
         <button class="primary" id="addProjectBtn">Add project</button>
       </div>
@@ -185,6 +189,10 @@
     }
   }
 
+  function isVideo(path) {
+    return /\.(mp4|webm|mov)$/i.test(path || '');
+  }
+
   async function resolveImageURL(relPath) {
     // relPath like "../assets/images/creative/slug/thumb.svg" (as stored for the site)
     // Normalize to segments under repo root.
@@ -213,18 +221,24 @@
     for (const p of projects) {
       const row = document.createElement('div');
       row.className = 'project-row';
-      const imgUrl = await resolveImageURL(p.thumb || p.hero || '');
+      const previewSrc = p.thumb || p.hero || '';
+      const imgUrl = await resolveImageURL(previewSrc);
+      const previewTag = isVideo(previewSrc)
+        ? `<video src="${imgUrl}" muted loop autoplay playsinline></video>`
+        : `<img src="${imgUrl}" alt="">`;
       row.innerHTML = `
-        <img src="${imgUrl}" alt="">
+        ${previewTag}
         <div class="meta">
           <h3><span class="domain-dot dot-${p.domain}"></span>${p.title}</h3>
-          <span>${p.domain} · ${p.slug} · ${(p.gallery || []).length + (p.hero ? 1 : 0)} images</span>
+          <span>${p.domain} · ${p.slug} · ${(p.gallery || []).length + (p.hero ? 1 : 0)} media</span>
         </div>
         <div class="actions">
-          <button data-action="edit" data-slug="${p.slug}">Edit images</button>
+          <button data-action="details" data-slug="${p.slug}">Edit details</button>
+          <button data-action="edit" data-slug="${p.slug}">Edit media</button>
           <button data-action="remove" data-slug="${p.slug}" class="danger">Remove</button>
         </div>
         <div class="edit-panel hidden" data-panel="${p.slug}" style="width:100%; margin-top:1rem;"></div>
+        <div class="details-panel hidden" data-details-panel="${p.slug}" style="width:100%; margin-top:1rem;"></div>
       `;
       list.appendChild(row);
     }
@@ -234,6 +248,57 @@
     });
     list.querySelectorAll('[data-action="edit"]').forEach((btn) => {
       btn.addEventListener('click', () => toggleEditPanel(btn.dataset.slug));
+    });
+    list.querySelectorAll('[data-action="details"]').forEach((btn) => {
+      btn.addEventListener('click', () => toggleDetailsPanel(btn.dataset.slug));
+    });
+  }
+
+  function toggleDetailsPanel(slug) {
+    const panel = document.querySelector(`[data-details-panel="${slug}"]`);
+    if (!panel) return;
+    if (!panel.classList.contains('hidden')) {
+      panel.classList.add('hidden');
+      return;
+    }
+    const project = projects.find((p) => p.slug === slug);
+    panel.classList.remove('hidden');
+    panel.innerHTML = `
+      <label>Title</label>
+      <input data-field="title" value="${(project.title || '').replace(/"/g,'&quot;')}">
+      <div class="row">
+        <div>
+          <label>Role</label>
+          <input data-field="role" value="${(project.role || '').replace(/"/g,'&quot;')}">
+        </div>
+        <div>
+          <label>Tools (comma separated)</label>
+          <input data-field="tools" value="${(project.tools || []).join(', ')}">
+        </div>
+      </div>
+      <label>Process note</label>
+      <textarea data-field="process" rows="2">${project.process || ''}</textarea>
+      <label>Outcome note</label>
+      <textarea data-field="outcome" rows="2">${project.outcome || ''}</textarea>
+      <label>Tasks (one per line)</label>
+      <textarea data-field="tasks" rows="4">${(project.tasks || []).join('\n')}</textarea>
+      <label>Live URL</label>
+      <input data-field="liveUrl" value="${(project.liveUrl || '').replace(/"/g,'&quot;')}">
+      <div style="margin-top:1rem;">
+        <button class="primary" data-action="save-details">Update project (then Save projects.json)</button>
+      </div>
+    `;
+    panel.querySelector('[data-action="save-details"]').addEventListener('click', () => {
+      project.title = panel.querySelector('[data-field="title"]').value.trim();
+      project.role = panel.querySelector('[data-field="role"]').value.trim();
+      project.tools = panel.querySelector('[data-field="tools"]').value.split(',').map(s => s.trim()).filter(Boolean);
+      project.process = panel.querySelector('[data-field="process"]').value.trim();
+      project.outcome = panel.querySelector('[data-field="outcome"]').value.trim();
+      project.tasks = panel.querySelector('[data-field="tasks"]').value.split('\n').map(s => s.trim()).filter(Boolean);
+      project.liveUrl = panel.querySelector('[data-field="liveUrl"]').value.trim();
+      markDirty(true);
+      setStatus('Project details updated in memory. Click "Save projects.json" to persist.', 'info');
+      renderList();
     });
   }
 
@@ -260,7 +325,7 @@
           </div>`).join('')}
       </div>
       <label style="margin-top:.8rem;">Add gallery images</label>
-      <input type="file" accept="image/*" multiple data-add-gallery>
+      <input type="file" accept="image/*,video/*" multiple data-add-gallery>
     `;
 
     panel.querySelectorAll('[data-remove-idx]').forEach((btn) => {
@@ -312,6 +377,8 @@
     const tools = document.getElementById('newTools').value.split(',').map(s => s.trim()).filter(Boolean);
     const process = document.getElementById('newProcess').value.trim();
     const outcome = document.getElementById('newOutcome').value.trim();
+    const tasks = document.getElementById('newTasks').value.split('\n').map(s => s.trim()).filter(Boolean);
+    const liveUrl = document.getElementById('newLiveUrl').value.trim();
     const thumbFile = document.getElementById('newThumb').files[0];
     const heroFile = document.getElementById('newHero').files[0];
     const galleryFiles = document.getElementById('newGallery').files;
@@ -322,7 +389,7 @@
     const domainDir = await getImagesDomainDir(domain, true);
     const projDir = await domainDir.getDirectoryHandle(slug, { create: true });
 
-    const project = { slug, domain, title, role, tools, process, outcome, thumb: '', hero: '', gallery: [] };
+    const project = { slug, domain, title, role, tools, process, outcome, tasks, liveUrl, thumb: '', hero: '', gallery: [] };
 
     if (thumbFile) {
       const ext = thumbFile.name.split('.').pop();
@@ -346,7 +413,7 @@
     setStatus('Project added. Remember to Save projects.json.', 'info');
     renderList();
 
-    ['newSlug','newTitle','newRole','newTools','newProcess','newOutcome'].forEach(id => document.getElementById(id).value = '');
+    ['newSlug','newTitle','newRole','newTools','newProcess','newOutcome','newTasks','newLiveUrl'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('newThumb').value = '';
     document.getElementById('newHero').value = '';
     document.getElementById('newGallery').value = '';
