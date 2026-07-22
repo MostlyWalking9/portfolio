@@ -7,11 +7,22 @@
 (function () {
   const DATA_URL = '../src/data/projects.json';
 
+  function isVideo(src) {
+    return /\.(mp4|webm|mov)$/i.test(src || '');
+  }
+
+  function mediaMarkup(src, alt, attrs) {
+    if (!src) return '';
+    return isVideo(src)
+      ? `<video src="${src}" ${attrs || ''} muted loop playsinline autoplay></video>`
+      : `<img src="${src}" alt="${alt}" ${attrs || ''} loading="lazy">`;
+  }
+
   function cardMarkup(project) {
-    const img = project.thumb || project.hero || '';
+    const src = project.thumb || project.hero || '';
     return `
       <a class="project-card" href="project.html?slug=${encodeURIComponent(project.slug)}" data-reveal>
-        <img src="${img}" alt="${project.title}" loading="lazy">
+        ${mediaMarkup(src, project.title)}
         <div class="project-card__label">
           <h3>${project.title}</h3>
           <span>${project.role || ''}</span>
@@ -84,8 +95,12 @@
     document.body.dataset.activeChapter = project.domain;
 
     const gallery = (project.gallery || []).map(
-      (src) => `<img src="${src}" alt="${project.title} — detail" loading="lazy" data-reveal>`
+      (src) => mediaMarkup(src, `${project.title} — detail`, 'data-reveal')
     ).join('');
+
+    const tasksList = (project.tasks && project.tasks.length)
+      ? `<ul class="project-detail__tasks">${project.tasks.map((t) => `<li>${t}</li>`).join('')}</ul>`
+      : '';
 
     root.innerHTML = `
       <section class="project-detail__hero container">
@@ -98,10 +113,11 @@
           <div><dt>Outcome</dt><dd>${project.outcome || '—'}</dd></div>
         </dl>
         ${project.process ? `<p style="margin-top:var(--space-4); max-width:65ch; color:var(--color-text-muted);">${project.process}</p>` : ''}
+        ${tasksList}
         ${project.liveUrl ? `<a class="btn" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" style="margin-top: var(--space-4);">Visit live site ↗</a>` : ''}
       </section>
       <div class="project-detail__gallery container" data-chapter="${project.domain}">
-        ${project.hero ? `<img src="${project.hero}" alt="${project.title}" data-reveal>` : ''}
+        ${mediaMarkup(project.hero, project.title, 'data-reveal')}
         ${gallery}
       </div>`;
 
