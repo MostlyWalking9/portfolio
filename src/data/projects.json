@@ -1,159 +1,295 @@
 [
   {
-    "slug": "creative-placeholder-1",
+    "slug": "raven-horror-concept",
     "domain": "creative",
-    "title": "Placeholder — Creative 01",
+    "title": "Raven — Dark Fantasy Character",
+    "role": "Concept Artist & 3D Sculptor",
+    "tools": [
+      "Photoshop",
+      "ZBrush"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/creative/raven-horror-concept/thumb.jpg",
+    "hero": "../assets/images/creative/raven-horror-concept/hero.jpg",
+    "gallery": [
+      "../assets/images/creative/raven-horror-concept/detail-01.jpg",
+      "../assets/images/creative/raven-horror-concept/detail-02.jpg",
+      "../assets/images/creative/raven-horror-concept/detail-03.jpg",
+      "../assets/images/creative/raven-horror-concept/detail-04.jpg",
+      "../assets/images/creative/raven-horror-concept/detail-05.jpg",
+      "../assets/images/creative/raven-horror-concept/detail-06.jpg"
+    ]
+  },
+  {
+    "slug": "robot-concepts",
+    "domain": "creative",
+    "title": "Robot Concepts",
     "role": "Concept Artist",
-    "tools": ["Photoshop", "Blender"],
-    "process": "Replace with a short note on approach, references, and pipeline once real project copy is written.",
-    "outcome": "Replace with a short note on how the piece was used or received.",
-    "thumb": "../assets/images/creative/creative-placeholder-1/thumb.svg",
-    "hero": "../assets/images/creative/creative-placeholder-1/hero.svg",
-    "gallery": ["../assets/images/creative/creative-placeholder-1/detail-01.svg", "../assets/images/creative/creative-placeholder-1/detail-02.svg"]
+    "tools": [
+      "Photoshop"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/creative/robot-concepts/thumb.jpg",
+    "hero": "../assets/images/creative/robot-concepts/hero.jpg",
+    "gallery": [
+      "../assets/images/creative/robot-concepts/detail-01.jpg",
+      "../assets/images/creative/robot-concepts/detail-02.jpg"
+    ]
   },
   {
-    "slug": "creative-placeholder-2",
+    "slug": "elemental-characters",
     "domain": "creative",
-    "title": "Placeholder — Creative 02",
+    "title": "Elemental Characters — Illustration Series",
     "role": "Illustrator",
-    "tools": ["Procreate"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/creative/creative-placeholder-2/thumb.svg",
-    "hero": "../assets/images/creative/creative-placeholder-2/hero.svg",
-    "gallery": ["../assets/images/creative/creative-placeholder-2/detail-01.svg", "../assets/images/creative/creative-placeholder-2/detail-02.svg"]
+    "tools": [
+      "Photoshop",
+      "Procreate"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/creative/elemental-characters/thumb.jpg",
+    "hero": "../assets/images/creative/elemental-characters/hero.jpg",
+    "gallery": [
+      "../assets/images/creative/elemental-characters/detail-01.jpg",
+      "../assets/images/creative/elemental-characters/detail-02.jpg",
+      "../assets/images/creative/elemental-characters/detail-03.jpg",
+      "../assets/images/creative/elemental-characters/detail-04.jpg"
+    ]
   },
   {
-    "slug": "creative-placeholder-3",
+    "slug": "environment-illustrations",
     "domain": "creative",
-    "title": "Placeholder — Creative 03",
-    "role": "Character Artist",
-    "tools": ["ZBrush", "Substance Painter"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/creative/creative-placeholder-3/thumb.svg",
-    "hero": "../assets/images/creative/creative-placeholder-3/hero.svg",
-    "gallery": ["../assets/images/creative/creative-placeholder-3/detail-01.svg", "../assets/images/creative/creative-placeholder-3/detail-02.svg"]
+    "title": "Environment Illustrations",
+    "role": "Illustrator",
+    "tools": [
+      "Photoshop"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/creative/environment-illustrations/thumb.jpg",
+    "hero": "../assets/images/creative/environment-illustrations/hero.jpg",
+    "gallery": [
+      "../assets/images/creative/environment-illustrations/detail-01.jpg",
+      "../assets/images/creative/environment-illustrations/detail-02.jpg",
+      "../assets/images/creative/environment-illustrations/detail-03.jpg",
+      "../assets/images/creative/environment-illustrations/detail-04.jpg"
+    ]
   },
   {
-    "slug": "creative-placeholder-4",
+    "slug": "doodle-illustrations",
     "domain": "creative",
-    "title": "Placeholder — Creative 04",
-    "role": "Environment Artist",
-    "tools": ["Blender", "Photoshop"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/creative/creative-placeholder-4/thumb.svg",
-    "hero": "../assets/images/creative/creative-placeholder-4/hero.svg",
-    "gallery": ["../assets/images/creative/creative-placeholder-4/detail-01.svg", "../assets/images/creative/creative-placeholder-4/detail-02.svg"]
+    "title": "Doodle Illustrations",
+    "role": "Illustrator",
+    "tools": [
+      "Procreate"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/creative/doodle-illustrations/thumb.jpg",
+    "hero": "../assets/images/creative/doodle-illustrations/hero.jpg",
+    "gallery": [
+      "../assets/images/creative/doodle-illustrations/detail-01.jpg",
+      "../assets/images/creative/doodle-illustrations/detail-02.jpg",
+      "../assets/images/creative/doodle-illustrations/detail-03.jpg"
+    ]
   },
   {
-    "slug": "design-placeholder-1",
+    "slug": "rob-and-rob",
+    "domain": "creative",
+    "title": "Rob & Rob — 3D Character",
+    "role": "3D Character Artist",
+    "tools": [
+      "Blender",
+      "ZBrush",
+      "Substance Painter"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/creative/rob-and-rob/thumb.jpg",
+    "hero": "../assets/images/creative/rob-and-rob/hero.jpg",
+    "gallery": [
+      "../assets/images/creative/rob-and-rob/detail-01.mp4",
+      "../assets/images/creative/rob-and-rob/detail-02.mp4"
+    ]
+  },
+  {
+    "slug": "sechser-logo",
     "domain": "design",
-    "title": "Placeholder — Design 01",
+    "title": "Sechser — Logo Animation",
+    "role": "Brand & Motion Designer",
+    "tools": [
+      "After Effects",
+      "Illustrator"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/sechser-logo/thumb.jpg",
+    "hero": "../assets/images/design/sechser-logo/hero.mp4",
+    "gallery": [
+      "../assets/images/design/sechser-logo/detail-01.mp4"
+    ]
+  },
+  {
+    "slug": "artray-logo",
+    "domain": "design",
+    "title": "Artray — Logo Design",
     "role": "Brand Designer",
-    "tools": ["Figma", "Illustrator"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/design/design-placeholder-1/thumb.svg",
-    "hero": "../assets/images/design/design-placeholder-1/hero.svg",
-    "gallery": ["../assets/images/design/design-placeholder-1/detail-01.svg", "../assets/images/design/design-placeholder-1/detail-02.svg"]
+    "tools": [
+      "Illustrator"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/artray-logo/thumb.jpg",
+    "hero": "../assets/images/design/artray-logo/hero.jpg",
+    "gallery": []
   },
   {
-    "slug": "design-placeholder-2",
+    "slug": "english-works-logo",
     "domain": "design",
-    "title": "Placeholder — Design 02",
+    "title": "English Works — Logo Design",
+    "role": "Brand Designer",
+    "tools": [
+      "Illustrator"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/english-works-logo/thumb.jpg",
+    "hero": "../assets/images/design/english-works-logo/hero.jpg",
+    "gallery": []
+  },
+  {
+    "slug": "weinco-campaign",
+    "domain": "design",
+    "title": "Wein&Co — Campaign",
+    "role": "Graphic Designer",
+    "tools": [
+      "Photoshop",
+      "Illustrator"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/weinco-campaign/thumb.jpg",
+    "hero": "../assets/images/design/weinco-campaign/hero.jpg",
+    "gallery": [
+      "../assets/images/design/weinco-campaign/detail-01.jpg",
+      "../assets/images/design/weinco-campaign/detail-02.jpg",
+      "../assets/images/design/weinco-campaign/detail-03.jpg",
+      "../assets/images/design/weinco-campaign/detail-04.jpg",
+      "../assets/images/design/weinco-campaign/detail-05.jpg"
+    ]
+  },
+  {
+    "slug": "drbohl-interview-thumbnails",
+    "domain": "design",
+    "title": "Dr.Bohl — Interview Thumbnails",
+    "role": "Graphic Designer",
+    "tools": [
+      "Photoshop"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/drbohl-interview-thumbnails/thumb.jpg",
+    "hero": "../assets/images/design/drbohl-interview-thumbnails/hero.jpg",
+    "gallery": [
+      "../assets/images/design/drbohl-interview-thumbnails/detail-01.jpg",
+      "../assets/images/design/drbohl-interview-thumbnails/detail-02.jpg"
+    ]
+  },
+  {
+    "slug": "drbohl-schnitzel-intro",
+    "domain": "design",
+    "title": "Dr.Bohl — Schnitzel Intro",
     "role": "Motion Designer",
-    "tools": ["After Effects"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/design/design-placeholder-2/thumb.svg",
-    "hero": "../assets/images/design/design-placeholder-2/hero.svg",
-    "gallery": ["../assets/images/design/design-placeholder-2/detail-01.svg", "../assets/images/design/design-placeholder-2/detail-02.svg"]
+    "tools": [
+      "After Effects",
+      "Premiere"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/drbohl-schnitzel-intro/thumb.jpg",
+    "hero": "../assets/images/design/drbohl-schnitzel-intro/hero.mp4",
+    "gallery": []
   },
   {
-    "slug": "design-placeholder-3",
+    "slug": "drbohl-merch-video",
     "domain": "design",
-    "title": "Placeholder — Design 03",
-    "role": "UI/UX Designer",
-    "tools": ["Figma"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/design/design-placeholder-3/thumb.svg",
-    "hero": "../assets/images/design/design-placeholder-3/hero.svg",
-    "gallery": ["../assets/images/design/design-placeholder-3/detail-01.svg", "../assets/images/design/design-placeholder-3/detail-02.svg"]
+    "title": "Dr.Bohl — Merch Video",
+    "role": "Motion Designer",
+    "tools": [
+      "After Effects",
+      "Premiere"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "thumb": "../assets/images/design/drbohl-merch-video/thumb.jpg",
+    "hero": "../assets/images/design/drbohl-merch-video/hero.mp4",
+    "gallery": []
   },
   {
-    "slug": "design-placeholder-4",
-    "domain": "design",
-    "title": "Placeholder — Design 04",
-    "role": "Product Designer",
-    "tools": ["Figma", "Premiere"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/design/design-placeholder-4/thumb.svg",
-    "hero": "../assets/images/design/design-placeholder-4/hero.svg",
-    "gallery": ["../assets/images/design/design-placeholder-4/detail-01.svg", "../assets/images/design/design-placeholder-4/detail-02.svg"]
+    "slug": "griechenbeisl-website",
+    "domain": "technical",
+    "title": "Griechenbeisl — Website",
+    "role": "Web Designer",
+    "tools": [],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "https://griechenbeisl-vienna.wegic.net/",
+    "thumb": "../assets/images/technical/griechenbeisl-website/thumb.jpg",
+    "hero": "../assets/images/technical/griechenbeisl-website/hero.jpg",
+    "gallery": [
+      "../assets/images/technical/griechenbeisl-website/detail-01.jpg",
+      "../assets/images/technical/griechenbeisl-website/detail-02.jpg"
+    ]
   },
   {
     "slug": "drbohl-website",
     "domain": "technical",
     "title": "Dr.Bohl — Official Website",
     "role": "Creative Web Designer & Frontend Developer",
-    "tools": ["HTML", "CSS", "JavaScript", "Python", "Figma"],
+    "tools": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Python",
+      "Figma"
+    ],
     "process": "Led concept, design, and development of a mobile-first digital platform for Bohl Entertainment — a custom full-viewport slider architecture (not a standard scroll page), a scalable design system built in Figma, and a reusable component/animation layer written in vanilla JS. Tour dates pull live from a connected spreadsheet feed.",
     "outcome": "In active development — homepage and core navigation are live; several content subpages are still placeholders pending copy and asset delivery.",
     "liveUrl": "https://digletto-bot.github.io/drbohl-website/",
     "thumb": "../assets/images/technical/drbohl-website/thumb.png",
     "hero": "../assets/images/technical/drbohl-website/hero.png",
-    "gallery": ["../assets/images/technical/drbohl-website/detail-01.png", "../assets/images/technical/drbohl-website/detail-02.png"]
-  },
-  {
-    "slug": "technical-placeholder-1",
-    "domain": "technical",
-    "title": "Placeholder — Technical 01",
-    "role": "Full-stack Developer",
-    "tools": ["JavaScript", "Node.js"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/technical/technical-placeholder-1/thumb.svg",
-    "hero": "../assets/images/technical/technical-placeholder-1/hero.svg",
-    "gallery": ["../assets/images/technical/technical-placeholder-1/detail-01.svg", "../assets/images/technical/technical-placeholder-1/detail-02.svg"]
-  },
-  {
-    "slug": "technical-placeholder-2",
-    "domain": "technical",
-    "title": "Placeholder — Technical 02",
-    "role": "Automation Engineer",
-    "tools": ["Python"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/technical/technical-placeholder-2/thumb.svg",
-    "hero": "../assets/images/technical/technical-placeholder-2/hero.svg",
-    "gallery": ["../assets/images/technical/technical-placeholder-2/detail-01.svg", "../assets/images/technical/technical-placeholder-2/detail-02.svg"]
-  },
-  {
-    "slug": "technical-placeholder-3",
-    "domain": "technical",
-    "title": "Placeholder — Technical 03",
-    "role": "AI Systems Developer",
-    "tools": ["Python", "PyTorch"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/technical/technical-placeholder-3/thumb.svg",
-    "hero": "../assets/images/technical/technical-placeholder-3/hero.svg",
-    "gallery": ["../assets/images/technical/technical-placeholder-3/detail-01.svg", "../assets/images/technical/technical-placeholder-3/detail-02.svg"]
-  },
-  {
-    "slug": "technical-placeholder-4",
-    "domain": "technical",
-    "title": "Placeholder — Technical 04",
-    "role": "Web Developer",
-    "tools": ["HTML/CSS/JS"],
-    "process": "Placeholder process note.",
-    "outcome": "Placeholder outcome note.",
-    "thumb": "../assets/images/technical/technical-placeholder-4/thumb.svg",
-    "hero": "../assets/images/technical/technical-placeholder-4/hero.svg",
-    "gallery": ["../assets/images/technical/technical-placeholder-4/detail-01.svg", "../assets/images/technical/technical-placeholder-4/detail-02.svg"]
+    "gallery": [
+      "../assets/images/technical/drbohl-website/detail-01.png",
+      "../assets/images/technical/drbohl-website/detail-02.png"
+    ]
   }
 ]

@@ -31,15 +31,18 @@ Workflow: drop raw work into `work-source/`, then export optimized versions into
 
 ## Editing projects without touching code
 
-Open `admin/editor.html` in **Chrome or Edge** (Live Server or just double-click the file). It uses the File System Access API to connect directly to this repo folder on disk:
+The editor tool lives in a **separate, private repo** — `MostlyWalking9/portfolio-admin-tool` — deliberately kept out of this repo so it's never part of the deployed site (GitHub Pages serves everything in this repo; keeping the editor elsewhere means there's nothing to accidentally expose at a guessable URL).
 
-- **Connect to project folder** → pick the `portfolio-scaffold` root once per session
-- Add a project: fill the form, attach thumb/hero/gallery images — files are copied into `assets/images/<domain>/<slug>/` automatically
-- Edit an existing project's images: **Edit images** → add more, or remove individual gallery images (deletes the file too)
-- Remove a project: pulls it out of the list; image files are left on disk (delete the folder manually in `assets/images/` if you want those gone)
+To use it: clone `portfolio-admin-tool` locally, open its `editor.html` in **Chrome or Edge**, then:
+
+- **Connect to project folder** → pick this repo's root (`portfolio-scaffold`) on disk
+- Add a project: fill the form, attach thumb/hero/gallery media (images or video), write a tasks bullet list — files are copied into `assets/images/<domain>/<slug>/` automatically
+- **Edit details** on an existing project: update title, role, tools, process, outcome, tasks, or live URL
+- **Edit media** on an existing project: add more gallery items, or remove individual ones (deletes the file too)
+- Remove a project: pulls it out of the list; media files are left on disk (delete the folder manually in `assets/images/` if you want those gone)
 - **Save projects.json** writes changes back to `src/data/projects.json` — nothing is final until you hit this
 
-This is a local tool, not a hosted CMS — it edits files on your machine. Commit and push afterward like any other change. Safari/Firefox don't support the underlying API; edit `projects.json` by hand there instead.
+It's a local tool, not a hosted CMS — it edits files on your machine. Commit and push from *this* repo afterward like any other change. Safari/Firefox don't support the underlying API; edit `projects.json` by hand there instead.
 
 ## `projects.json` schema
 

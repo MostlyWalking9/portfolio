@@ -498,14 +498,16 @@
   border: 1px solid var(--color-border);
 }
 
-.project-card img {
+.project-card img,
+.project-card video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--duration-slow) var(--ease-editorial);
 }
 
-.project-card:hover img {
+.project-card:hover img,
+.project-card:hover video {
   transform: scale(1.045);
 }
 
@@ -547,6 +549,29 @@
 @keyframes scanline {
   from { top: 0%; }
   to   { top: 100%; }
+}
+
+.project-detail__tasks {
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 65ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.project-detail__tasks li {
+  padding-left: 1.3em;
+  position: relative;
+  color: var(--color-text-muted);
+}
+
+.project-detail__tasks li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent-current);
 }
 
 .project-card__label {

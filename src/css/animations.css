@@ -83,7 +83,7 @@
     opacity: 1;
   }
   .hero__scroll-cue-line { animation: none !important; }
-  .project-card img { transition: none !important; }
+  .project-card img, .project-card video { transition: none !important; }
   [data-chapter="technical"] .project-card:hover::after { animation: none !important; opacity: 0 !important; }
   [data-chapter="design"] .project-card::before { transition: none !important; }
 
