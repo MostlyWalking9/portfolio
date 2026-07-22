@@ -18,6 +18,7 @@ body {
   line-height: var(--leading-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 img, video { max-width: 100%; display: block; }
@@ -63,8 +64,11 @@ button {
   color: var(--color-bg);
 }
 
+/* Small-caps "eyebrow" label — calm sans by default (studio hub, creative,
+   design); the technical chapter reclaims this role as monospace purely
+   through the --font-label cascade in variables.css. */
 .eyebrow {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: var(--type-scale-caption);
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -77,4 +81,41 @@ button {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------
+   Studio hub atmosphere — a soft pale-blue gradient with very subtle
+   grain, used only by the hub chrome (hero, about/contact CTA blocks,
+   footer). Deliberately literal --studio-* tokens, not the dynamic
+   --color-bg alias, so this chrome stays calm no matter which chapter
+   is scrolled into view elsewhere on the page.
+   -------------------------------------------------------------------- */
+.hero,
+.section-block,
+.site-footer,
+.site-nav {
+  /* Pin the shared token names back to the studio hub locally — this
+     chrome must stay calm even while --accent-current / --font-label /
+     --color-* are being mirrored onto <body> for a chapter scrolled
+     into view elsewhere on the page. */
+  --accent-current:   var(--studio-action);
+  --color-bg:          var(--studio-bg);
+  --color-text:        var(--studio-text);
+  --color-text-muted:  var(--studio-text-muted);
+  --color-border:      var(--studio-border);
+  --font-display:      var(--font-heading-studio);
+  --font-body:         var(--font-body-studio);
+  --font-label:        var(--font-body-studio);
+}
+
+.hero,
+.section-block,
+.site-footer {
+  background-color: var(--studio-bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    linear-gradient(160deg, var(--studio-bg) 0%, var(--studio-bg-alt) 100%);
+  background-repeat: repeat, no-repeat;
+  background-size: 160px 160px, cover;
+  color: var(--studio-text);
 }

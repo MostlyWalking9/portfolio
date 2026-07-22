@@ -1,6 +1,27 @@
 /* ==========================================================================
-   Motion — scroll reveals, page-load, respects reduced-motion
+   Motion — scroll reveals, page-load, page transitions, respects
+   reduced-motion throughout.
    ========================================================================== */
+
+/* Cross-document view transitions — progressive enhancement only.
+   Unsupported browsers simply navigate instantly (no-op), so this never
+   blocks or delays navigation. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 1ms;
+  }
+}
 
 @keyframes scrollcue {
   0%   { transform: scaleY(0); transform-origin: top; opacity: 0.4; }
@@ -40,13 +61,14 @@
 [data-reveal-group].is-visible > *:nth-child(6) { transition-delay: 450ms; }
 
 /* Hero load-in */
-.hero__eyebrow, .hero__title {
+.hero__eyebrow-row, .hero__title, .hero__subtitle {
   opacity: 0;
   transform: translateY(24px);
   animation: heroIn var(--duration-slow) var(--ease-editorial) forwards;
 }
-.hero__eyebrow { animation-delay: 100ms; }
-.hero__title   { animation-delay: 220ms; }
+.hero__eyebrow-row { animation-delay: 100ms; }
+.hero__title       { animation-delay: 220ms; }
+.hero__subtitle    { animation-delay: 320ms; }
 
 @keyframes heroIn {
   to { opacity: 1; transform: translateY(0); }
@@ -54,7 +76,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal], [data-reveal-group] > *,
-  .hero__eyebrow, .hero__title {
+  .hero__eyebrow-row, .hero__title, .hero__subtitle {
     animation: none !important;
     transition: opacity var(--duration-fast) linear !important;
     transform: none !important;
@@ -62,7 +84,24 @@
   }
   .hero__scroll-cue-line { animation: none !important; }
   .project-card img { transition: none !important; }
-  .principle-card { transition: none !important; }
-  .principle-card:hover { transform: none !important; }
+  [data-chapter="technical"] .project-card:hover::after { animation: none !important; opacity: 0 !important; }
+  [data-chapter="design"] .project-card::before { transition: none !important; }
+
+  /* Category panels: one static image, no scaling, no sequencing —
+     enforced at the CSS layer so it holds even if JS ran before this
+     media query was read. */
+  .principle-card,
+  .principle-card__body,
+  .principle-card__explore,
+  .principle-card__media-img,
+  .principle-card__scrim::after {
+    transition: opacity 150ms linear !important;
+  }
+  .principle-card:hover,
+  .principle-card.is-active { transform: none !important; }
+  .principle-card__body,
+  .principle-card.is-active .principle-card__body { transform: none !important; }
+  .principle-card__media-img:not(:first-child) { display: none !important; }
+  .principle-card__media-img:first-child { opacity: 1 !important; }
   .principle-card--technical .principle-card__title::after { animation: none !important; opacity: 1; }
 }

@@ -5,7 +5,7 @@
 .lang-toggle {
   display: flex;
   gap: var(--space-2);
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: var(--type-scale-caption);
   letter-spacing: 0.06em;
 }
@@ -21,7 +21,7 @@
 }
 
 .tag {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: var(--type-scale-caption);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -39,7 +39,7 @@
 .empty-state {
   padding-block: var(--space-6);
   color: var(--color-text-muted);
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: var(--type-scale-small);
   text-transform: uppercase;
   letter-spacing: 0.06em;

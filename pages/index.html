@@ -7,7 +7,7 @@
   <meta name="description" content="Art deBeaufort — concept art, design, and technical work, one creative practice across three disciplines.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
@@ -33,43 +33,97 @@
 
   <main>
 
-    <!-- Hero / principle selector — first thing visible, all 3 disciplines up front -->
+    <!-- Studio hub — calm entrance, all 3 disciplines up front -->
     <section class="hero">
-      <span class="hero__eyebrow" data-en="Portfolio — 2026" data-de="Portfolio — 2026">Portfolio — 2026</span>
-      <h1 class="hero__title"
-          data-en="One practice, three disciplines. Pick where to start."
-          data-de="Eine Praxis, drei Disziplinen. Wählen Sie Ihren Einstieg.">One practice, three disciplines. Pick where to start.</h1>
+      <div class="hero__eyebrow-row">
+        <span class="hero__eyebrow" data-en="Portfolio — 2026" data-de="Portfolio — 2026">Portfolio — 2026</span>
+        <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false" aria-label="Toggle ambient studio sound">
+          <span data-sound-label data-en="Sound: Off" data-de="Ton: Aus">Sound: Off</span>
+        </button>
+      </div>
+      <audio data-ambient-audio src="../assets/audio/studio-ambient-placeholder.mp3" loop preload="none"></audio>
+
+      <h1 class="hero__title" data-en="Choose where to begin." data-de="Wo möchten Sie beginnen?">Choose where to begin.</h1>
+      <p class="hero__subtitle"
+         data-en="Explore creative work, design and production, or technical development."
+         data-de="Entdecken Sie kreative Arbeiten, Design und Produktion oder technische Entwicklung.">
+        Explore creative work, design and production, or technical development.
+      </p>
 
       <div class="principle-grid" data-reveal-group>
+
         <a class="principle-card principle-card--creative" href="#creative">
-          <span class="principle-card__eyebrow" data-en="Chapter 01" data-de="Kapitel 01">Chapter 01</span>
-          <h2 class="principle-card__title" data-en="Creative / Digital Art" data-de="Kreativ / Digitale Kunst">Creative / Digital Art</h2>
-          <p class="principle-card__desc"
-             data-en="Game Art, Concept Art, Illustrations, 2D/3D artwork, Game Engines, Texturing, Rigging, Animation, Modelling, Rendering"
-             data-de="Game Art, Concept Art, Illustrationen, 2D/3D-Grafik, Game Engines, Texturing, Rigging, Animation, Modellierung, Rendering">
-            Game Art, Concept Art, Illustrations, 2D/3D artwork, Game Engines, Texturing, Rigging, Animation, Modelling, Rendering
-          </p>
+          <span class="principle-card__media">
+            <img class="principle-card__media-img is-shown" src="../assets/media/creative/creative-01.svg" alt="" loading="eager" fetchpriority="high">
+            <img class="principle-card__media-img" src="../assets/media/creative/creative-02.svg" alt="" loading="lazy">
+            <img class="principle-card__media-img" src="../assets/media/creative/creative-03.svg" alt="" loading="lazy">
+          </span>
+          <span class="principle-card__scrim" aria-hidden="true"></span>
+          <span class="principle-card__body">
+            <span class="principle-card__eyebrow">
+              <span class="principle-card__number">01</span>
+              <span data-en="Creative / Game Art" data-de="Kreativ / Game Art">Creative / Game Art</span>
+            </span>
+            <h2 class="principle-card__title"
+                data-en="Worlds, characters and visual storytelling"
+                data-de="Welten, Charaktere und visuelles Erzählen">Worlds, characters and visual storytelling</h2>
+            <p class="principle-card__desc"
+               data-en="Concept art, illustration, 3D characters, environments and real-time production."
+               data-de="Concept Art, Illustration, 3D-Charaktere, Umgebungen und Echtzeit-Produktion.">
+              Concept art, illustration, 3D characters, environments and real-time production.
+            </p>
+            <span class="principle-card__explore" data-en="Explore →" data-de="Entdecken →">Explore →</span>
+          </span>
         </a>
 
         <a class="principle-card principle-card--design" href="#design">
-          <span class="principle-card__eyebrow" data-en="Chapter 02" data-de="Kapitel 02">Chapter 02</span>
-          <h2 class="principle-card__title" data-en="Design / Production / Branding" data-de="Design / Produktion / Branding">Design / Production / Branding</h2>
-          <p class="principle-card__desc"
-             data-en="Graphic Design, Motion Design, Video &amp; Photo Content Creation, UI/UX Design, Visual Branding &amp; Marketing"
-             data-de="Grafikdesign, Motion Design, Video- &amp; Fotoproduktion, UI/UX-Design, visuelles Branding &amp; Marketing">
-            Graphic Design, Motion Design, Video &amp; Photo Content Creation, UI/UX Design, Visual Branding &amp; Marketing
-          </p>
+          <span class="principle-card__media">
+            <img class="principle-card__media-img is-shown" src="../assets/media/design/design-01.svg" alt="" loading="lazy">
+            <img class="principle-card__media-img" src="../assets/media/design/design-02.svg" alt="" loading="lazy">
+            <img class="principle-card__media-img" src="../assets/media/design/design-03.svg" alt="" loading="lazy">
+          </span>
+          <span class="principle-card__scrim" aria-hidden="true"></span>
+          <span class="principle-card__body">
+            <span class="principle-card__eyebrow">
+              <span class="principle-card__number">02</span>
+              <span data-en="Design / Production" data-de="Design / Produktion">Design / Production</span>
+            </span>
+            <h2 class="principle-card__title"
+                data-en="Identity, motion and digital experiences"
+                data-de="Identität, Motion und digitale Erlebnisse">Identity, motion and digital experiences</h2>
+            <p class="principle-card__desc"
+               data-en="Branding, UI/UX, campaigns, content production and motion design."
+               data-de="Branding, UI/UX, Kampagnen, Content-Produktion und Motion Design.">
+              Branding, UI/UX, campaigns, content production and motion design.
+            </p>
+            <span class="principle-card__explore" data-en="Explore →" data-de="Entdecken →">Explore →</span>
+          </span>
         </a>
 
         <a class="principle-card principle-card--technical" href="#technical">
-          <span class="principle-card__eyebrow" data-en="Chapter 03" data-de="Kapitel 03">Chapter 03</span>
-          <h2 class="principle-card__title" data-en="Technical / IT / Developer" data-de="Technisch / IT / Entwicklung">Technical / IT / Developer</h2>
-          <p class="principle-card__desc"
-             data-en="Webdesign, Software Development, AI Specialist, Fully automated workflows, Scripting"
-             data-de="Webdesign, Softwareentwicklung, KI-Spezialist, vollautomatisierte Workflows, Scripting">
-            Webdesign, Software Development, AI Specialist, Fully automated workflows, Scripting
-          </p>
+          <span class="principle-card__media">
+            <img class="principle-card__media-img is-shown" src="../assets/media/technical/technical-01.svg" alt="" loading="lazy">
+            <img class="principle-card__media-img" src="../assets/media/technical/technical-02.svg" alt="" loading="lazy">
+            <img class="principle-card__media-img" src="../assets/media/technical/technical-03.svg" alt="" loading="lazy">
+          </span>
+          <span class="principle-card__scrim" aria-hidden="true"></span>
+          <span class="principle-card__body">
+            <span class="principle-card__eyebrow">
+              <span class="principle-card__number">03</span>
+              <span data-en="Technical / Development" data-de="Technisch / Entwicklung">Technical / Development</span>
+            </span>
+            <h2 class="principle-card__title"
+                data-en="Systems, interfaces and automation"
+                data-de="Systeme, Schnittstellen und Automatisierung">Systems, interfaces and automation</h2>
+            <p class="principle-card__desc"
+               data-en="Web development, AI workflows, software and technical problem-solving."
+               data-de="Webentwicklung, KI-Workflows, Software und technische Problemlösung.">
+              Web development, AI workflows, software and technical problem-solving.
+            </p>
+            <span class="principle-card__explore" data-en="Explore →" data-de="Entdecken →">Explore →</span>
+          </span>
         </a>
+
       </div>
 
       <div class="hero__scroll-cue">
@@ -179,5 +233,7 @@
   <script src="../src/js/language-toggle.js"></script>
   <script src="../src/js/work-filter.js"></script>
   <script src="../src/js/form.js"></script>
+  <script src="../src/js/category-panels.js"></script>
+  <script src="../src/js/ambient-audio.js"></script>
 </body>
 </html>

@@ -1,38 +1,140 @@
 /* ==========================================================================
-   Design tokens — Concept A: Editorial Cinematic Scroll
+   Design tokens — Studio Hub + 3 discipline identities
+   Shared system: a calm, neutral hub at the root; each discipline chapter
+   (Creative / Design / Technical) overrides the same token names to paint
+   its own distinct atmosphere. Nothing outside this file should hard-code
+   a color, font stack, or duration — everything reads from these vars.
    ========================================================================== */
 
 :root {
-  /* --- Base palette --- */
-  --color-bg:            #0E0D0C;
-  --color-surface:       #171615;
-  --color-surface-raised:#1D1B19;
-  --color-text:          #F2EFE9;
-  --color-text-muted:    #9A968C;
-  --color-border:        #2B2925;
+  /* ------------------------------------------------------------------
+     Studio hub — calm, neutral entrance. This is the sitewide default:
+     nav, footer, hero, about/contact/work/project chrome all use this
+     unless a [data-chapter] / body[data-active-chapter] scope overrides it.
+     ------------------------------------------------------------------ */
+  --studio-bg:            #F2F1EC;
+  --studio-bg-alt:        #E8EFF2;
+  --studio-surface:       #FAFAF7;
+  --studio-surface-hover: #E1EBEF;
+  --studio-text:          #20272B;
+  --studio-text-muted:    #68747A;
+  --studio-accent:        #7296A6;
+  --studio-accent-soft:   #BFD2DA;
+  --studio-action:        #315F75;
+  --studio-action-hover:  #234A5C;
+  --studio-warm-detail:   #B9936B;
+  --studio-border:        #D2D8D9;
 
-  /* --- Domain accents (chapter identity) --- */
-  --accent-creative:   #C9553D; /* warm ember — concept art / illustration */
-  --accent-design:     #3D8FC9; /* cool cyan-blue — design / production */
-  --accent-technical:  #7CC93D; /* signal green — code / systems */
+  /* ------------------------------------------------------------------
+     Creative / Game Art — dark blue-green atmosphere, parchment text
+     ------------------------------------------------------------------ */
+  --creative-bg:          #08191B;
+  --creative-bg-alt:      #10282A;
+  --creative-surface:     #163436;
+  --creative-text:        #F0E9DA;
+  --creative-text-muted:  #AFC2BD;
+  --creative-accent:      #4CD6C4;
+  --creative-accent-deep: #168C89;
+  --creative-red:         #C84B3C;
+  --creative-green:       #718E62;
+  --creative-orange:      #E59B46;
+  --creative-blue:        #4E83B6;
+  --creative-border:      #315052;
+  --creative-action:      #35BBAE;
+  --creative-action-hover:#66E2D2;
+
+  /* ------------------------------------------------------------------
+     Design / Production — warm cream, cobalt primary
+     ------------------------------------------------------------------ */
+  --design-bg:            #F3EFE5;
+  --design-bg-alt:        #E9E3D5;
+  --design-surface:       #FAF8F2;
+  --design-text:          #202124;
+  --design-text-muted:    #68655F;
+  --design-blue:          #2756D8;
+  --design-yellow:        #F2C84B;
+  --design-orange:        #EE7738;
+  --design-red:           #D84A43;
+  --design-blue-soft:     #AFC6F5;
+  --design-border:        #CAC3B5;
+  --design-action:        #2756D8;
+  --design-action-hover:  #173CA8;
+
+  /* ------------------------------------------------------------------
+     Technical / Developer — near-black, terminal-green accent
+     ------------------------------------------------------------------ */
+  --tech-bg:              #0B0D0E;
+  --tech-bg-alt:          #111518;
+  --tech-surface:         #171B1E;
+  --tech-surface-hover:   #1D2327;
+  --tech-text:            #EBEFF1;
+  --tech-text-muted:      #929CA2;
+  --tech-green:           #78D43B;
+  --tech-cyan:            #4CB7D8;
+  --tech-blue:            #4385D7;
+  --tech-amber:           #D9A441;
+  --tech-border:          #2A3034;
+  --tech-action:          #78D43B;
+  --tech-action-text:     #10150D;
+  --tech-action-hover:    #98E768;
+
+  /* ------------------------------------------------------------------
+     Generic semantic aliases — every component reads these, never the
+     namespaced tokens above directly, except the small number of rules
+     that intentionally style one discipline's card/preview from the hub
+     (e.g. .principle-card--creative, which previews a chapter's identity
+     while physically living in the neutral hub).
+     Root value = studio hub. Overridden per-scope below.
+     ------------------------------------------------------------------ */
+  --color-bg:             var(--studio-bg);
+  --color-bg-alt:         var(--studio-bg-alt);
+  --color-surface:        var(--studio-surface);
+  --color-surface-raised: var(--studio-surface-hover);
+  --color-text:           var(--studio-text);
+  --color-text-muted:     var(--studio-text-muted);
+  --color-border:         var(--studio-border);
+
+  /* Domain accents (chapter identity) — kept for compatibility with
+     existing accent-current wiring */
+  --accent-creative:   var(--creative-action);
+  --accent-design:     var(--design-action);
+  --accent-technical:  var(--tech-action);
 
   /* current chapter accent — reassigned by scroll-reveal.js as user scrolls */
-  --accent-current: var(--accent-creative);
+  --accent-current: var(--studio-action);
 
   /* --- Status --- */
   --color-success: #4CAF6D;
   --color-error:   #D9534F;
 
-  /* --- Typography --- */
-  --font-display: 'Fraunces', 'Georgia', serif;
-  --font-body:    'Inter', -apple-system, sans-serif;
-  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+  /* --- Typography: per-discipline heading/body pairings --- */
+  --font-heading-studio:   'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-body-studio:      'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading-creative: 'Cormorant Garamond', Georgia, serif;
+  --font-body-creative:    'Source Sans 3', 'Source Sans Pro', -apple-system, sans-serif;
+  --font-heading-design:   'Space Grotesk', 'Inter', sans-serif;
+  --font-body-design:      'Inter', -apple-system, sans-serif;
+  --font-heading-tech:     'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
+  --font-body-tech:        'Inter', -apple-system, sans-serif;
 
-  /* Per-domain display faces — each chapter gets a genuinely distinct
-     typographic identity, not just a recolored accent. */
-  --font-display-creative:  'Fraunces', 'Georgia', serif;       /* warm, painterly, italic-leaning */
-  --font-display-design:    'Space Grotesk', 'Inter', sans-serif; /* crisp, geometric, branding-forward */
-  --font-display-technical: 'JetBrains Mono', 'IBM Plex Mono', monospace; /* systems / terminal register */
+  /* Always-literal monospace, for things that are semantically code/metadata
+     regardless of which chapter they appear in */
+  --font-mono: 'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Sitewide default typefaces — root = studio hub */
+  --font-display: var(--font-heading-studio);
+  --font-body:    var(--font-body-studio);
+
+  /* --font-label: the small-caps "eyebrow / button / tag" register used
+     across nearly every component. Calm sans by default; only the
+     technical chapter reclaims it as monospace via the cascade below. */
+  --font-label: var(--font-body-studio);
+
+  /* Per-domain display faces (kept for existing hooks: .principle-card
+     variants, [data-chapter] title overrides) */
+  --font-display-creative:  var(--font-heading-creative);
+  --font-display-design:    var(--font-heading-design);
+  --font-display-technical: var(--font-heading-tech);
 
   --type-scale-hero:    clamp(2.75rem, 7vw, 6.5rem);
   --type-scale-h1:      clamp(2.25rem, 5vw, 4rem);
@@ -61,7 +163,7 @@
   --content-pad: clamp(1.25rem, 4vw, 4rem);
   --nav-height: 72px;
 
-  /* --- Motion --- */
+  /* --- Motion — studio default: calm 400–600ms fades --- */
   --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-slow:   1100ms;
   --duration-medium: 650ms;
@@ -72,15 +174,77 @@
   --radius-md: 4px;
 }
 
-/* Chapter accent context — set on <section> via JS as it enters view,
-   inherited by nested elements that use var(--accent-current) */
-[data-chapter="creative"]  { --accent-current: var(--accent-creative); }
-[data-chapter="design"]    { --accent-current: var(--accent-design); }
-[data-chapter="technical"] { --accent-current: var(--accent-technical); }
+/* ==========================================================================
+   Chapter scopes — each [data-chapter] section repaints the shared token
+   names with its own discipline's values. Any component inside inherits
+   automatically as long as it reads var(--color-bg) / var(--font-body) etc.
+   rather than a hard-coded value.
+   ========================================================================== */
+
+[data-chapter="creative"] {
+  --accent-current:       var(--creative-action);
+  --color-bg:             var(--creative-bg);
+  --color-bg-alt:         var(--creative-bg-alt);
+  --color-surface:        var(--creative-surface);
+  --color-surface-raised: var(--creative-bg-alt);
+  --color-text:           var(--creative-text);
+  --color-text-muted:     var(--creative-text-muted);
+  --color-border:         var(--creative-border);
+  --font-display:         var(--font-heading-creative);
+  --font-body:            var(--font-body-creative);
+  --font-label:           var(--font-body-creative);
+
+  /* Creative motion: atmospheric, slightly slower, more depth */
+  --duration-slow:   1300ms;
+  --duration-medium: 750ms;
+  --duration-fast:   320ms;
+}
+
+[data-chapter="design"] {
+  --accent-current:       var(--design-action);
+  --color-bg:             var(--design-bg);
+  --color-bg-alt:         var(--design-bg-alt);
+  --color-surface:        var(--design-surface);
+  --color-surface-raised: var(--design-bg-alt);
+  --color-text:           var(--design-text);
+  --color-text-muted:     var(--design-text-muted);
+  --color-border:         var(--design-border);
+  --font-display:         var(--font-heading-design);
+  --font-body:            var(--font-body-design);
+  --font-label:           var(--font-body-design);
+
+  /* Design motion: quicker, more graphic */
+  --duration-slow:   700ms;
+  --duration-medium: 420ms;
+  --duration-fast:   200ms;
+  --ease-editorial:  cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-chapter="technical"] {
+  --accent-current:       var(--tech-action);
+  --color-bg:             var(--tech-bg);
+  --color-bg-alt:         var(--tech-bg-alt);
+  --color-surface:        var(--tech-surface);
+  --color-surface-raised: var(--tech-surface-hover);
+  --color-text:           var(--tech-text);
+  --color-text-muted:     var(--tech-text-muted);
+  --color-border:         var(--tech-border);
+  --font-display:         var(--font-heading-tech);
+  --font-body:            var(--font-body-tech);
+  --font-label:           var(--font-heading-tech);
+
+  /* Technical motion: short, linear */
+  --duration-slow:   500ms;
+  --duration-medium: 300ms;
+  --duration-fast:   150ms;
+  --ease-editorial:  linear;
+}
 
 /* Body-level mirror so fixed elements (nav) outside the chapter's DOM
-   subtree — which don't inherit from it — also pick up the active accent.
-   Set by scroll-reveal.js as each chapter enters view. */
-body[data-active-chapter="creative"]  { --accent-current: var(--accent-creative); }
-body[data-active-chapter="design"]    { --accent-current: var(--accent-design); }
-body[data-active-chapter="technical"] { --accent-current: var(--accent-technical); }
+   subtree — which don't inherit from it — also pick up the active
+   discipline's full identity, not just its accent. Set by
+   scroll-reveal.js as each chapter enters view, and by work-filter.js
+   on individual project detail pages. */
+body[data-active-chapter="creative"]  { --accent-current: var(--creative-action); --color-bg: var(--creative-bg); --color-bg-alt: var(--creative-bg-alt); --color-surface: var(--creative-surface); --color-surface-raised: var(--creative-bg-alt); --color-text: var(--creative-text); --color-text-muted: var(--creative-text-muted); --color-border: var(--creative-border); --font-display: var(--font-heading-creative); --font-body: var(--font-body-creative); --font-label: var(--font-body-creative); }
+body[data-active-chapter="design"]    { --accent-current: var(--design-action); --color-bg: var(--design-bg); --color-bg-alt: var(--design-bg-alt); --color-surface: var(--design-surface); --color-surface-raised: var(--design-bg-alt); --color-text: var(--design-text); --color-text-muted: var(--design-text-muted); --color-border: var(--design-border); --font-display: var(--font-heading-design); --font-body: var(--font-body-design); --font-label: var(--font-body-design); }
+body[data-active-chapter="technical"] { --accent-current: var(--tech-action); --color-bg: var(--tech-bg); --color-bg-alt: var(--tech-bg-alt); --color-surface: var(--tech-surface); --color-surface-raised: var(--tech-surface-hover); --color-text: var(--tech-text); --color-text-muted: var(--tech-text-muted); --color-border: var(--tech-border); --font-display: var(--font-heading-tech); --font-body: var(--font-body-tech); --font-label: var(--font-heading-tech); }

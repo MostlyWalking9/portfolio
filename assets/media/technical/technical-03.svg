@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="100%" gradientTransform="rotate(95 0.5 0.5)">
+      <stop offset="0%" stop-color="#0B0D0E"/>
+      <stop offset="100%" stop-color="#171B1E"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#g3)"/>
+  <circle cx="400" cy="780" r="260" fill="#78D43B" opacity="0.14"/>
+  <circle cx="400" cy="780" r="140" fill="#78D43B" opacity="0.18"/>
+  <text x="50%" y="46%" text-anchor="middle" font-family="monospace" font-size="30" fill="#EBEFF1" opacity="0.55">PLACEHOLDER 03</text>
+  <text x="50%" y="52%" text-anchor="middle" font-family="monospace" font-size="42" font-weight="700" fill="#EBEFF1" letter-spacing="2">TECHNICAL</text>
+  <text x="50%" y="58%" text-anchor="middle" font-family="monospace" font-size="18" fill="#EBEFF1" opacity="0.6">replace with technical-03.jpg</text>
+</svg>
