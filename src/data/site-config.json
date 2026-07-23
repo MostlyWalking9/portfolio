@@ -29,7 +29,9 @@
       "headingFont": "'Cormorant Garamond', Georgia, serif",
       "bodyFont": "'Source Sans 3', sans-serif",
       "headingColor": "",
-      "bodyColor": ""
+      "bodyColor": "",
+      "headingFontFile": "",
+      "bodyFontFile": ""
     },
     {
       "id": "design",
@@ -49,7 +51,9 @@
       "headingFont": "'Space Grotesk', 'Inter', sans-serif",
       "bodyFont": "'Inter', sans-serif",
       "headingColor": "",
-      "bodyColor": ""
+      "bodyColor": "",
+      "headingFontFile": "",
+      "bodyFontFile": ""
     },
     {
       "id": "technical",
@@ -69,7 +73,15 @@
       "headingFont": "'JetBrains Mono', 'IBM Plex Mono', monospace",
       "bodyFont": "'Inter', sans-serif",
       "headingColor": "",
-      "bodyColor": ""
+      "bodyColor": "",
+      "headingFontFile": "",
+      "bodyFontFile": ""
     }
-  ]
+  ],
+  "studioFonts": {
+    "headingFont": "'Newsreader', Georgia, serif",
+    "headingFontFile": "",
+    "bodyFont": "'Inter', sans-serif",
+    "bodyFontFile": ""
+  }
 }

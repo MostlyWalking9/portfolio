@@ -78,6 +78,51 @@
     });
   }
 
+  const FONT_FORMATS = { woff2: 'woff2', woff: 'woff', ttf: 'truetype', otf: 'opentype' };
+
+  function fontFormat(path) {
+    const ext = (path.split('.').pop() || '').toLowerCase();
+    return FONT_FORMATS[ext] || 'woff2';
+  }
+
+  // Custom uploaded fonts sync everywhere automatically: each slot maps
+  // to the SAME --font-heading-*/--font-body-* custom property already
+  // used throughout the CSS (studio chrome, and each discipline's
+  // body[data-active-chapter] override), so overriding it once at :root
+  // changes every element reading that variable — no per-element work.
+  function applyCustomFonts(config) {
+    const faces = [];
+    const rootVars = [];
+
+    function addSlot(varName, family, file, syntheticName) {
+      if (file) {
+        faces.push(`@font-face { font-family: '${syntheticName}'; src: url('${file}') format('${fontFormat(file)}'); font-display: swap; }`);
+        rootVars.push(`--${varName}: '${syntheticName}', ${family};`);
+      }
+      // If no file uploaded, leave the existing preset value in variables.css untouched.
+    }
+
+    const sf = config.studioFonts || {};
+    addSlot('font-heading-studio', sf.headingFont || 'serif', sf.headingFontFile, 'custom-studio-heading');
+    addSlot('font-body-studio', sf.bodyFont || 'sans-serif', sf.bodyFontFile, 'custom-studio-body');
+
+    const CSS_SUFFIX = { creative: 'creative', design: 'design', technical: 'tech' };
+    (config.sections || []).forEach((s) => {
+      const suffix = CSS_SUFFIX[s.id] || s.id;
+      addSlot(`font-heading-${suffix}`, s.headingFont || 'serif', s.headingFontFile, `custom-${s.id}-heading`);
+      addSlot(`font-body-${suffix}`, s.bodyFont || 'sans-serif', s.bodyFontFile, `custom-${s.id}-body`);
+    });
+
+    if (!faces.length) return;
+    let styleEl = document.getElementById('dynamic-custom-fonts');
+    if (!styleEl) {
+      styleEl = document.createElement('style');
+      styleEl.id = 'dynamic-custom-fonts';
+      document.head.appendChild(styleEl);
+    }
+    styleEl.textContent = `${faces.join('\n')}\n:root {\n${rootVars.join('\n')}\n}`;
+  }
+
   async function fetchAll() {
     const [config, categories, projects] = await Promise.all([
       fetch(BASE + 'site-config.json').then((r) => r.json()),
@@ -342,6 +387,7 @@
 
   fetchAll()
     .then((data) => {
+      applyCustomFonts(data.config);
       applyConfigText(data.config);
       renderHomepage(data);
       renderSectionPage(data);
