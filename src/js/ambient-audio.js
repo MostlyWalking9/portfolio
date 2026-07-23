@@ -1,8 +1,9 @@
 /* Ambient studio sound toggle — homepage only.
-   Never autoplays. If assets/audio/studio-ambient-placeholder.mp3 is
-   missing (it is, until a real track is supplied), the control disables
-   itself gracefully instead of producing a console error. Preference is
-   remembered for the rest of the browser tab's session only. */
+   Never autoplays. Off by default; the person has to click to turn it
+   on. Real track lives at assets/audio/studio-ambient.mp3 (loops). If
+   it's ever missing, the control disables itself gracefully instead of
+   producing a console error. Preference is remembered for the rest of
+   the browser tab's session only. */
 
 (function () {
   const btn = document.querySelector('[data-sound-toggle]');
