@@ -20,6 +20,19 @@
       : `<img src="${src}" alt="${alt}" ${attrs || ''} loading="lazy">`;
   }
 
+  // Used for media-group grid tiles: uniform cover-fill sizing like
+  // mediaMarkup, but videos are NOT autoplayed/muted here — autoplaying
+  // multiple videos with real audio at once would be chaos, and
+  // trying to autoplay-with-sound hits browser restrictions anyway. So
+  // instead: native controls, silent until someone deliberately presses
+  // play, and then it plays with its own actual audio.
+  function groupMediaMarkup(src, alt) {
+    if (!src) return '';
+    return isVideo(src)
+      ? `<video src="${src}" controls playsinline preload="metadata"></video>`
+      : `<img src="${src}" alt="${alt}" loading="lazy">`;
+  }
+
   // Used only for project-detail hero/gallery media, where oversized
   // (e.g. tall vertical video) source files need a height cap and an
   // admin-controlled display width, unlike card/cover fills which always
@@ -31,7 +44,7 @@
     const width = SCALE_WIDTH[scale] || SCALE_WIDTH.full;
     const style = `style="width:${width}; height:auto; margin-inline:auto; max-height:85vh; object-fit:contain;"`;
     return isVideo(src)
-      ? `<video src="${src}" ${style} muted loop playsinline autoplay></video>`
+      ? `<video src="${src}" ${style} controls playsinline preload="metadata"></video>`
       : `<img src="${src}" alt="${alt}" ${style} loading="lazy">`;
   }
 
@@ -230,11 +243,17 @@
     document.title = `${project.title} — Sebastian Schistek`;
     document.body.dataset.activeChapter = project.domain;
 
-    const gallery = (project.gallery || []).map((item) => `
-      <figure class="project-detail__gallery-item" data-reveal>
-        ${detailMediaMarkup(item.src, `${project.title} — detail`, item.scale)}
-        ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
-      </figure>`).join('');
+    const groups = (project.mediaGroups || []).map((group) => `
+      <div class="media-group">
+        <h3 class="media-group__title">${group.title}</h3>
+        <div class="media-group__grid">
+          ${(group.items || []).map((item) => `
+            <figure class="media-group__item" data-reveal>
+              ${groupMediaMarkup(item.src, `${project.title} — ${group.title}`)}
+              ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
+            </figure>`).join('')}
+        </div>
+      </div>`).join('');
 
     const tasksList = (project.tasks && project.tasks.length)
       ? `<ul class="project-detail__tasks">${project.tasks.map((t) => `<li>${t}</li>`).join('')}</ul>`
@@ -266,6 +285,12 @@
         </a>`;
     }
 
+    const SECTION_TOKENS = {
+      creative:  { bg: 'var(--creative-bg)',  text: 'var(--creative-text)',  border: 'var(--creative-border)' },
+      design:    { bg: 'var(--design-bg)',    text: 'var(--design-text)',    border: 'var(--design-border)' },
+      technical: { bg: 'var(--tech-bg)',       text: 'var(--tech-text)',      border: 'var(--tech-border)' },
+    };
+
     const similarBlock = similarSameSection.length ? `
       <section class="section-block container">
         <span class="eyebrow">Similar Projects</span>
@@ -275,10 +300,14 @@
     const crossBlock = crossSectionGroups.length ? `
       <section class="section-block container">
         <span class="eyebrow">Similar Projects in Other Sections</span>
-        ${crossSectionGroups.map((g) => `
-          <h3 style="margin-top: var(--space-4);">${pick(g.section.title)}</h3>
-          <div class="project-grid" style="margin-top: var(--space-3);">${g.matches.map(miniCard).join('')}</div>
-        `).join('')}
+        ${crossSectionGroups.map((g) => {
+          const t = SECTION_TOKENS[g.section.id] || {};
+          return `
+          <div style="margin-top: var(--space-5); padding: var(--space-4); border: 1px solid ${t.border}; border-radius: var(--radius-md); background: ${t.bg}; color: ${t.text};">
+            <h3 style="margin-bottom: var(--space-3);">${pick(g.section.title)}</h3>
+            <div class="project-grid">${g.matches.map(miniCard).join('')}</div>
+          </div>`;
+        }).join('')}
       </section>` : '';
 
     root.innerHTML = `
@@ -298,7 +327,7 @@
       </section>
       <div class="project-detail__gallery container" data-chapter="${project.domain}">
         <figure class="project-detail__gallery-item" data-reveal>${detailMediaMarkup(project.hero, project.title, project.heroScale)}</figure>
-        ${gallery}
+        ${groups}
       </div>
       ${similarBlock}
       ${crossBlock}

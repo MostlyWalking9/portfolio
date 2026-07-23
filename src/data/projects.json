@@ -14,38 +14,6 @@
     "liveUrl": "",
     "thumb": "../assets/images/creative/raven-horror-concept/thumb.jpg",
     "hero": "../assets/images/creative/raven-horror-concept/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/creative/raven-horror-concept/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/raven-horror-concept/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/raven-horror-concept/detail-03.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/raven-horror-concept/detail-04.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/raven-horror-concept/detail-05.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/raven-horror-concept/detail-06.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "concept-art-illustrations",
     "tags": [
       "concept_art",
@@ -53,7 +21,45 @@
       "character_design",
       "dark_fantasy"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-03.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-04.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-05.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-06.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "robot-concepts",
@@ -69,25 +75,31 @@
     "liveUrl": "",
     "thumb": "../assets/images/creative/robot-concepts/thumb.jpg",
     "hero": "../assets/images/creative/robot-concepts/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/creative/robot-concepts/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/robot-concepts/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "concept-art-illustrations",
     "tags": [
       "concept_art",
       "character_design",
       "sci_fi"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/robot-concepts/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/robot-concepts/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "elemental-characters",
@@ -104,34 +116,40 @@
     "liveUrl": "",
     "thumb": "../assets/images/creative/elemental-characters/thumb.jpg",
     "hero": "../assets/images/creative/elemental-characters/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/creative/elemental-characters/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/elemental-characters/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/elemental-characters/detail-03.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/elemental-characters/detail-04.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "concept-art-illustrations",
     "tags": [
       "illustration",
       "character_design"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/elemental-characters/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/elemental-characters/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/elemental-characters/detail-03.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/elemental-characters/detail-04.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "environment-illustrations",
@@ -147,34 +165,40 @@
     "liveUrl": "",
     "thumb": "../assets/images/creative/environment-illustrations/thumb.jpg",
     "hero": "../assets/images/creative/environment-illustrations/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/creative/environment-illustrations/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/environment-illustrations/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/environment-illustrations/detail-03.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/environment-illustrations/detail-04.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "concept-art-illustrations",
     "tags": [
       "illustration",
       "environment_art"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/environment-illustrations/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/environment-illustrations/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/environment-illustrations/detail-03.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/environment-illustrations/detail-04.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "doodle-illustrations",
@@ -190,28 +214,34 @@
     "liveUrl": "",
     "thumb": "../assets/images/creative/doodle-illustrations/thumb.jpg",
     "hero": "../assets/images/creative/doodle-illustrations/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/creative/doodle-illustrations/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/doodle-illustrations/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/creative/doodle-illustrations/detail-03.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "concept-art-illustrations",
     "tags": [
       "illustration"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/doodle-illustrations/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/doodle-illustrations/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/doodle-illustrations/detail-03.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "rob-and-rob",
@@ -229,25 +259,31 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/rob-and-rob/thumb.jpg",
     "hero": "../assets/images/design/rob-and-rob/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/design/rob-and-rob/detail-01.mp4",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/design/rob-and-rob/detail-02.mp4",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "branding",
     "tags": [
       "3d_modelling",
       "character_design",
       "social_media"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/design/rob-and-rob/detail-01.mp4",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/design/rob-and-rob/detail-02.mp4",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "sechser-logo",
@@ -264,20 +300,26 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/sechser-logo/thumb.jpg",
     "hero": "../assets/images/design/sechser-logo/hero.mp4",
-    "gallery": [
-      {
-        "src": "../assets/images/design/sechser-logo/detail-01.mp4",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "branding",
     "tags": [
       "logo_design",
       "motion_design",
       "branding"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/design/sechser-logo/detail-01.mp4",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "artray-logo",
@@ -293,13 +335,13 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/artray-logo/thumb.jpg",
     "hero": "../assets/images/design/artray-logo/hero.jpg",
-    "gallery": [],
     "category": "branding",
     "tags": [
       "logo_design",
       "branding"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": []
   },
   {
     "slug": "english-works-logo",
@@ -315,13 +357,13 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/english-works-logo/thumb.jpg",
     "hero": "../assets/images/design/english-works-logo/hero.jpg",
-    "gallery": [],
     "category": "branding",
     "tags": [
       "logo_design",
       "branding"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": []
   },
   {
     "slug": "weinco-campaign",
@@ -338,40 +380,46 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/weinco-campaign/thumb.jpg",
     "hero": "../assets/images/design/weinco-campaign/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/design/weinco-campaign/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/design/weinco-campaign/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/design/weinco-campaign/detail-03.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/design/weinco-campaign/detail-04.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/design/weinco-campaign/detail-05.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "branding",
     "tags": [
       "branding",
       "graphic_design",
       "campaign"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/design/weinco-campaign/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/design/weinco-campaign/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/design/weinco-campaign/detail-03.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/design/weinco-campaign/detail-04.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/design/weinco-campaign/detail-05.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "drbohl-interview-thumbnails",
@@ -387,24 +435,30 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/drbohl-interview-thumbnails/thumb.jpg",
     "hero": "../assets/images/design/drbohl-interview-thumbnails/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/design/drbohl-interview-thumbnails/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/design/drbohl-interview-thumbnails/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "branding",
     "tags": [
       "graphic_design",
       "thumbnail_design"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/design/drbohl-interview-thumbnails/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/design/drbohl-interview-thumbnails/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "drbohl-schnitzel-intro",
@@ -421,13 +475,13 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/drbohl-schnitzel-intro/thumb.jpg",
     "hero": "../assets/images/design/drbohl-schnitzel-intro/hero.mp4",
-    "gallery": [],
     "category": "motion-design",
     "tags": [
       "motion_design",
       "video_editing"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": []
   },
   {
     "slug": "drbohl-merch-video",
@@ -444,13 +498,13 @@
     "liveUrl": "",
     "thumb": "../assets/images/design/drbohl-merch-video/thumb.jpg",
     "hero": "../assets/images/design/drbohl-merch-video/hero.mp4",
-    "gallery": [],
     "category": "motion-design",
     "tags": [
       "motion_design",
       "video_editing"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": []
   },
   {
     "slug": "griechenbeisl-website",
@@ -464,24 +518,30 @@
     "liveUrl": "https://griechenbeisl-vienna.wegic.net/",
     "thumb": "../assets/images/technical/griechenbeisl-website/thumb.jpg",
     "hero": "../assets/images/technical/griechenbeisl-website/hero.jpg",
-    "gallery": [
-      {
-        "src": "../assets/images/technical/griechenbeisl-website/detail-01.jpg",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/technical/griechenbeisl-website/detail-02.jpg",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "development",
     "tags": [
       "web_design",
       "web_development"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/technical/griechenbeisl-website/detail-01.jpg",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/technical/griechenbeisl-website/detail-02.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   },
   {
     "slug": "drbohl-website",
@@ -500,24 +560,30 @@
     "liveUrl": "https://digletto-bot.github.io/drbohl-website/",
     "thumb": "../assets/images/technical/drbohl-website/thumb.png",
     "hero": "../assets/images/technical/drbohl-website/hero.png",
-    "gallery": [
-      {
-        "src": "../assets/images/technical/drbohl-website/detail-01.png",
-        "caption": "",
-        "scale": "full"
-      },
-      {
-        "src": "../assets/images/technical/drbohl-website/detail-02.png",
-        "caption": "",
-        "scale": "full"
-      }
-    ],
     "category": "development",
     "tags": [
       "web_design",
       "web_development",
       "frontend"
     ],
-    "heroScale": "full"
+    "heroScale": "full",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/technical/drbohl-website/detail-01.png",
+            "caption": "",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/technical/drbohl-website/detail-02.png",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   }
 ]

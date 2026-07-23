@@ -1,14 +1,18 @@
-/* Ambient studio sound toggle — homepage only.
-   Never autoplays. Off by default; the person has to click to turn it
-   on. Real track lives at assets/audio/studio-ambient.mp3 (loops). If
-   it's ever missing, the control disables itself gracefully instead of
-   producing a console error. Preference is remembered for the rest of
-   the browser tab's session only. */
+/* Ambient studio sound toggle. Off by default; the person has to click
+   to turn it on. On Home/About/Contact this actually plays the looping
+   studio track (assets/audio/studio-ambient.mp3). Section and project
+   pages intentionally have NO background track — deliberately quieter,
+   content-focused pages — but the same toggle still lives there as the
+   master sound preference, gating the click-sound effects (portal-sfx,
+   click-sfx) site-wide. So this script works with or without an
+   <audio> element present; it just skips playback calls when there
+   isn't one. Preference is remembered for the rest of the browser
+   tab's session only. */
 
 (function () {
   const btn = document.querySelector('[data-sound-toggle]');
+  if (!btn) return;
   const audio = document.querySelector('[data-ambient-audio]');
-  if (!btn || !audio) return;
 
   const STORAGE_KEY = 'studio-sound-on';
   const labelEl = btn.querySelector('[data-sound-label]');
@@ -41,6 +45,7 @@
     btn.setAttribute('aria-pressed', String(on));
     paintLabel(on);
     sessionStorage.setItem(STORAGE_KEY, on ? '1' : '0');
+    if (!audio) return; // this page has no ambient track — toggle still controls click-sfx elsewhere
     if (on) {
       audio.play().catch(() => { /* blocked or missing — error handler below covers missing file */ });
     } else {
@@ -48,17 +53,16 @@
     }
   }
 
-  audio.addEventListener('error', disableControl, { once: true });
+  if (audio) {
+    audio.addEventListener('error', disableControl, { once: true });
+    audio.load();
+  }
 
   btn.addEventListener('click', () => {
     if (btn.disabled) return;
     const next = btn.getAttribute('aria-pressed') !== 'true';
     setState(next);
   });
-
-  // Probe availability up front so a broken source disables the control
-  // before the user ever clicks it, rather than failing silently on click.
-  audio.load();
 
   // Restore this tab session's preference. Calling play() here is a
   // deliberate choice — it only fires when the user already turned sound

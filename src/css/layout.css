@@ -800,6 +800,42 @@
   color: var(--color-text-muted);
 }
 
+.media-group {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.media-group__title {
+  font-size: var(--type-scale-h3);
+  margin-bottom: var(--space-4);
+}
+
+.media-group__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.media-group__item {
+  margin: 0;
+}
+
+.media-group__item img,
+.media-group__item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--color-border);
+}
+
+.media-group__item figcaption {
+  margin-top: var(--space-2);
+  font-family: var(--font-label);
+  font-size: var(--type-scale-small);
+  color: var(--color-text-muted);
+}
+
 .project-detail__tags {
   display: flex;
   flex-wrap: wrap;
