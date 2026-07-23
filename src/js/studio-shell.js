@@ -53,6 +53,19 @@
     return 'Sebastian Schistek — Portfolio';
   }
 
+  const SOUND_STORAGE_KEY = 'studio-sound-on';
+  function soundIsOn() {
+    return sessionStorage.getItem(SOUND_STORAGE_KEY) === '1';
+  }
+  function playNavSound() {
+    if (!soundIsOn()) return;
+    try {
+      const sfx = new Audio(new URL('../assets/audio/portal-select.mp3', document.baseURI).href);
+      sfx.volume = 0.45;
+      sfx.play().catch(() => {});
+    } catch {}
+  }
+
   function navigate(page, push) {
     const view = viewForPage(page);
     showView(view);
@@ -66,6 +79,7 @@
     const page = pageNameFromHref(link.getAttribute('href'));
     if (!page || !STUDIO_PAGES.includes(page)) return; // real navigation (section/project/mailto/etc.)
     e.preventDefault();
+    playNavSound(); // real user action bringing up a new "page" — popstate (below) doesn't get this
     navigate(page, true);
   });
 

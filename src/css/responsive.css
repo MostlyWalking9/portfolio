@@ -31,18 +31,31 @@
      toggle — including Sound, which is a <button> not an <a>, so it
      needs its own rule rather than the old anchor-only selector that
      let it silently overflow off-screen. */
-  .site-nav__links > li > a,
-  .site-nav__links > li > button.sound-toggle { display: none; }
+  .site-nav__links > li > a { display: none; }
   .site-nav__mark-tagline { display: none; }
   .site-nav__mark-name { font-size: 0.95rem; }
+
+  /* Sound toggle stays visible (like EN/DE) rather than hidden behind
+     the menu — it's a persistent utility control, not primary nav. */
+  .sound-toggle {
+    padding: 4px 8px;
+    font-size: 0;
+  }
+  .sound-toggle::before { margin: 0; }
+  .sound-toggle [data-sound-label] {
+    font-size: 0;
+  }
+  .sound-toggle [data-sound-label]::before {
+    content: '♪';
+    font-size: 0.9rem;
+  }
   .site-nav__toggle {
     display: inline-flex;
     font-family: var(--font-label);
     font-size: var(--type-scale-small);
     text-transform: uppercase;
   }
-  .site-nav.is-menu-open .site-nav__links > li > a,
-  .site-nav.is-menu-open .site-nav__links > li > button.sound-toggle {
+  .site-nav.is-menu-open .site-nav__links > li > a {
     display: inline-flex;
   }
   .site-nav.is-menu-open .site-nav__links {
@@ -79,6 +92,17 @@
   .principle-card__desc { display: none; }
   .principle-card__title { font-size: clamp(1rem, 4.5vw, 1.2rem); margin-bottom: var(--space-1); }
   .principle-card__eyebrow { font-size: 0.62rem; margin-bottom: var(--space-1); }
+
+  /* Selection transition on mobile: the desktop's uniform scale(1.35)
+     overflows off both screen edges on a narrow card. Non-uniform
+     instead — grow to the screen edges horizontally, much taller
+     vertically (a "swallow the screen" cover effect) before the
+     subpage loads. The card is already centered in the viewport, so
+     scaling from its own center point lands almost exactly at the
+     screen edges horizontally. */
+  .principle-grid .principle-card.is-selected {
+    transform: scaleX(1.1) scaleY(4.2);
+  }
 
   /* Discipline switcher (on section pages): 3-across, no wrap — fluid
      width instead of the fixed 170px desktop size. */

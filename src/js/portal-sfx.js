@@ -55,4 +55,22 @@
 
   bindCards();
   document.addEventListener('content-injected', bindCards);
+
+  // Fix for a real bug: navigating back via browser back/forward can
+  // restore this exact page from the back/forward cache (bfcache) —
+  // including the is-selected/is-transitioning classes still applied
+  // from right before the user clicked through. Without this, the page
+  // comes back visually stuck (one card scaled up, others dimmed) AND
+  // functionally broken (the click handler above refuses new clicks
+  // while is-transitioning is present). `pageshow` with `persisted`
+  // true is the standard signal for "this is a bfcache restore, not a
+  // fresh load" — reset everything when that happens.
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted) return;
+    const grid = document.querySelector('[data-portal-grid]');
+    if (!grid) return;
+    grid.classList.remove('is-transitioning');
+    grid.querySelectorAll('.principle-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
+    document.querySelectorAll('.hero__intro.is-fading, .hero__eyebrow-row.is-fading').forEach((el) => el.classList.remove('is-fading'));
+  });
 })();
