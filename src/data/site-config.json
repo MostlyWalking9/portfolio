@@ -27,7 +27,9 @@
       },
       "cover": "../assets/images/sections/creative-cover.jpg",
       "headingFont": "'Cormorant Garamond', Georgia, serif",
-      "bodyFont": "'Source Sans 3', sans-serif"
+      "bodyFont": "'Source Sans 3', sans-serif",
+      "headingColor": "",
+      "bodyColor": ""
     },
     {
       "id": "design",
@@ -45,7 +47,9 @@
       },
       "cover": "../assets/images/sections/design-cover.jpg",
       "headingFont": "'Space Grotesk', 'Inter', sans-serif",
-      "bodyFont": "'Inter', sans-serif"
+      "bodyFont": "'Inter', sans-serif",
+      "headingColor": "",
+      "bodyColor": ""
     },
     {
       "id": "technical",
@@ -63,7 +67,9 @@
       },
       "cover": "../assets/images/sections/technical-cover.jpg",
       "headingFont": "'JetBrains Mono', 'IBM Plex Mono', monospace",
-      "bodyFont": "'Inter', sans-serif"
+      "bodyFont": "'Inter', sans-serif",
+      "headingColor": "",
+      "bodyColor": ""
     }
   ]
 }

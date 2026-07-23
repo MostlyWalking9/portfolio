@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>About — Sebastian Schistek</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta name="description" content="Sebastian Schistek — concept art, design, and technical work, one creative practice across three disciplines.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
@@ -14,7 +15,7 @@
   <link rel="stylesheet" href="../src/css/animations.css">
   <link rel="stylesheet" href="../src/css/responsive.css">
 </head>
-<body>
+<body class="is-homepage">
 
   <header class="site-nav is-scrolled">
     <a class="site-nav__mark" href="index.html">
@@ -23,52 +24,110 @@
     </a>
     <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
     <ul class="site-nav__links">
-      <li><a href="index.html">← Sections</a></li>
-      <li><a href="about.html" class="is-active">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="about.html" data-nav-link="about" class="is-active">About</a></li>
+      <li><a href="contact.html" data-nav-link="contact" class="">Contact</a></li>
       <li class="lang-toggle" role="group" aria-label="Language">
         <button data-lang-btn="en">EN</button>
         <button data-lang-btn="de">DE</button>
       </li>
+      <li>
+        <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false" aria-label="Toggle ambient studio sound">
+          <span data-sound-label data-en="Sound: Off" data-de="Ton: Aus">Sound: Off</span>
+        </button>
+      </li>
     </ul>
   </header>
 
-  <main>
-    <section class="page-header container">
-      <span class="eyebrow" data-en="About" data-de="Über mich">About</span>
-      <h1 data-en="Sebastian Schistek" data-de="Sebastian Schistek">Sebastian Schistek</h1>
-    </section>
+  <audio data-ambient-audio src="../assets/audio/studio-ambient.mp3" loop preload="none"></audio>
 
-    <section class="about-grid container">
-      <div data-reveal>
-        <!-- Extracted from CV, crop is approximate — swap for a proper portrait file whenever you have one -->
-        <img src="../assets/images/about/portrait.jpg" alt="Portrait"
-             style="width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; border: 1px solid var(--color-border);">
+  <main>
+    <section class="hero" data-view="home">
+      <div class="hero__intro">
+        <h1 class="hero__title" data-config="homepage.introHeading" data-en="Choose where to begin." data-de="Wählen Sie Ihren Einstieg.">Choose where to begin.</h1>
+        <hr class="hero__divider">
+        <p class="hero__subtitle" data-config="homepage.introText"
+           data-en="Explore creative work, design and production, or technical development."
+           data-de="Entdecken Sie kreative Arbeiten, Design und Produktion oder technische Entwicklung.">
+          Explore creative work, design and production, or technical development.
+        </p>
       </div>
-      <div data-reveal>
-        <p data-en="Creative Game Artist and Graphic Designer working across 2D/3D art, brand identity, and web development. Currently Creative Web Designer &amp; Frontend Developer at Dr.Bohl (Bohl Entertainment) in Vienna, leading a studio's digital platform from concept through launch. Previously Senior Game Artist at Sharkmob in Malmö, producing character and environment assets for AAA production, alongside an independent design practice since 2020 delivering branding, illustration, motion, and 3D work for clients across game, film, and marketing projects. Trained in Game Art &amp; 3D Animation (BA, SAE Institute, Vienna)."
-           data-de="Kreativer Game Artist und Grafikdesigner, tätig in 2D/3D-Kunst, Markenidentität und Webentwicklung. Aktuell Creative Web Designer &amp; Frontend Developer bei Dr.Bohl (Bohl Entertainment) in Wien, verantwortlich für die digitale Plattform des Studios von der Konzeption bis zum Launch. Zuvor Senior Game Artist bei Sharkmob in Malmö mit Charakter- und Umgebungs-Assets für AAA-Produktionen, begleitet von einer eigenen Designpraxis seit 2020 für Branding, Illustration, Motion und 3D-Arbeiten in Spiele-, Film- und Marketingprojekten. Ausbildung in Game Art &amp; 3D Animation (BA, SAE Institute, Wien).">
-          Creative Game Artist and Graphic Designer working across 2D/3D art, brand identity, and web development. Currently Creative Web Designer &amp; Frontend Developer at Dr.Bohl (Bohl Entertainment) in Vienna, leading a studio's digital platform from concept through launch. Previously Senior Game Artist at Sharkmob in Malmö, producing character and environment assets for AAA production, alongside an independent design practice since 2020 delivering branding, illustration, motion, and 3D work for clients across game, film, and marketing projects. Trained in Game Art &amp; 3D Animation (BA, SAE Institute, Vienna).
-        </p>
-        <ul class="skills-list">
-          <li>Concept Art</li>
-          <li>Character &amp; Environment Art</li>
-          <li>Illustration</li>
-          <li>Branding</li>
-          <li>Motion Design</li>
-          <li>UI/UX</li>
-          <li>Web Development</li>
-          <li>Game Engines</li>
-          <li>AI-Assisted Workflows</li>
-          <li>3D Modeling</li>
-        </ul>
-        <p class="tag" style="margin-top: var(--space-4); display:block;"
-           data-en="Languages — German (native), English (native), French (intermediate)"
-           data-de="Sprachen — Deutsch (Muttersprache), Englisch (Muttersprache), Französisch (Mittelstufe)">
-          Languages — German (native), English (native), French (intermediate)
-        </p>
+
+      <div class="principle-grid" data-reveal-group data-portal-grid>
+        <!-- Populated from src/data/site-config.json by site-data.js -->
       </div>
     </section>
+    <div class="is-active-view" data-view="about">
+      <section class="page-header container">
+        <span class="eyebrow" data-en="About" data-de="Über mich">About</span>
+        <h1 data-en="Sebastian Schistek" data-de="Sebastian Schistek">Sebastian Schistek</h1>
+      </section>
+
+      <section class="about-grid container">
+        <div data-reveal>
+          <img src="../assets/images/about/portrait.jpg" alt="Portrait"
+               style="width:100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; border: 1px solid var(--color-border);">
+        </div>
+        <div data-reveal>
+          <p data-en="Creative Game Artist and Graphic Designer working across 2D/3D art, brand identity, and web development. Currently Creative Web Designer &amp; Frontend Developer at Dr.Bohl (Bohl Entertainment) in Vienna, leading a studio's digital platform from concept through launch. Previously Senior Game Artist at Sharkmob in Malmö, producing character and environment assets for AAA production, alongside an independent design practice since 2020 delivering branding, illustration, motion, and 3D work for clients across game, film, and marketing projects. Trained in Game Art &amp; 3D Animation (BA, SAE Institute, Vienna)."
+             data-de="Kreativer Game Artist und Grafikdesigner, tätig in 2D/3D-Kunst, Markenidentität und Webentwicklung. Aktuell Creative Web Designer &amp; Frontend Developer bei Dr.Bohl (Bohl Entertainment) in Wien, verantwortlich für die digitale Plattform des Studios von der Konzeption bis zum Launch. Zuvor Senior Game Artist bei Sharkmob in Malmö mit Charakter- und Umgebungs-Assets für AAA-Produktionen, begleitet von einer eigenen Designpraxis seit 2020 für Branding, Illustration, Motion und 3D-Arbeiten in Spiele-, Film- und Marketingprojekten. Ausbildung in Game Art &amp; 3D Animation (BA, SAE Institute, Wien).">
+            Creative Game Artist and Graphic Designer working across 2D/3D art, brand identity, and web development. Currently Creative Web Designer &amp; Frontend Developer at Dr.Bohl (Bohl Entertainment) in Vienna, leading a studio's digital platform from concept through launch. Previously Senior Game Artist at Sharkmob in Malmö, producing character and environment assets for AAA production, alongside an independent design practice since 2020 delivering branding, illustration, motion, and 3D work for clients across game, film, and marketing projects. Trained in Game Art &amp; 3D Animation (BA, SAE Institute, Vienna).
+          </p>
+          <ul class="skills-list">
+            <li>Concept Art</li>
+            <li>Character &amp; Environment Art</li>
+            <li>Illustration</li>
+            <li>Branding</li>
+            <li>Motion Design</li>
+            <li>UI/UX</li>
+            <li>Web Development</li>
+            <li>Game Engines</li>
+            <li>AI-Assisted Workflows</li>
+            <li>3D Modeling</li>
+          </ul>
+          <p class="tag" style="margin-top: var(--space-4); display:block;"
+             data-en="Languages — German (native), English (native), French (intermediate)"
+             data-de="Sprachen — Deutsch (Muttersprache), Englisch (Muttersprache), Französisch (Mittelstufe)">
+            Languages — German (native), English (native), French (intermediate)
+          </p>
+        </div>
+      </section>
+    </div>
+    <div class="" data-view="contact">
+      <section class="page-header container">
+        <span class="eyebrow" data-en="Contact" data-de="Kontakt">Contact</span>
+        <h1 data-en="Let's talk about your project" data-de="Sprechen wir über Ihr Projekt">Let's talk about your project</h1>
+      </section>
+
+      <section class="contact-grid container">
+        <div data-reveal>
+          <p style="color: var(--color-text-muted); max-width: 45ch;"
+             data-en="Whether it's concept art, a brand system, or a technical build — reach out directly or use the form."
+             data-de="Ob Konzeptkunst, ein Markensystem oder eine technische Umsetzung — schreiben Sie direkt oder nutzen Sie das Formular.">
+            Whether it's concept art, a brand system, or a technical build — reach out directly or use the form.
+          </p>
+          <p style="margin-top: var(--space-4);">
+            <a href="mailto:art.debeaufort@gmail.com" style="border-bottom: 1px solid var(--accent-current);">art.debeaufort@gmail.com</a>
+          </p>
+        </div>
+
+        <form data-contact-form data-reveal novalidate>
+          <div class="form-field">
+            <label for="name" data-en="Name" data-de="Name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="email" data-en="Email" data-de="E-Mail">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+          <div class="form-field">
+            <label for="message" data-en="Message" data-de="Nachricht">Message</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+          </div>
+          <button class="btn" type="submit" data-en="Send message" data-de="Nachricht senden">Send message</button>
+          <p class="form-status" data-form-status role="status"></p>
+        </form>
+      </section>
+    </div>
   </main>
 
   <footer class="site-footer container">
@@ -78,8 +137,14 @@
     </ul>
   </footer>
 
+  <script src="../src/js/studio-shell.js"></script>
   <script src="../src/js/scroll-reveal.js"></script>
   <script src="../src/js/language-toggle.js"></script>
+  <script src="../src/js/site-data.js"></script>
+  <script src="../src/js/category-panels.js"></script>
+  <script src="../src/js/portal-sfx.js"></script>
+  <script src="../src/js/click-sfx.js"></script>
+  <script src="../src/js/ambient-audio.js"></script>
   <script src="../src/js/form.js"></script>
 </body>
 </html>

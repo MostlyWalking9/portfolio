@@ -88,12 +88,12 @@
         </span>
         <span class="principle-card__scrim" aria-hidden="true"></span>
         <span class="principle-card__body">
-          <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}">
+          <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">
             <span class="principle-card__number">0${i + 1}</span>
             <span>${pick(s.subtitle)}</span>
           </span>
-          <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}">${pick(s.title)}</h2>
-          <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}">${pick(s.introText)}</p>
+          <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}${s.headingColor ? `color:${s.headingColor};` : ''}">${pick(s.title)}</h2>
+          <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${pick(s.introText)}</p>
           <span class="principle-card__explore" data-en="Explore →" data-de="Entdecken →">Explore →</span>
         </span>
       </a>`).join('');
@@ -123,6 +123,8 @@
       document.body.style.setProperty('--font-body', section.bodyFont);
       document.body.style.setProperty('--font-label', section.bodyFont);
     }
+    if (section.headingColor) document.body.style.setProperty('--color-text', section.headingColor);
+    if (section.bodyColor) document.body.style.setProperty('--color-text-muted', section.bodyColor);
 
     const sectionCategories = categories
       .filter((c) => c.section === sectionId)

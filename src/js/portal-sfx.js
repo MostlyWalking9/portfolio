@@ -10,7 +10,7 @@
 (function () {
   const STORAGE_KEY = 'studio-sound-on';
   const SFX_SRC = '../assets/audio/portal-select.mp3';
-  const TRANSITION_MS = 2000;
+  const TRANSITION_MS = 1100;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function soundIsOn() {
