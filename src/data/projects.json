@@ -59,7 +59,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "robot-concepts",
@@ -99,7 +100,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "elemental-characters",
@@ -149,7 +151,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "environment-illustrations",
@@ -198,7 +201,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "doodle-illustrations",
@@ -241,7 +245,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "rob-and-rob",
@@ -283,7 +288,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "sechser-logo",
@@ -319,7 +325,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "artray-logo",
@@ -341,7 +348,8 @@
       "branding"
     ],
     "heroScale": "full",
-    "mediaGroups": []
+    "mediaGroups": [],
+    "date": ""
   },
   {
     "slug": "english-works-logo",
@@ -363,7 +371,8 @@
       "branding"
     ],
     "heroScale": "full",
-    "mediaGroups": []
+    "mediaGroups": [],
+    "date": ""
   },
   {
     "slug": "weinco-campaign",
@@ -419,7 +428,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "drbohl-interview-thumbnails",
@@ -458,7 +468,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "drbohl-schnitzel-intro",
@@ -481,7 +492,8 @@
       "video_editing"
     ],
     "heroScale": "full",
-    "mediaGroups": []
+    "mediaGroups": [],
+    "date": ""
   },
   {
     "slug": "drbohl-merch-video",
@@ -504,7 +516,8 @@
       "video_editing"
     ],
     "heroScale": "full",
-    "mediaGroups": []
+    "mediaGroups": [],
+    "date": ""
   },
   {
     "slug": "griechenbeisl-website",
@@ -541,7 +554,8 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   },
   {
     "slug": "drbohl-website",
@@ -584,6 +598,7 @@
           }
         ]
       }
-    ]
+    ],
+    "date": ""
   }
 ]

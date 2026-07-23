@@ -143,7 +143,10 @@
       .filter((c) => c.section === sectionId)
       .sort((a, b) => (a.order || 0) - (b.order || 0));
 
-    const sectionProjects = projects.filter((p) => p.domain === sectionId);
+    const sectionProjects = projects
+      .filter((p) => p.domain === sectionId)
+      .slice()
+      .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
     // Only categories that actually have at least one project are shown.
     const nonEmptyCategories = sectionCategories.filter(
@@ -310,9 +313,10 @@
         }).join('')}
       </section>` : '';
 
+    const backSection = config.sections.find((s) => s.id === project.domain);
     root.innerHTML = `
       <section class="project-detail__hero container">
-        <a class="project-detail__back" href="section.html?section=${project.domain}">← Back to ${project.domain}</a>
+        <a class="project-detail__back" href="section.html?section=${project.domain}">← Back to ${backSection ? pick(backSection.title) : project.domain}</a>
         <span class="eyebrow" data-chapter-label>${project.domain}</span>
         <h1>${project.title}</h1>
         <dl class="project-detail__meta">

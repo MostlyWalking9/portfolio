@@ -14,12 +14,12 @@
     {
       "id": "creative",
       "title": {
-        "en": "Creative Art",
-        "de": "Kreative Kunst"
+        "en": "Entertainment & Concept Art",
+        "de": "Entertainment & Concept Art"
       },
       "subtitle": {
-        "en": "Concept Art & Illustrations, Game Art",
-        "de": "Concept Art & Illustration, Game Art"
+        "en": "Concept Art • Illustration • 3D Art",
+        "de": "Concept Art • Illustration • 3D-Art"
       },
       "introText": {
         "en": "Concept art, character and environment design, illustration — work built for games and film, where a single image has to carry a whole world.",
@@ -34,12 +34,12 @@
     {
       "id": "design",
       "title": {
-        "en": "Graphic Design",
-        "de": "Grafikdesign"
+        "en": "Design & Digital Media",
+        "de": "Design & Digitale Medien"
       },
       "subtitle": {
-        "en": "Motion Design, Branding, UI/UX Design",
-        "de": "Motion Design, Branding, UI/UX-Design"
+        "en": "Branding • Motion • UI/UX • Web",
+        "de": "Branding • Motion • UI/UX • Web"
       },
       "introText": {
         "en": "Branding, motion, UI/UX, product design — the layer where craft meets a client's actual problem.",
@@ -54,12 +54,12 @@
     {
       "id": "technical",
       "title": {
-        "en": "Technical Design",
-        "de": "Technisches Design"
+        "en": "Technology & AI",
+        "de": "Technologie & KI"
       },
       "subtitle": {
-        "en": "IT, AI, Development",
-        "de": "IT, KI, Entwicklung"
+        "en": "Development • Automation • Creative Tech",
+        "de": "Entwicklung • Automatisierung • Creative Tech"
       },
       "introText": {
         "en": "Web development, automation, and AI systems — the infrastructure underneath the visual work.",
