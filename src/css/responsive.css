@@ -93,17 +93,6 @@
   .principle-card__title { font-size: clamp(1rem, 4.5vw, 1.2rem); margin-bottom: var(--space-1); }
   .principle-card__eyebrow { font-size: 0.62rem; margin-bottom: var(--space-1); }
 
-  /* Selection transition on mobile: the desktop's uniform scale(1.35)
-     overflows off both screen edges on a narrow card. Non-uniform
-     instead — grow to the screen edges horizontally, much taller
-     vertically (a "swallow the screen" cover effect) before the
-     subpage loads. The card is already centered in the viewport, so
-     scaling from its own center point lands almost exactly at the
-     screen edges horizontally. */
-  .principle-grid .principle-card.is-selected {
-    transform: scaleX(1.1) scaleY(4.2);
-  }
-
   /* Discipline switcher (on section pages): 3-across, no wrap — fluid
      width instead of the fixed 170px desktop size. */
   .discipline-switch {

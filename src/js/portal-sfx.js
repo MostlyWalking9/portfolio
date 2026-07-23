@@ -1,11 +1,17 @@
 /* Portal selection sequence — homepage only. On click: play the select
-   sound (if sound is on), scale the chosen card up over 2s while the
-   other two cards and the intro text fade to 20% opacity, then load the
-   subpage. Gated by the same sound preference as the ambient track —
+   sound (if sound is on), then a two-phase animation (see the CSS
+   keyframes in layout.css): the card moves to screen-center with a
+   slight scale while the other cards + intro text fade out, then the
+   box scales up rapidly to fill the screen while the text separately
+   scales just slightly and fades. The exact move/fill amounts are
+   measured live here (getBoundingClientRect vs the viewport) since a
+   fixed value can't work for all three cards — the left one needs to
+   move right, the right one left, and viewport/card sizes vary by
+   screen. Gated by the same sound preference as the ambient track —
    silent by default, but the visual transition always plays regardless
    of the sound toggle. Skips straight to navigation under
-   prefers-reduced-motion, since a 2s scale/fade is exactly the kind of
-   motion that preference asks us to avoid. */
+   prefers-reduced-motion, since this is exactly the kind of motion
+   that preference asks us to avoid. */
 
 (function () {
   const STORAGE_KEY = 'studio-sound-on';
@@ -15,6 +21,28 @@
 
   function soundIsOn() {
     return sessionStorage.getItem(STORAGE_KEY) === '1';
+  }
+
+  function setSelectionVars(card) {
+    const rect = card.getBoundingClientRect();
+    const cardCenterX = rect.left + rect.width / 2;
+    const cardCenterY = rect.top + rect.height / 2;
+    const viewportCenterX = window.innerWidth / 2;
+    const viewportCenterY = window.innerHeight / 2;
+
+    const moveX = viewportCenterX - cardCenterX;
+    const moveY = viewportCenterY - cardCenterY;
+
+    // How much the box needs to scale (from its own, now-centered,
+    // center) to fully cover the viewport, plus a small safety margin.
+    const fillScale = Math.max(
+      window.innerWidth / rect.width,
+      window.innerHeight / rect.height
+    ) * 1.15;
+
+    card.style.setProperty('--move-x', `${moveX}px`);
+    card.style.setProperty('--move-y', `${moveY}px`);
+    card.style.setProperty('--fill-scale', fillScale.toFixed(2));
   }
 
   function bindCards() {
@@ -44,6 +72,7 @@
           return;
         }
 
+        setSelectionVars(card);
         card.classList.add('is-selected');
         grid.classList.add('is-transitioning');
         fadeEls.forEach((el) => el.classList.add('is-fading'));

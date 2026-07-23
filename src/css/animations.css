@@ -100,9 +100,12 @@
   .principle-grid .principle-card--technical.is-active { transform: none !important; }
   .principle-card--technical .principle-card__title::after { animation: none !important; opacity: 1; }
   .principle-card.is-selected,
+  .principle-card.is-selected .principle-card__box,
+  .principle-card.is-selected .principle-card__content,
   .principle-grid.is-transitioning .principle-card:not(.is-selected),
   .hero__intro.is-fading,
   .hero__eyebrow-row.is-fading {
+    animation: none !important;
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;

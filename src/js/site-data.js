@@ -142,9 +142,12 @@
     const chapterWord = currentLang() === 'de' ? 'Kapitel' : 'Chapter';
     grid.innerHTML = config.sections.map((s, i) => `
       <a class="principle-card principle-card--${s.id}" href="section.html?section=${s.id}">
-        <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${chapterWord} 0${i + 1}</span>
-        <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}${s.headingColor ? `color:${s.headingColor};` : ''}">${pick(s.title)}</h2>
-        <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${pick(s.introText)}</p>
+        <span class="principle-card__box" aria-hidden="true"></span>
+        <span class="principle-card__content">
+          <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${chapterWord} 0${i + 1}</span>
+          <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}${s.headingColor ? `color:${s.headingColor};` : ''}">${pick(s.title)}</h2>
+          <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${pick(s.introText)}</p>
+        </span>
       </a>`).join('');
 
     document.dispatchEvent(new CustomEvent('content-injected'));
