@@ -196,7 +196,7 @@
 }
 
 .principle-card.is-dimmed { opacity: 0.72; }
-.principle-card.is-active { transform: scale(1.025); }
+.principle-card.is-active { transform: scale(1.15); z-index: 3; }
 
 .principle-card__media {
   position: absolute;
@@ -310,13 +310,12 @@
   background: color-mix(in srgb, var(--creative-accent) 22%, transparent);
 }
 .principle-card--creative:hover,
-.principle-card--creative.is-active { border-color: var(--creative-accent); box-shadow: 0 0 32px -4px color-mix(in srgb, var(--creative-accent) 55%, transparent); }
+.principle-card--creative.is-active { box-shadow: 0 0 64px 8px color-mix(in srgb, var(--creative-accent) 100%, transparent); }
 
 /* Design — cream base, cobalt primary, crisp geometric register */
 .principle-card--design {
   background: var(--design-bg);
   color: var(--design-text);
-  border-width: 2px;
 }
 .principle-card--design .principle-card__eyebrow,
 .principle-card--design .principle-card__explore { color: var(--design-blue); }
@@ -337,7 +336,7 @@
   background: color-mix(in srgb, var(--design-blue) 16%, transparent);
 }
 .principle-card--design:hover,
-.principle-card--design.is-active { border-color: var(--design-blue); box-shadow: 0 0 32px -4px color-mix(in srgb, var(--design-blue) 55%, transparent); }
+.principle-card--design.is-active { box-shadow: 0 0 64px 8px color-mix(in srgb, var(--design-blue) 100%, transparent); }
 
 /* Technical — near-black, terminal-green accent, monospace metadata */
 .principle-card--technical {
@@ -371,11 +370,31 @@
   background: color-mix(in srgb, var(--tech-green) 16%, transparent);
 }
 .principle-card--technical:hover,
-.principle-card--technical.is-active { border-color: var(--tech-green); box-shadow: 0 0 32px -4px color-mix(in srgb, var(--tech-green) 55%, transparent); }
+.principle-card--technical.is-active { box-shadow: 0 0 64px 8px color-mix(in srgb, var(--tech-green) 100%, transparent); }
 
 @keyframes blink {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
+}
+
+/* --- Portal selection transition: click a section, it scales up over
+   2s while the sound plays and everything else fades to 20%, then the
+   subpage loads. Driven by portal-sfx.js adding/removing these classes. --- */
+.principle-card.is-selected {
+  transform: scale(1.35);
+  z-index: 4;
+  transition: transform 2000ms var(--ease-editorial);
+}
+
+.principle-grid.is-transitioning .principle-card:not(.is-selected) {
+  opacity: 0.2;
+  transition: opacity 2000ms var(--ease-editorial);
+}
+
+.hero__intro.is-fading,
+.hero__eyebrow-row.is-fading {
+  opacity: 0.2;
+  transition: opacity 2000ms var(--ease-editorial);
 }
 
 /* --- Chapters — each paints its own background/text/font from the

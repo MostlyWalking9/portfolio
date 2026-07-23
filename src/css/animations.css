@@ -104,4 +104,12 @@
   .principle-card__media-img:not(:first-child) { display: none !important; }
   .principle-card__media-img:first-child { opacity: 1 !important; }
   .principle-card--technical .principle-card__title::after { animation: none !important; opacity: 1; }
+  .principle-card.is-selected,
+  .principle-grid.is-transitioning .principle-card:not(.is-selected),
+  .hero__intro.is-fading,
+  .hero__eyebrow-row.is-fading {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
 }
