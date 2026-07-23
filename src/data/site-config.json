@@ -1,0 +1,45 @@
+{
+  "homepage": {
+    "title": "Art deBeaufort",
+    "introHeading": {
+      "en": "Choose where to begin.",
+      "de": "Wählen Sie Ihren Einstieg."
+    },
+    "introText": {
+      "en": "Explore creative work, design and production, or technical development.",
+      "de": "Entdecken Sie kreative Arbeiten, Design und Produktion oder technische Entwicklung."
+    }
+  },
+  "sections": [
+    {
+      "id": "creative",
+      "title": { "en": "Creative Art", "de": "Kreative Kunst" },
+      "subtitle": { "en": "Concept Art & Illustrations, Game Art", "de": "Concept Art & Illustration, Game Art" },
+      "introText": {
+        "en": "Concept art, character and environment design, illustration — work built for games and film, where a single image has to carry a whole world.",
+        "de": "Concept Art, Charakter- und Umgebungsdesign, Illustration — Arbeiten für Spiele und Film, bei denen ein einzelnes Bild eine ganze Welt tragen muss."
+      },
+      "cover": "../assets/images/sections/creative-cover.jpg"
+    },
+    {
+      "id": "design",
+      "title": { "en": "Graphic Design", "de": "Grafikdesign" },
+      "subtitle": { "en": "Motion Design, Branding, UI/UX Design", "de": "Motion Design, Branding, UI/UX-Design" },
+      "introText": {
+        "en": "Branding, motion, UI/UX, product design — the layer where craft meets a client's actual problem.",
+        "de": "Branding, Motion, UI/UX, Produktdesign — die Ebene, auf der Gestaltung auf das eigentliche Problem eines Kunden trifft."
+      },
+      "cover": "../assets/images/sections/design-cover.jpg"
+    },
+    {
+      "id": "technical",
+      "title": { "en": "Technical Design", "de": "Technisches Design" },
+      "subtitle": { "en": "IT, AI, Development", "de": "IT, KI, Entwicklung" },
+      "introText": {
+        "en": "Web development, automation, and AI systems — the infrastructure underneath the visual work.",
+        "de": "Webentwicklung, Automatisierung und KI-Systeme — die Infrastruktur hinter der visuellen Arbeit."
+      },
+      "cover": "../assets/images/sections/technical-cover.jpg"
+    }
+  ]
+}

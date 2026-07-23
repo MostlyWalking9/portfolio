@@ -14,31 +14,13 @@
   .chapter__intro { align-self: start; }
   .project-grid, .work-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid, .contact-grid { grid-template-columns: 1fr; gap: var(--space-5); }
-
-  /* Tablet: horizontal snap carousel — touch/trackpad scroll, no mouse
-     required; each card is still a normal focusable link so keyboard
-     tabbing scrolls it into view natively. */
-  .principle-grid {
-    display: flex;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    scroll-snap-type: x mandatory;
-    gap: var(--space-4);
-    padding-bottom: var(--space-2);
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-  .principle-card {
-    flex: 0 0 78%;
-    scroll-snap-align: center;
-    aspect-ratio: 4 / 5;
-  }
+  .principle-card__title { font-size: clamp(1.1rem, 2.6vw, 1.5rem); }
+  .principle-card__desc { font-size: 0.85rem; }
 }
 
 @media (max-width: 768px) {
   .site-nav__links { gap: var(--space-3); }
   .project-detail__meta { grid-template-columns: 1fr 1fr; }
-  .principle-card { flex-basis: 86%; }
 }
 
 @media (max-width: 480px) {
@@ -64,19 +46,28 @@
   .hero__title { max-width: 100%; }
   .hero__subtitle { max-width: 100%; }
 
-  /* Mobile: one full-width card per row, no horizontal scroll, media
-     stays prominent, description reads at a normal body size. */
+  /* Mobile: 3 equal-height horizontal bands filling the same fixed
+     viewport — no horizontal or vertical scroll, ever. Cards keep the
+     same overlay pattern (media behind, text on top) just shorter. */
   .principle-grid {
-    flex-direction: column;
-    overflow-x: visible;
-    scroll-snap-type: none;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
   }
-  .principle-card {
-    flex: none;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    min-height: 22rem;
-  }
-  .principle-card__desc { font-size: 0.95rem; }
-  .principle-card__title { font-size: clamp(1.4rem, 6vw, 1.75rem); }
+  .principle-card__body { padding: var(--space-3); }
+  .principle-card__desc { font-size: 0.8rem; }
+  .principle-card__title { font-size: clamp(1.05rem, 5vw, 1.3rem); }
+  .principle-card__eyebrow { font-size: 0.65rem; }
+}
+
+/* Safety net for short viewports (small phones in landscape, split-screen
+   windows): drop the description first, then tighten further, rather
+   than ever letting the homepage scroll. */
+@media (max-height: 640px) {
+  .principle-card__desc { display: none; }
+  .principle-card__body { padding: var(--space-2); }
+  .hero__subtitle { margin-bottom: var(--space-2); }
+}
+@media (max-height: 480px) {
+  .hero__subtitle { display: none; }
+  .hero__title { font-size: clamp(1.2rem, 4vw, 2rem); margin-bottom: var(--space-1); }
 }

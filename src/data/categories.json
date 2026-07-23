@@ -1,0 +1,12 @@
+[
+  { "id": "concept-art-illustrations", "section": "creative", "title": "Concept Art & Illustrations", "description": "", "cover": "../assets/images/creative/raven-horror-concept/hero.jpg", "order": 1 },
+  { "id": "game-art", "section": "creative", "title": "Game Art", "description": "", "cover": "../assets/images/creative/rob-and-rob/hero.jpg", "order": 2 },
+
+  { "id": "motion-design", "section": "design", "title": "Motion Design", "description": "", "cover": "../assets/images/design/drbohl-schnitzel-intro/thumb.jpg", "order": 1 },
+  { "id": "branding", "section": "design", "title": "Branding", "description": "", "cover": "../assets/images/design/artray-logo/hero.jpg", "order": 2 },
+  { "id": "ui-ux-design", "section": "design", "title": "UI/UX Design", "description": "", "cover": "", "order": 3 },
+
+  { "id": "it", "section": "technical", "title": "IT", "description": "", "cover": "", "order": 1 },
+  { "id": "ai", "section": "technical", "title": "AI", "description": "", "cover": "", "order": 2 },
+  { "id": "development", "section": "technical", "title": "Development", "description": "", "cover": "../assets/images/technical/griechenbeisl-website/hero.jpg", "order": 3 }
+]

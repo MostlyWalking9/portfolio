@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work — Art deBeaufort</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <title>Section — Art deBeaufort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
@@ -20,7 +20,7 @@
     <a class="site-nav__mark" href="index.html">Art deBeaufort</a>
     <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
     <ul class="site-nav__links">
-      <li><a href="work.html" class="is-active">Work</a></li>
+      <li><a href="index.html">← Sections</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li class="lang-toggle" role="group" aria-label="Language">
@@ -30,21 +30,8 @@
     </ul>
   </header>
 
-  <main>
-    <section class="work-header container">
-      <span class="eyebrow" data-en="Work" data-de="Arbeiten">Work</span>
-      <h1 data-en="Full project index" data-de="Vollständiger Projektindex">Full project index</h1>
-      <div class="work-filters" role="group" aria-label="Filter by discipline">
-        <button data-filter="all" data-en="All" data-de="Alle">All</button>
-        <button data-filter="creative" data-en="Creative" data-de="Kreativ">Creative</button>
-        <button data-filter="design" data-en="Design" data-de="Design">Design</button>
-        <button data-filter="technical" data-en="Technical" data-de="Technisch">Technical</button>
-      </div>
-    </section>
-
-    <section class="container">
-      <div class="work-grid" data-work-grid></div>
-    </section>
+  <main data-section-page>
+    <!-- Populated by site-data.js from ?section= param -->
   </main>
 
   <footer class="site-footer container">
@@ -56,7 +43,6 @@
 
   <script src="../src/js/scroll-reveal.js"></script>
   <script src="../src/js/language-toggle.js"></script>
-  <script src="../src/js/work-filter.js"></script>
-  <script src="../src/js/form.js"></script>
+  <script src="../src/js/site-data.js"></script>
 </body>
 </html>
