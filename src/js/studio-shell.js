@@ -65,12 +65,15 @@
   function soundIsOn() {
     return sessionStorage.getItem(SOUND_STORAGE_KEY) === '1';
   }
+  const navSfx = new Audio(new URL('../assets/audio/portal-select.mp3', document.baseURI).href);
+  navSfx.preload = 'auto';
+  navSfx.volume = 0.45;
+  navSfx.load();
   function playNavSound() {
     if (!soundIsOn()) return;
     try {
-      const sfx = new Audio(new URL('../assets/audio/portal-select.mp3', document.baseURI).href);
-      sfx.volume = 0.45;
-      sfx.play().catch(() => {});
+      navSfx.currentTime = 0;
+      navSfx.play().catch(() => {});
     } catch {}
   }
 

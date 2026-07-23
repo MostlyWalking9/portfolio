@@ -15,9 +15,13 @@
 
 (function () {
   const STORAGE_KEY = 'studio-sound-on';
-  const SFX_SRC = '../assets/audio/portal-select.mp3';
   const TRANSITION_MS = 1100;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const sfx = new Audio(new URL('../assets/audio/portal-select.mp3', document.baseURI).href);
+  sfx.preload = 'auto';
+  sfx.volume = 0.6;
+  sfx.load();
 
   function soundIsOn() {
     return sessionStorage.getItem(STORAGE_KEY) === '1';
@@ -61,8 +65,7 @@
 
         if (soundIsOn()) {
           try {
-            const sfx = new Audio(SFX_SRC);
-            sfx.volume = 0.6;
+            sfx.currentTime = 0;
             sfx.play().catch(() => {});
           } catch {}
         }

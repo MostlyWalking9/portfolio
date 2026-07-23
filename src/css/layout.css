@@ -606,6 +606,31 @@ body.is-home-view .site-footer { display: none; }
   transition: transform var(--duration-slow) var(--ease-editorial);
 }
 
+/* Selecting a project plays the same move-to-center-then-fill-screen
+   transition as the homepage discipline cards (see the cardMoveToCenter/
+   boxFillScreen keyframes above) — this both looks consistent and gives
+   the click sound enough time to actually finish playing before the
+   real page navigation cuts it off. Project card text is a small
+   caption overlay (not big display type), so a uniform scale here
+   doesn't need the same box/text-decoupling the hero cards needed. */
+.project-card.is-selected {
+  animation: cardMoveThenFill 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  z-index: 20;
+}
+
+@keyframes cardMoveThenFill {
+  0%   { transform: translate(0, 0) scale(1); }
+  40%  { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(1.08); }
+  100% { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(var(--fill-scale, 8)); }
+}
+
+.work-grid.is-transitioning .project-card:not(.is-selected),
+.project-grid.is-transitioning .project-card:not(.is-selected) {
+  opacity: 0.2;
+  transform: scale(0.92);
+  transition: opacity 1100ms cubic-bezier(0.4, 0, 0.2, 1), transform 1100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .project-card:hover img,
 .project-card:hover video {
   transform: scale(1.045);
