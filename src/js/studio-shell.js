@@ -30,6 +30,13 @@
     }
   }
 
+  function closeMobileMenu() {
+    const nav = document.querySelector('.site-nav');
+    const toggle = document.querySelector('.site-nav__toggle');
+    if (nav) nav.classList.remove('is-menu-open');
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  }
+
   function showView(view) {
     document.querySelectorAll('[data-view]').forEach((el) => {
       el.classList.toggle('is-active-view', el.dataset.view === view);
@@ -38,6 +45,7 @@
       a.classList.toggle('is-active', a.dataset.navLink === view);
     });
     document.body.classList.toggle('is-home-view', view === 'home');
+    closeMobileMenu();
     document.dispatchEvent(new CustomEvent('content-injected'));
   }
 
