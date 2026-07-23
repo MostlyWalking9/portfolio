@@ -136,21 +136,24 @@
   color: var(--color-text-muted);
 }
 
+.hero__intro {
+  text-align: center;
+  margin-inline: auto;
+  max-width: 60ch;
+  flex-shrink: 0;
+}
+
 .hero__title {
-  font-size: clamp(1.6rem, 3.6vw, 3.2rem);
-  max-width: 18ch;
+  font-size: clamp(1.7rem, 3.8vw, 3.4rem);
   margin-bottom: var(--space-2);
   color: var(--color-text);
-  flex-shrink: 0;
 }
 
 .hero__subtitle {
   font-family: var(--font-body);
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-size: clamp(1rem, 1.3vw, 1.2rem);
   color: var(--color-text-muted);
-  max-width: 46ch;
   margin-bottom: var(--space-3);
-  flex-shrink: 0;
 }
 
 /* --------------------------------------------------------------------
@@ -165,6 +168,10 @@
   gap: var(--space-4);
   flex: 1 1 auto;
   min-height: 0;
+  max-width: 94%;
+  max-height: 92%;
+  margin-inline: auto;
+  align-self: center;
 }
 
 .principle-card {
@@ -176,6 +183,7 @@
   overflow: hidden;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
+  transition: box-shadow 400ms var(--ease-editorial), border-color var(--duration-medium) var(--ease-editorial);
 }
 
 /* Scoped with an extra selector so this always wins over the generic
@@ -241,7 +249,7 @@
   align-items: baseline;
   gap: var(--space-2);
   font-family: var(--font-label);
-  font-size: var(--type-scale-caption);
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: var(--space-3);
@@ -250,12 +258,12 @@
 .principle-card__number { opacity: 0.7; }
 
 .principle-card__title {
-  font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+  font-size: clamp(1.55rem, 2.5vw, 2.05rem);
   margin-bottom: var(--space-3);
 }
 
 .principle-card__desc {
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   line-height: var(--leading-body);
 }
 
@@ -294,15 +302,15 @@
 }
 .principle-card--creative .principle-card__scrim {
   background: linear-gradient(to top,
-    color-mix(in srgb, var(--creative-bg) 92%, transparent) 0%,
-    color-mix(in srgb, var(--creative-bg) 45%, transparent) 55%,
-    color-mix(in srgb, var(--creative-bg) 10%, transparent) 100%);
+    color-mix(in srgb, var(--creative-bg) 97%, transparent) 0%,
+    color-mix(in srgb, var(--creative-bg) 68%, transparent) 55%,
+    color-mix(in srgb, var(--creative-bg) 25%, transparent) 100%);
 }
 .principle-card--creative .principle-card__scrim::after {
   background: color-mix(in srgb, var(--creative-accent) 22%, transparent);
 }
 .principle-card--creative:hover,
-.principle-card--creative.is-active { border-color: var(--creative-accent); }
+.principle-card--creative.is-active { border-color: var(--creative-accent); box-shadow: 0 0 32px -4px color-mix(in srgb, var(--creative-accent) 55%, transparent); }
 
 /* Design — cream base, cobalt primary, crisp geometric register */
 .principle-card--design {
@@ -321,15 +329,15 @@
 }
 .principle-card--design .principle-card__scrim {
   background: linear-gradient(to top,
-    color-mix(in srgb, var(--design-bg) 94%, transparent) 0%,
-    color-mix(in srgb, var(--design-bg) 55%, transparent) 55%,
-    color-mix(in srgb, var(--design-bg) 15%, transparent) 100%);
+    color-mix(in srgb, var(--design-bg) 97%, transparent) 0%,
+    color-mix(in srgb, var(--design-bg) 72%, transparent) 55%,
+    color-mix(in srgb, var(--design-bg) 30%, transparent) 100%);
 }
 .principle-card--design .principle-card__scrim::after {
   background: color-mix(in srgb, var(--design-blue) 16%, transparent);
 }
 .principle-card--design:hover,
-.principle-card--design.is-active { border-color: var(--design-blue); }
+.principle-card--design.is-active { border-color: var(--design-blue); box-shadow: 0 0 32px -4px color-mix(in srgb, var(--design-blue) 55%, transparent); }
 
 /* Technical — near-black, terminal-green accent, monospace metadata */
 .principle-card--technical {
@@ -355,15 +363,15 @@
 }
 .principle-card--technical .principle-card__scrim {
   background: linear-gradient(to top,
-    color-mix(in srgb, var(--tech-bg) 94%, transparent) 0%,
-    color-mix(in srgb, var(--tech-bg) 50%, transparent) 55%,
-    color-mix(in srgb, var(--tech-bg) 12%, transparent) 100%);
+    color-mix(in srgb, var(--tech-bg) 97%, transparent) 0%,
+    color-mix(in srgb, var(--tech-bg) 70%, transparent) 55%,
+    color-mix(in srgb, var(--tech-bg) 28%, transparent) 100%);
 }
 .principle-card--technical .principle-card__scrim::after {
   background: color-mix(in srgb, var(--tech-green) 16%, transparent);
 }
 .principle-card--technical:hover,
-.principle-card--technical.is-active { border-color: var(--tech-green); }
+.principle-card--technical.is-active { border-color: var(--tech-green); box-shadow: 0 0 32px -4px color-mix(in srgb, var(--tech-green) 55%, transparent); }
 
 @keyframes blink {
   0%, 49% { opacity: 1; }

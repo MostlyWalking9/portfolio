@@ -1,6 +1,6 @@
 {
   "homepage": {
-    "title": "Art deBeaufort",
+    "title": "Sebastian Schistek",
     "introHeading": {
       "en": "Choose where to begin.",
       "de": "Wählen Sie Ihren Einstieg."
@@ -13,33 +13,57 @@
   "sections": [
     {
       "id": "creative",
-      "title": { "en": "Creative Art", "de": "Kreative Kunst" },
-      "subtitle": { "en": "Concept Art & Illustrations, Game Art", "de": "Concept Art & Illustration, Game Art" },
+      "title": {
+        "en": "Creative Art",
+        "de": "Kreative Kunst"
+      },
+      "subtitle": {
+        "en": "Concept Art & Illustrations, Game Art",
+        "de": "Concept Art & Illustration, Game Art"
+      },
       "introText": {
         "en": "Concept art, character and environment design, illustration — work built for games and film, where a single image has to carry a whole world.",
         "de": "Concept Art, Charakter- und Umgebungsdesign, Illustration — Arbeiten für Spiele und Film, bei denen ein einzelnes Bild eine ganze Welt tragen muss."
       },
-      "cover": "../assets/images/sections/creative-cover.jpg"
+      "cover": "../assets/images/sections/creative-cover.jpg",
+      "headingFont": "'Cormorant Garamond', Georgia, serif",
+      "bodyFont": "'Source Sans 3', sans-serif"
     },
     {
       "id": "design",
-      "title": { "en": "Graphic Design", "de": "Grafikdesign" },
-      "subtitle": { "en": "Motion Design, Branding, UI/UX Design", "de": "Motion Design, Branding, UI/UX-Design" },
+      "title": {
+        "en": "Graphic Design",
+        "de": "Grafikdesign"
+      },
+      "subtitle": {
+        "en": "Motion Design, Branding, UI/UX Design",
+        "de": "Motion Design, Branding, UI/UX-Design"
+      },
       "introText": {
         "en": "Branding, motion, UI/UX, product design — the layer where craft meets a client's actual problem.",
         "de": "Branding, Motion, UI/UX, Produktdesign — die Ebene, auf der Gestaltung auf das eigentliche Problem eines Kunden trifft."
       },
-      "cover": "../assets/images/sections/design-cover.jpg"
+      "cover": "../assets/images/sections/design-cover.jpg",
+      "headingFont": "'Space Grotesk', 'Inter', sans-serif",
+      "bodyFont": "'Inter', sans-serif"
     },
     {
       "id": "technical",
-      "title": { "en": "Technical Design", "de": "Technisches Design" },
-      "subtitle": { "en": "IT, AI, Development", "de": "IT, KI, Entwicklung" },
+      "title": {
+        "en": "Technical Design",
+        "de": "Technisches Design"
+      },
+      "subtitle": {
+        "en": "IT, AI, Development",
+        "de": "IT, KI, Entwicklung"
+      },
       "introText": {
         "en": "Web development, automation, and AI systems — the infrastructure underneath the visual work.",
         "de": "Webentwicklung, Automatisierung und KI-Systeme — die Infrastruktur hinter der visuellen Arbeit."
       },
-      "cover": "../assets/images/sections/technical-cover.jpg"
+      "cover": "../assets/images/sections/technical-cover.jpg",
+      "headingFont": "'JetBrains Mono', 'IBM Plex Mono', monospace",
+      "bodyFont": "'Inter', sans-serif"
     }
   ]
 }

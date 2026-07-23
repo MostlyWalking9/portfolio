@@ -20,6 +20,21 @@
       : `<img src="${src}" alt="${alt}" ${attrs || ''} loading="lazy">`;
   }
 
+  // Used only for project-detail hero/gallery media, where oversized
+  // (e.g. tall vertical video) source files need a height cap and an
+  // admin-controlled display width, unlike card/cover fills which always
+  // need to cover their container fully.
+  const SCALE_WIDTH = { small: '38%', medium: '60%', large: '85%', full: '100%' };
+
+  function detailMediaMarkup(src, alt, scale) {
+    if (!src) return '';
+    const width = SCALE_WIDTH[scale] || SCALE_WIDTH.full;
+    const style = `style="width:${width}; height:auto; margin-inline:auto; max-height:85vh; object-fit:contain;"`;
+    return isVideo(src)
+      ? `<video src="${src}" ${style} muted loop playsinline autoplay></video>`
+      : `<img src="${src}" alt="${alt}" ${style} loading="lazy">`;
+  }
+
   function currentLang() {
     return document.documentElement.getAttribute('lang') || 'en';
   }
@@ -57,12 +72,12 @@
         </span>
         <span class="principle-card__scrim" aria-hidden="true"></span>
         <span class="principle-card__body">
-          <span class="principle-card__eyebrow">
+          <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}">
             <span class="principle-card__number">0${i + 1}</span>
             <span>${pick(s.subtitle)}</span>
           </span>
-          <h2 class="principle-card__title">${pick(s.title)}</h2>
-          <p class="principle-card__desc">${pick(s.introText)}</p>
+          <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}">${pick(s.title)}</h2>
+          <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}">${pick(s.introText)}</p>
           <span class="principle-card__explore" data-en="Explore →" data-de="Entdecken →">Explore →</span>
         </span>
       </a>`).join('');
@@ -85,8 +100,13 @@
       return;
     }
 
-    document.title = `${pick(section.title)} — Art deBeaufort`;
+    document.title = `${pick(section.title)} — Sebastian Schistek`;
     document.body.dataset.activeChapter = sectionId;
+    if (section.headingFont) document.body.style.setProperty('--font-display', section.headingFont);
+    if (section.bodyFont) {
+      document.body.style.setProperty('--font-body', section.bodyFont);
+      document.body.style.setProperty('--font-label', section.bodyFont);
+    }
 
     const sectionCategories = categories
       .filter((c) => c.section === sectionId)
@@ -189,12 +209,12 @@
       return;
     }
 
-    document.title = `${project.title} — Art deBeaufort`;
+    document.title = `${project.title} — Sebastian Schistek`;
     document.body.dataset.activeChapter = project.domain;
 
     const gallery = (project.gallery || []).map((item) => `
       <figure class="project-detail__gallery-item" data-reveal>
-        ${mediaMarkup(item.src, `${project.title} — detail`)}
+        ${detailMediaMarkup(item.src, `${project.title} — detail`, item.scale)}
         ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
       </figure>`).join('');
 
@@ -259,7 +279,7 @@
         ${project.liveUrl ? `<a class="btn" href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" style="margin-top: var(--space-4);">Visit live site ↗</a>` : ''}
       </section>
       <div class="project-detail__gallery container" data-chapter="${project.domain}">
-        <figure class="project-detail__gallery-item" data-reveal>${mediaMarkup(project.hero, project.title)}</figure>
+        <figure class="project-detail__gallery-item" data-reveal>${detailMediaMarkup(project.hero, project.title, project.heroScale)}</figure>
         ${gallery}
       </div>
       ${similarBlock}

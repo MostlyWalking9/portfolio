@@ -17,27 +17,33 @@
     "gallery": [
       {
         "src": "../assets/images/creative/raven-horror-concept/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/raven-horror-concept/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/raven-horror-concept/detail-03.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/raven-horror-concept/detail-04.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/raven-horror-concept/detail-05.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/raven-horror-concept/detail-06.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "concept-art-illustrations",
@@ -46,7 +52,8 @@
       "3d_sculpting",
       "character_design",
       "dark_fantasy"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "robot-concepts",
@@ -65,11 +72,13 @@
     "gallery": [
       {
         "src": "../assets/images/creative/robot-concepts/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/robot-concepts/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "concept-art-illustrations",
@@ -77,7 +86,8 @@
       "concept_art",
       "character_design",
       "sci_fi"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "elemental-characters",
@@ -97,26 +107,31 @@
     "gallery": [
       {
         "src": "../assets/images/creative/elemental-characters/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/elemental-characters/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/elemental-characters/detail-03.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/elemental-characters/detail-04.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "concept-art-illustrations",
     "tags": [
       "illustration",
       "character_design"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "environment-illustrations",
@@ -135,26 +150,31 @@
     "gallery": [
       {
         "src": "../assets/images/creative/environment-illustrations/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/environment-illustrations/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/environment-illustrations/detail-03.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/environment-illustrations/detail-04.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "concept-art-illustrations",
     "tags": [
       "illustration",
       "environment_art"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "doodle-illustrations",
@@ -173,25 +193,29 @@
     "gallery": [
       {
         "src": "../assets/images/creative/doodle-illustrations/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/doodle-illustrations/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/creative/doodle-illustrations/detail-03.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "concept-art-illustrations",
     "tags": [
       "illustration"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "rob-and-rob",
-    "domain": "creative",
+    "domain": "design",
     "title": "Rob & Rob — 3D Character",
     "role": "3D Character Artist",
     "tools": [
@@ -203,24 +227,27 @@
     "outcome": "",
     "tasks": [],
     "liveUrl": "",
-    "thumb": "../assets/images/creative/rob-and-rob/thumb.jpg",
-    "hero": "../assets/images/creative/rob-and-rob/hero.jpg",
+    "thumb": "../assets/images/design/rob-and-rob/thumb.jpg",
+    "hero": "../assets/images/design/rob-and-rob/hero.jpg",
     "gallery": [
       {
-        "src": "../assets/images/creative/rob-and-rob/detail-01.mp4",
-        "caption": ""
+        "src": "../assets/images/design/rob-and-rob/detail-01.mp4",
+        "caption": "",
+        "scale": "full"
       },
       {
-        "src": "../assets/images/creative/rob-and-rob/detail-02.mp4",
-        "caption": ""
+        "src": "../assets/images/design/rob-and-rob/detail-02.mp4",
+        "caption": "",
+        "scale": "full"
       }
     ],
-    "category": "game-art",
+    "category": "branding",
     "tags": [
       "3d_modelling",
       "character_design",
       "social_media"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "sechser-logo",
@@ -240,7 +267,8 @@
     "gallery": [
       {
         "src": "../assets/images/design/sechser-logo/detail-01.mp4",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "branding",
@@ -248,7 +276,8 @@
       "logo_design",
       "motion_design",
       "branding"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "artray-logo",
@@ -269,7 +298,8 @@
     "tags": [
       "logo_design",
       "branding"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "english-works-logo",
@@ -290,7 +320,8 @@
     "tags": [
       "logo_design",
       "branding"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "weinco-campaign",
@@ -310,23 +341,28 @@
     "gallery": [
       {
         "src": "../assets/images/design/weinco-campaign/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/design/weinco-campaign/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/design/weinco-campaign/detail-03.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/design/weinco-campaign/detail-04.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/design/weinco-campaign/detail-05.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "branding",
@@ -334,7 +370,8 @@
       "branding",
       "graphic_design",
       "campaign"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "drbohl-interview-thumbnails",
@@ -353,18 +390,21 @@
     "gallery": [
       {
         "src": "../assets/images/design/drbohl-interview-thumbnails/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/design/drbohl-interview-thumbnails/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "branding",
     "tags": [
       "graphic_design",
       "thumbnail_design"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "drbohl-schnitzel-intro",
@@ -386,7 +426,8 @@
     "tags": [
       "motion_design",
       "video_editing"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "drbohl-merch-video",
@@ -408,7 +449,8 @@
     "tags": [
       "motion_design",
       "video_editing"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "griechenbeisl-website",
@@ -425,18 +467,21 @@
     "gallery": [
       {
         "src": "../assets/images/technical/griechenbeisl-website/detail-01.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/technical/griechenbeisl-website/detail-02.jpg",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "development",
     "tags": [
       "web_design",
       "web_development"
-    ]
+    ],
+    "heroScale": "full"
   },
   {
     "slug": "drbohl-website",
@@ -458,11 +503,13 @@
     "gallery": [
       {
         "src": "../assets/images/technical/drbohl-website/detail-01.png",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       },
       {
         "src": "../assets/images/technical/drbohl-website/detail-02.png",
-        "caption": ""
+        "caption": "",
+        "scale": "full"
       }
     ],
     "category": "development",
@@ -470,6 +517,7 @@
       "web_design",
       "web_development",
       "frontend"
-    ]
+    ],
+    "heroScale": "full"
   }
 ]

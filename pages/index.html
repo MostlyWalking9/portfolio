@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Art deBeaufort — Portfolio</title>
-  <meta name="description" content="Art deBeaufort — concept art, design, and technical work, one creative practice across three disciplines.">
+  <title>Sebastian Schistek — Portfolio</title>
+  <meta name="description" content="Sebastian Schistek — concept art, design, and technical work, one creative practice across three disciplines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Source+Sans+3:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../src/css/variables.css">
   <link rel="stylesheet" href="../src/css/base.css">
   <link rel="stylesheet" href="../src/css/layout.css">
@@ -18,7 +18,7 @@
 <body class="is-homepage">
 
   <header class="site-nav">
-    <a class="site-nav__mark" href="index.html" data-config="homepage.title">Art deBeaufort</a>
+    <a class="site-nav__mark" href="index.html" data-config="homepage.title">Sebastian Schistek</a>
     <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
     <ul class="site-nav__links">
       <li><a href="about.html">About</a></li>
@@ -41,12 +41,14 @@
       </div>
       <audio data-ambient-audio src="../assets/audio/studio-ambient-placeholder.mp3" loop preload="none"></audio>
 
-      <h1 class="hero__title" data-config="homepage.introHeading" data-en="Choose where to begin." data-de="Wählen Sie Ihren Einstieg.">Choose where to begin.</h1>
-      <p class="hero__subtitle" data-config="homepage.introText"
-         data-en="Explore creative work, design and production, or technical development."
-         data-de="Entdecken Sie kreative Arbeiten, Design und Produktion oder technische Entwicklung.">
-        Explore creative work, design and production, or technical development.
-      </p>
+      <div class="hero__intro">
+        <h1 class="hero__title" data-config="homepage.introHeading" data-en="Choose where to begin." data-de="Wählen Sie Ihren Einstieg.">Choose where to begin.</h1>
+        <p class="hero__subtitle" data-config="homepage.introText"
+           data-en="Explore creative work, design and production, or technical development."
+           data-de="Entdecken Sie kreative Arbeiten, Design und Produktion oder technische Entwicklung.">
+          Explore creative work, design and production, or technical development.
+        </p>
+      </div>
 
       <div class="principle-grid" data-reveal-group data-portal-grid>
         <!-- Populated from src/data/site-config.json by site-data.js -->
