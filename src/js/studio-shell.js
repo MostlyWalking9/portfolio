@@ -37,6 +37,7 @@
     document.querySelectorAll('.site-nav__links a[data-nav-link]').forEach((a) => {
       a.classList.toggle('is-active', a.dataset.navLink === view);
     });
+    document.body.classList.toggle('is-home-view', view === 'home');
     document.dispatchEvent(new CustomEvent('content-injected'));
   }
 

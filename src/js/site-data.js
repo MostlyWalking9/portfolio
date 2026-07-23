@@ -200,7 +200,28 @@
 
     const allTags = Array.from(new Set(sectionProjects.flatMap((p) => p.tags || []))).sort();
 
+    const SECTION_TOKENS = {
+      creative:  { bg: 'var(--creative-bg)',  text: 'var(--creative-text)',  border: 'var(--creative-border)' },
+      design:    { bg: 'var(--design-bg)',    text: 'var(--design-text)',    border: 'var(--design-border)' },
+      technical: { bg: 'var(--tech-bg)',       text: 'var(--tech-text)',      border: 'var(--tech-border)' },
+    };
+
+    const switcher = `
+      <div class="discipline-switch container">
+        ${config.sections.map((s) => {
+          const t = SECTION_TOKENS[s.id] || {};
+          const isCurrent = s.id === sectionId;
+          return `
+            <a class="discipline-switch__btn${isCurrent ? ' is-current' : ''}"
+               href="section.html?section=${s.id}"
+               style="background:${t.bg}; color:${t.text}; border-color:${t.border};">
+              ${pick(s.title)}
+            </a>`;
+        }).join('')}
+      </div>`;
+
     root.innerHTML = `
+      ${switcher}
       <section class="work-header container">
         <span class="eyebrow">${pick(section.subtitle)}</span>
         <h1>${pick(section.title)}</h1>

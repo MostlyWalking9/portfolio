@@ -126,6 +126,44 @@
   display: none;
 }
 
+.discipline-switch {
+  display: flex;
+  gap: var(--space-3);
+  padding-top: calc(var(--nav-height) + var(--space-5));
+  padding-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.discipline-switch__btn {
+  width: 240px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2);
+  border: 2px solid;
+  border-radius: var(--radius-md);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  transition: transform 200ms var(--ease-editorial), filter 200ms var(--ease-editorial);
+}
+
+.discipline-switch__btn:hover:not(.is-current) {
+  transform: translateY(-2px);
+}
+
+.discipline-switch__btn.is-current {
+  border-color: currentColor;
+  transform: scale(0.96);
+  filter: brightness(0.85);
+  cursor: default;
+}
+
+body.is-home-view .site-footer { display: none; }
+
 /* Studio shell — Home/About/Contact panels, only one visible at a time.
    Uses !important so it overrides each panel's own display value
    (.hero is flex, others are block) without needing to restate it. */
