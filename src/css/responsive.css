@@ -19,24 +19,16 @@
 }
 
 @media (max-width: 768px) {
-  .site-nav__links { gap: var(--space-3); }
   .project-detail__meta { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
   .project-grid, .work-grid { grid-template-columns: 1fr; }
 
-  /* Nav: only the logo + hamburger stay always visible. Everything
-     else (Studio/About/Contact, EN/DE, Sound) lives behind the menu
-     toggle — including Sound, which is a <button> not an <a>, so it
-     needs its own rule rather than the old anchor-only selector that
-     let it silently overflow off-screen. */
-  .site-nav__links > li > a { display: none; }
   .site-nav__mark-tagline { display: none; }
   .site-nav__mark-name { font-size: 0.95rem; }
 
-  /* Sound toggle stays visible (like EN/DE) rather than hidden behind
-     the menu — it's a persistent utility control, not primary nav. */
+  /* Compact icon-only Sound button to save space next to MENU. */
   .sound-toggle {
     padding: 4px 8px;
     font-size: 0;
@@ -48,24 +40,6 @@
   .sound-toggle [data-sound-label]::before {
     content: '♪';
     font-size: 0.9rem;
-  }
-  .site-nav__toggle {
-    display: inline-flex;
-    font-family: var(--font-label);
-    font-size: var(--type-scale-small);
-    text-transform: uppercase;
-  }
-  .site-nav.is-menu-open .site-nav__links > li > a {
-    display: inline-flex;
-  }
-  .site-nav.is-menu-open .site-nav__links {
-    position: fixed;
-    inset: var(--nav-height) 0 0 0;
-    background: var(--color-bg);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: var(--space-5) var(--content-pad);
-    gap: var(--space-4);
   }
 
   .project-detail__meta { grid-template-columns: 1fr; }

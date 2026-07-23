@@ -22,7 +22,12 @@
       <span class="site-nav__mark-name" data-config="homepage.title">Sebastian Schistek</span>
       <span class="site-nav__mark-tagline" data-en="Portfolio — 2026" data-de="Portfolio — 2026">Portfolio — 2026</span>
     </a>
-    <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <div class="site-nav__controls">
+      <button class="site-nav__toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+      <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false" aria-label="Toggle ambient studio sound">
+          <span data-sound-label data-en="Sound: Off" data-de="Ton: Aus">Sound: Off</span>
+        </button>
+    </div>
     <ul class="site-nav__links">
       <li><a href="index.html" data-nav-link="home">Home</a></li>
       <li><a href="about.html" data-nav-link="about" class="">About</a></li>
@@ -30,11 +35,6 @@
       <li class="lang-toggle" role="group" aria-label="Language">
         <button data-lang-btn="en">EN</button>
         <button data-lang-btn="de">DE</button>
-      </li>
-      <li>
-        <button class="sound-toggle" type="button" data-sound-toggle aria-pressed="false" aria-label="Toggle ambient studio sound">
-          <span data-sound-label data-en="Sound: Off" data-de="Ton: Aus">Sound: Off</span>
-        </button>
       </li>
     </ul>
   </header>

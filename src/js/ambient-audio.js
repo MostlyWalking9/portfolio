@@ -4,10 +4,21 @@
    pages intentionally have NO background track — deliberately quieter,
    content-focused pages — but the same toggle still lives there as the
    master sound preference, gating the click-sound effects (portal-sfx,
-   click-sfx) site-wide. So this script works with or without an
-   <audio> element present; it just skips playback calls when there
-   isn't one. Preference is remembered for the rest of the browser
-   tab's session only. */
+   navigation-sfx) site-wide. Works with or without an <audio> element
+   present; it just skips playback calls when there isn't one.
+   Preference is remembered for the rest of the browser tab's session.
+
+   Real bug fixed here: the button used to optimistically claim "on"
+   the instant sessionStorage said so, before knowing whether
+   audio.play() actually succeeded. Browsers block autoplay without a
+   fresh user gesture, so restoring the preference on a new page load
+   (e.g. navigating from a section page back to Home) would silently
+   fail — but the button still showed "Sound: On", so the next click
+   read the (wrong) "on" state and just paused an already-paused track,
+   looking completely unresponsive. A second click was needed to
+   actually resume. Fixed by making the real <audio> element the only
+   source of truth: the button's label/pressed-state is driven by the
+   audio's own play/pause events, never assumed. */
 
 (function () {
   const btn = document.querySelector('[data-sound-toggle]');
@@ -34,43 +45,58 @@
     labelEl.textContent = copy[currentLang()] || copy.en;
   }
 
-  function disableControl() {
-    btn.disabled = true;
-    btn.setAttribute('aria-pressed', 'false');
-    btn.setAttribute('aria-label', 'Ambient studio sound unavailable');
-    paintLabel(false);
-  }
-
-  function setState(on) {
+  function setPressed(on) {
     btn.setAttribute('aria-pressed', String(on));
     paintLabel(on);
-    sessionStorage.setItem(STORAGE_KEY, on ? '1' : '0');
-    if (!audio) return; // this page has no ambient track — toggle still controls click-sfx elsewhere
-    if (on) {
-      audio.play().catch(() => { /* blocked or missing — error handler below covers missing file */ });
-    } else {
-      audio.pause();
-    }
   }
 
-  if (audio) {
-    audio.addEventListener('error', disableControl, { once: true });
-    audio.load();
+  function disableControl() {
+    btn.disabled = true;
+    setPressed(false);
+    btn.setAttribute('aria-label', 'Ambient studio sound unavailable');
   }
+
+  if (!audio) {
+    // No track on this page (section/project) — the toggle still
+    // exists purely to control click-sfx elsewhere. Reflect the stored
+    // preference directly since there's no real playback to track.
+    setPressed(sessionStorage.getItem(STORAGE_KEY) === '1');
+    btn.addEventListener('click', () => {
+      const next = btn.getAttribute('aria-pressed') !== 'true';
+      sessionStorage.setItem(STORAGE_KEY, next ? '1' : '0');
+      setPressed(next);
+    });
+    return;
+  }
+
+  // Audio's own events are the only source of truth for what the
+  // button shows — never an assumption about whether play() worked.
+  audio.addEventListener('play', () => {
+    setPressed(true);
+    sessionStorage.setItem(STORAGE_KEY, '1');
+  });
+  audio.addEventListener('pause', () => {
+    setPressed(false);
+    sessionStorage.setItem(STORAGE_KEY, '0');
+  });
+  audio.addEventListener('error', disableControl, { once: true });
+  audio.load();
 
   btn.addEventListener('click', () => {
     if (btn.disabled) return;
-    const next = btn.getAttribute('aria-pressed') !== 'true';
-    setState(next);
+    if (audio.paused) {
+      audio.play().catch(() => { /* blocked — button correctly stays "off", one more click (a real gesture) will work */ });
+    } else {
+      audio.pause();
+    }
   });
 
-  // Restore this tab session's preference. Calling play() here is a
-  // deliberate choice — it only fires when the user already turned sound
-  // on earlier in this same session (a real prior gesture), never on a
-  // first visit. Browsers may still block it without a fresh gesture;
-  // that's fine, the button stays accurate and clickable either way.
+  // Attempt to restore this tab session's preference. If the browser
+  // blocks it (no fresh gesture on this load), the audio simply stays
+  // paused and the button correctly stays "off" — no lying, no stuck
+  // state. The very next click is a real gesture and will work.
   if (sessionStorage.getItem(STORAGE_KEY) === '1') {
-    setState(true);
+    audio.play().catch(() => {});
   } else {
     paintLabel(false);
   }
