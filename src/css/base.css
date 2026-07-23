@@ -85,19 +85,16 @@ button {
 
 /* --------------------------------------------------------------------
    Studio hub atmosphere — a soft pale-blue gradient with very subtle
-   grain, used only by the hub chrome (hero, about/contact CTA blocks,
-   footer). Deliberately literal --studio-* tokens, not the dynamic
-   --color-bg alias, so this chrome stays calm no matter which chapter
-   is scrolled into view elsewhere on the page.
-   -------------------------------------------------------------------- */
+   grain, used only by the homepage hero and its teaser blocks.
+   Deliberately literal --studio-* tokens, not the dynamic --color-bg
+   alias, so the homepage always reads the same regardless of which
+   section a visitor was last on. Nav and footer are NOT pinned here —
+   each section/project page is its own full page now (not a chapter
+   scrolled past within one long homepage), so nav and footer should
+   adopt that page's theme like everything else on it, or text ends up
+   fighting its own background for contrast. */
 .hero,
-.section-block,
-.site-footer,
-.site-nav {
-  /* Pin the shared token names back to the studio hub locally — this
-     chrome must stay calm even while --accent-current / --font-label /
-     --color-* are being mirrored onto <body> for a chapter scrolled
-     into view elsewhere on the page. */
+.section-block {
   --accent-current:   var(--studio-action);
   --color-bg:          var(--studio-bg);
   --color-text:        var(--studio-text);

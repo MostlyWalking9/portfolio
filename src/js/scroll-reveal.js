@@ -29,30 +29,6 @@
   observeReveals();
   document.addEventListener('content-injected', observeReveals);
 
-  // Chapter accent: swap --accent-current on <body> as each chapter dominates viewport
-  function observeChapters() {
-    const chapters = document.querySelectorAll('[data-chapter]');
-    if (!('IntersectionObserver' in window) || !chapters.length) return;
-
-    const chapterObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          document.body.dataset.activeChapter = entry.target.dataset.chapter;
-        } else if (document.body.dataset.activeChapter === entry.target.dataset.chapter) {
-          // Chapter scrolled out with nothing else taking its place yet —
-          // fall back to the studio hub default rather than staying stuck
-          // on the last chapter's identity (matters for nav + focus rings).
-          delete document.body.dataset.activeChapter;
-        }
-      });
-    }, { threshold: 0.5 });
-
-    chapters.forEach((el) => chapterObserver.observe(el));
-  }
-
-  observeChapters();
-  document.addEventListener('content-injected', observeChapters);
-
   // Nav background toggle after scrolling past hero
   if (nav) {
     const onScroll = () => {
