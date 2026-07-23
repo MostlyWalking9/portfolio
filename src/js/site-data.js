@@ -139,21 +139,12 @@
     const grid = document.querySelector('[data-portal-grid]');
     if (!grid) return;
 
+    const chapterWord = currentLang() === 'de' ? 'Kapitel' : 'Chapter';
     grid.innerHTML = config.sections.map((s, i) => `
       <a class="principle-card principle-card--${s.id}" href="section.html?section=${s.id}">
-        <span class="principle-card__media">
-          ${mediaMarkup(s.cover, pick(s.title), 'class="principle-card__media-img is-shown"')}
-        </span>
-        <span class="principle-card__scrim" aria-hidden="true"></span>
-        <span class="principle-card__body">
-          <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">
-            <span class="principle-card__number">0${i + 1}</span>
-            <span>${pick(s.subtitle)}</span>
-          </span>
-          <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}${s.headingColor ? `color:${s.headingColor};` : ''}">${pick(s.title)}</h2>
-          <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${pick(s.introText)}</p>
-          <span class="principle-card__explore" data-en="Explore →" data-de="Entdecken →">Explore →</span>
-        </span>
+        <span class="principle-card__eyebrow" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${chapterWord} 0${i + 1}</span>
+        <h2 class="principle-card__title" style="${s.headingFont ? `font-family:${s.headingFont};` : ''}${s.headingColor ? `color:${s.headingColor};` : ''}">${pick(s.title)}</h2>
+        <p class="principle-card__desc" style="${s.bodyFont ? `font-family:${s.bodyFont};` : ''}${s.bodyColor ? `color:${s.bodyColor};` : ''}">${pick(s.introText)}</p>
       </a>`).join('');
 
     document.dispatchEvent(new CustomEvent('content-injected'));
@@ -214,7 +205,7 @@
           return `
             <a class="discipline-switch__btn${isCurrent ? ' is-current' : ''}"
                href="section.html?section=${s.id}"
-               style="background:${t.bg}; color:${t.text}; border-color:${t.border};">
+               style="background:${t.bg}; color:${t.text}; border-color:${t.border};${s.headingFont ? ` font-family:${s.headingFont};` : ''}">
               ${pick(s.title)}
             </a>`;
         }).join('')}

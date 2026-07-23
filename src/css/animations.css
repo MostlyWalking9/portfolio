@@ -87,35 +87,24 @@
   [data-chapter="technical"] .project-card:hover::after { animation: none !important; opacity: 0 !important; }
   [data-chapter="design"] .project-card::before { transition: none !important; }
 
-  /* Category panels: one static image, no scaling, no sequencing —
-     enforced at the CSS layer so it holds even if JS ran before this
-     media query was read. */
-  .principle-card,
-  .principle-card__body,
-  .principle-card__explore,
-  .principle-card__media-img,
-  .principle-card__scrim::after {
+  /* Discipline cards: no scaling, no glow fade, no rotate/shift on
+     hover under reduced motion — text and color state still change,
+     just without the motion. */
+  .principle-card {
     transition: opacity 150ms linear !important;
   }
-  .principle-card:hover,
-  .principle-card.is-active { transform: none !important; }
-  .principle-card__body,
-  .principle-card.is-active .principle-card__body { transform: none !important; }
-  .principle-card__media-img:not(:first-child) { display: none !important; }
-  .principle-card__media-img:first-child { opacity: 1 !important; }
+  .principle-card::before { transition: none !important; opacity: 0 !important; }
+  .principle-grid .principle-card.is-active,
+  .principle-grid .principle-card--creative.is-active,
+  .principle-grid .principle-card--design.is-active,
+  .principle-grid .principle-card--technical.is-active { transform: none !important; }
   .principle-card--technical .principle-card__title::after { animation: none !important; opacity: 1; }
   .principle-card.is-selected,
-  .principle-card.is-selected .principle-card__media-img,
   .principle-grid.is-transitioning .principle-card:not(.is-selected),
   .hero__intro.is-fading,
   .hero__eyebrow-row.is-fading {
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
-  }
-  .principle-card--creative:hover, .principle-card--creative.is-active,
-  .principle-card--design:hover, .principle-card--design.is-active,
-  .principle-card--technical:hover, .principle-card--technical.is-active {
-    animation: none !important;
   }
 }

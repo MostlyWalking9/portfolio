@@ -12,71 +12,71 @@
      nav, footer, hero, about/contact/work/project chrome all use this
      unless a [data-chapter] / body[data-active-chapter] scope overrides it.
      ------------------------------------------------------------------ */
-  --studio-bg:            #F2F1EC;
-  --studio-bg-alt:        #E8EFF2;
-  --studio-surface:       #FAFAF7;
-  --studio-surface-hover: #E1EBEF;
-  --studio-text:          #20272B;
-  --studio-text-muted:    #68747A;
-  --studio-accent:        #7296A6;
-  --studio-accent-soft:   #BFD2DA;
-  --studio-action:        #315F75;
-  --studio-action-hover:  #234A5C;
+  --studio-bg:            #12100F;
+  --studio-bg-alt:        #1A1716;
+  --studio-surface:       #1A1716;
+  --studio-surface-hover: #24201E;
+  --studio-text:          #F3F0EB;
+  --studio-text-muted:    #9B948E;
+  --studio-accent:        #D8C6A8;
+  --studio-accent-soft:   #EADBC3;
+  --studio-action:        #D8C6A8;
+  --studio-action-hover:  #EADBC3;
   --studio-warm-detail:   #B9936B;
-  --studio-border:        #D2D8D9;
+  --studio-border:        #2F2A27;
 
   /* ------------------------------------------------------------------
      Creative / Game Art — dark blue-green atmosphere, parchment text
      ------------------------------------------------------------------ */
-  --creative-bg:          #08191B;
-  --creative-bg-alt:      #10282A;
-  --creative-surface:     #163436;
-  --creative-text:        #F0E9DA;
-  --creative-text-muted:  #AFC2BD;
-  --creative-accent:      #4CD6C4;
-  --creative-accent-deep: #168C89;
+  --creative-bg:          #0D0A09;
+  --creative-bg-alt:      #181211;
+  --creative-surface:     #181211;
+  --creative-text:        #F5F0E8;
+  --creative-text-muted:  #B7ADA5;
+  --creative-accent:      #E66A3A;
+  --creative-accent-deep: #C74434;
   --creative-red:         #C84B3C;
   --creative-green:       #718E62;
   --creative-orange:      #E59B46;
   --creative-blue:        #4E83B6;
-  --creative-border:      #315052;
-  --creative-action:      #35BBAE;
-  --creative-action-hover:#66E2D2;
+  --creative-border:      #4A2A21;
+  --creative-action:      #E66A3A;
+  --creative-action-hover:#C74434;
 
   /* ------------------------------------------------------------------
      Design / Production — warm cream, cobalt primary
      ------------------------------------------------------------------ */
-  --design-bg:            #F3EFE5;
-  --design-bg-alt:        #E9E3D5;
-  --design-surface:       #FAF8F2;
-  --design-text:          #202124;
-  --design-text-muted:    #68655F;
-  --design-blue:          #2756D8;
+  --design-bg:            #0E1114;
+  --design-bg-alt:        #171C20;
+  --design-surface:       #171C20;
+  --design-text:          #F2F4F5;
+  --design-text-muted:    #98A2A9;
+  --design-blue:          #3E78FF;
   --design-yellow:        #F2C84B;
   --design-orange:        #EE7738;
   --design-red:           #D84A43;
   --design-blue-soft:     #AFC6F5;
-  --design-border:        #CAC3B5;
-  --design-action:        #2756D8;
-  --design-action-hover:  #173CA8;
+  --design-border:        #2F3B43;
+  --design-action:        #3E78FF;
+  --design-action-hover:  #5FD8FF;
 
   /* ------------------------------------------------------------------
      Technical / Developer — near-black, terminal-green accent
      ------------------------------------------------------------------ */
-  --tech-bg:              #0B0D0E;
-  --tech-bg-alt:          #111518;
-  --tech-surface:         #171B1E;
-  --tech-surface-hover:   #1D2327;
-  --tech-text:            #EBEFF1;
-  --tech-text-muted:      #929CA2;
-  --tech-green:           #78D43B;
+  --tech-bg:              #0A0D0F;
+  --tech-bg-alt:          #14191C;
+  --tech-surface:         #14191C;
+  --tech-surface-hover:   #1C2428;
+  --tech-text:            #EDF1F3;
+  --tech-text-muted:      #8C989D;
+  --tech-green:           #74E03D;
   --tech-cyan:            #4CB7D8;
   --tech-blue:            #4385D7;
   --tech-amber:           #D9A441;
-  --tech-border:          #2A3034;
-  --tech-action:          #78D43B;
-  --tech-action-text:     #10150D;
-  --tech-action-hover:    #98E768;
+  --tech-border:          #2D393D;
+  --tech-action:          #74E03D;
+  --tech-action-text:     #08100A;
+  --tech-action-hover:    #46C7E4;
 
   /* ------------------------------------------------------------------
      Generic semantic aliases — every component reads these, never the
