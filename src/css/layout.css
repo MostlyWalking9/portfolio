@@ -32,8 +32,25 @@
 
 .site-nav__mark {
   font-family: var(--font-display);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  text-decoration: none;
+}
+
+.site-nav__mark-name {
   font-size: 1.1rem;
+  font-weight: 700;
   letter-spacing: 0.02em;
+  color: var(--color-text);
+}
+
+.site-nav__mark-tagline {
+  font-family: var(--font-label);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .site-nav__links {
@@ -144,14 +161,14 @@
 }
 
 .hero__title {
-  font-size: clamp(1.7rem, 3.8vw, 3.4rem);
+  font-size: clamp(1.45rem, 3.2vw, 2.9rem);
   margin-bottom: var(--space-2);
   color: var(--color-text);
 }
 
 .hero__subtitle {
   font-family: var(--font-body);
-  font-size: clamp(1rem, 1.3vw, 1.2rem);
+  font-size: clamp(0.86rem, 1.1vw, 1.02rem);
   color: var(--color-text-muted);
   margin-bottom: var(--space-3);
 }
@@ -168,8 +185,8 @@
   gap: var(--space-4);
   flex: 1 1 auto;
   min-height: 0;
-  max-width: 94%;
-  max-height: 92%;
+  max-width: 75%;
+  max-height: 74%;
   margin-inline: auto;
   align-self: center;
 }
@@ -196,7 +213,7 @@
 }
 
 .principle-card.is-dimmed { opacity: 0.72; }
-.principle-card.is-active { transform: scale(1.15); z-index: 3; }
+.principle-grid .principle-card.is-active { transform: scale(1.15); z-index: 3; }
 
 .principle-card__media {
   position: absolute;
@@ -310,7 +327,7 @@
   background: color-mix(in srgb, var(--creative-accent) 22%, transparent);
 }
 .principle-card--creative:hover,
-.principle-card--creative.is-active { box-shadow: 0 0 64px 8px color-mix(in srgb, var(--creative-accent) 100%, transparent); }
+.principle-card--creative.is-active { animation: glowPulseCreative 1.8s ease-in-out infinite; }
 
 /* Design — cream base, cobalt primary, crisp geometric register */
 .principle-card--design {
@@ -336,7 +353,7 @@
   background: color-mix(in srgb, var(--design-blue) 16%, transparent);
 }
 .principle-card--design:hover,
-.principle-card--design.is-active { box-shadow: 0 0 64px 8px color-mix(in srgb, var(--design-blue) 100%, transparent); }
+.principle-card--design.is-active { animation: glowPulseDesign 1.8s ease-in-out infinite; }
 
 /* Technical — near-black, terminal-green accent, monospace metadata */
 .principle-card--technical {
@@ -370,7 +387,21 @@
   background: color-mix(in srgb, var(--tech-green) 16%, transparent);
 }
 .principle-card--technical:hover,
-.principle-card--technical.is-active { box-shadow: 0 0 64px 8px color-mix(in srgb, var(--tech-green) 100%, transparent); }
+.principle-card--technical.is-active { animation: glowPulseTechnical 1.8s ease-in-out infinite; }
+
+
+@keyframes glowPulseCreative {
+  0%, 100% { box-shadow: 0 0 22px 4px color-mix(in srgb, var(--creative-accent) 45%, transparent); }
+  50%      { box-shadow: 0 0 45px 6px color-mix(in srgb, var(--creative-accent) 70%, transparent); }
+}
+@keyframes glowPulseDesign {
+  0%, 100% { box-shadow: 0 0 22px 4px color-mix(in srgb, var(--design-blue) 45%, transparent); }
+  50%      { box-shadow: 0 0 45px 6px color-mix(in srgb, var(--design-blue) 70%, transparent); }
+}
+@keyframes glowPulseTechnical {
+  0%, 100% { box-shadow: 0 0 22px 4px color-mix(in srgb, var(--tech-green) 45%, transparent); }
+  50%      { box-shadow: 0 0 45px 6px color-mix(in srgb, var(--tech-green) 70%, transparent); }
+}
 
 @keyframes blink {
   0%, 49% { opacity: 1; }
@@ -380,15 +411,21 @@
 /* --- Portal selection transition: click a section, it scales up over
    2s while the sound plays and everything else fades to 20%, then the
    subpage loads. Driven by portal-sfx.js adding/removing these classes. --- */
-.principle-card.is-selected {
+.principle-grid .principle-card.is-selected {
   transform: scale(1.35);
   z-index: 4;
   transition: transform 2000ms var(--ease-editorial);
 }
 
+.principle-card.is-selected .principle-card__media-img {
+  transition: transform 2000ms var(--ease-editorial);
+  transform: scale(1.12);
+}
+
 .principle-grid.is-transitioning .principle-card:not(.is-selected) {
   opacity: 0.2;
-  transition: opacity 2000ms var(--ease-editorial);
+  transform: scale(0.88);
+  transition: opacity 2000ms var(--ease-editorial), transform 2000ms var(--ease-editorial);
 }
 
 .hero__intro.is-fading,

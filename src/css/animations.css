@@ -105,11 +105,17 @@
   .principle-card__media-img:first-child { opacity: 1 !important; }
   .principle-card--technical .principle-card__title::after { animation: none !important; opacity: 1; }
   .principle-card.is-selected,
+  .principle-card.is-selected .principle-card__media-img,
   .principle-grid.is-transitioning .principle-card:not(.is-selected),
   .hero__intro.is-fading,
   .hero__eyebrow-row.is-fading {
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
+  }
+  .principle-card--creative:hover, .principle-card--creative.is-active,
+  .principle-card--design:hover, .principle-card--design.is-active,
+  .principle-card--technical:hover, .principle-card--technical.is-active {
+    animation: none !important;
   }
 }

@@ -49,6 +49,22 @@
     return (tag || '').replace(/_/g, ' ');
   }
 
+  function applyConfigText(config) {
+    document.querySelectorAll('[data-config]').forEach((el) => {
+      const path = el.dataset.config.split('.');
+      let val = config;
+      for (const key of path) val = val ? val[key] : undefined;
+      if (val == null) return;
+      if (typeof val === 'string') {
+        el.textContent = val;
+      } else {
+        el.setAttribute('data-en', val.en || '');
+        el.setAttribute('data-de', val.de || '');
+        el.textContent = val[currentLang()] || val.en || '';
+      }
+    });
+  }
+
   async function fetchAll() {
     const [config, categories, projects] = await Promise.all([
       fetch(BASE + 'site-config.json').then((r) => r.json()),
@@ -291,6 +307,7 @@
 
   fetchAll()
     .then((data) => {
+      applyConfigText(data.config);
       renderHomepage(data);
       renderSectionPage(data);
       renderProjectDetail(data);
