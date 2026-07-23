@@ -192,9 +192,9 @@
     const allTags = Array.from(new Set(sectionProjects.flatMap((p) => p.tags || []))).sort();
 
     const SECTION_TOKENS = {
-      creative:  { bg: 'var(--creative-bg)',  text: 'var(--creative-text)',  border: 'var(--creative-border)' },
-      design:    { bg: 'var(--design-bg)',    text: 'var(--design-text)',    border: 'var(--design-border)' },
-      technical: { bg: 'var(--tech-bg)',       text: 'var(--tech-text)',      border: 'var(--tech-border)' },
+      creative:  { bg: 'var(--creative-bg)',  text: 'var(--creative-text)',  border: 'var(--creative-accent)' },
+      design:    { bg: 'var(--design-bg)',    text: 'var(--design-text)',    border: 'var(--design-blue)' },
+      technical: { bg: 'var(--tech-bg)',       text: 'var(--tech-text)',      border: 'var(--tech-green)' },
     };
 
     const switcher = `
