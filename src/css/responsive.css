@@ -79,6 +79,27 @@
   .principle-card__desc { display: none; }
   .principle-card__title { font-size: clamp(1rem, 4.5vw, 1.2rem); margin-bottom: var(--space-1); }
   .principle-card__eyebrow { font-size: 0.62rem; margin-bottom: var(--space-1); }
+
+  /* Discipline switcher (on section pages): 3-across, no wrap — fluid
+     width instead of the fixed 170px desktop size. */
+  .discipline-switch {
+    flex-wrap: nowrap;
+    gap: var(--space-2);
+    padding-top: calc(var(--nav-height) + var(--space-3));
+  }
+  .discipline-switch__btn {
+    width: auto;
+    flex: 1 1 0;
+    height: 50px;
+    font-size: 0.68rem;
+    padding: var(--space-1);
+  }
+
+  /* Project detail: single-column media groups instead of cramped
+     3-across thumbnails, tags wrap naturally (already flex-wrap). */
+  .media-group__grid { grid-template-columns: 1fr; }
+  .media-group__item img,
+  .media-group__item video { aspect-ratio: 16 / 10; }
 }
 
 /* Safety net for short viewports (small phones in landscape, split-screen
