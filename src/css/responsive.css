@@ -25,14 +25,26 @@
 
 @media (max-width: 480px) {
   .project-grid, .work-grid { grid-template-columns: 1fr; }
-  .site-nav__links a:not(.lang-toggle *) { display: none; }
+
+  /* Nav: only the logo + hamburger stay always visible. Everything
+     else (Studio/About/Contact, EN/DE, Sound) lives behind the menu
+     toggle — including Sound, which is a <button> not an <a>, so it
+     needs its own rule rather than the old anchor-only selector that
+     let it silently overflow off-screen. */
+  .site-nav__links > li > a,
+  .site-nav__links > li > button.sound-toggle { display: none; }
+  .site-nav__mark-tagline { display: none; }
+  .site-nav__mark-name { font-size: 0.95rem; }
   .site-nav__toggle {
     display: inline-flex;
     font-family: var(--font-label);
     font-size: var(--type-scale-small);
     text-transform: uppercase;
   }
-  .site-nav.is-menu-open .site-nav__links a { display: inline; }
+  .site-nav.is-menu-open .site-nav__links > li > a,
+  .site-nav.is-menu-open .site-nav__links > li > button.sound-toggle {
+    display: inline-flex;
+  }
   .site-nav.is-menu-open .site-nav__links {
     position: fixed;
     inset: var(--nav-height) 0 0 0;
@@ -42,21 +54,31 @@
     padding: var(--space-5) var(--content-pad);
     gap: var(--space-4);
   }
-  .project-detail__meta { grid-template-columns: 1fr; }
-  .hero__title { max-width: 100%; }
-  .hero__subtitle { max-width: 100%; }
 
-  /* Mobile: 3 equal-height horizontal bands filling the same fixed
-     viewport — no horizontal or vertical scroll, ever. Cards keep the
-     same overlay pattern (media behind, text on top) just shorter. */
+  .project-detail__meta { grid-template-columns: 1fr; }
+  .hero__title { max-width: 100%; font-size: clamp(1.3rem, 6vw, 1.8rem); }
+  .hero__subtitle { max-width: 100%; font-size: 0.85rem; }
+  .hero__intro { margin-bottom: var(--space-3); }
+
+  /* Discipline cards: column stack, fluid width, short fixed-ish
+     height so all 3 plus the intro above stay in one no-scroll frame. */
   .principle-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-2);
   }
-  .principle-card__body { padding: var(--space-3); }
-  .principle-card__desc { font-size: 0.8rem; }
-  .principle-card__title { font-size: clamp(1.05rem, 5vw, 1.3rem); }
-  .principle-card__eyebrow { font-size: 0.65rem; }
+  .principle-card {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    flex: 1 1 0;
+    min-height: 0;
+    margin-inline: auto;
+    padding: var(--space-3);
+  }
+  .principle-card__desc { display: none; }
+  .principle-card__title { font-size: clamp(1rem, 4.5vw, 1.2rem); margin-bottom: var(--space-1); }
+  .principle-card__eyebrow { font-size: 0.62rem; margin-bottom: var(--space-1); }
 }
 
 /* Safety net for short viewports (small phones in landscape, split-screen
@@ -64,7 +86,6 @@
    than ever letting the homepage scroll. */
 @media (max-height: 640px) {
   .principle-card__desc { display: none; }
-  .principle-card__body { padding: var(--space-2); }
   .hero__subtitle { margin-bottom: var(--space-2); }
 }
 @media (max-height: 480px) {
