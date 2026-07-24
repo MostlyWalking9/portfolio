@@ -182,20 +182,22 @@
   text-align: center;
   padding: var(--space-2);
   color: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  border: 1px solid color-mix(in srgb, var(--btn-fill, var(--color-surface)) 50%, transparent);
   border-radius: var(--radius-md);
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.2;
-  background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 80%, transparent);
+  background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 20%, transparent);
   transition: transform 200ms var(--ease-editorial),
               border-width 100ms linear,
+              border-color 150ms var(--ease-editorial),
               background 200ms var(--ease-editorial);
 }
 
 .discipline-switch__btn:hover:not(.is-current) {
   transform: scale(1.1);
   border-width: 2px;
+  border-color: var(--btn-fill, var(--color-surface));
   background: var(--btn-fill, var(--color-surface));
 }
 
@@ -953,12 +955,79 @@ body.is-home-view .site-footer { display: none; }
   font-size: var(--type-scale-h3);
 }
 
+.library-row__track-wrap {
+  position: relative;
+}
+
 .library-row__track {
   display: flex;
   gap: var(--space-3);
   overflow-x: auto;
   padding-bottom: var(--space-2);
-  scrollbar-width: thin;
+  cursor: grab;
+  /* Hide the native scrollbar — replaced by .library-row__progress below. */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.library-row__track::-webkit-scrollbar {
+  display: none;
+}
+
+.library-row__track.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+/* Edge vignettes — plain absolutely-positioned overlays on the
+   non-scrolling wrapper, so they never move with the content and
+   don't need any sticky/flex-item trickery. Opacity toggled by JS
+   based on scroll position. */
+.library-row__track-wrap::before,
+.library-row__track-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: var(--space-2);
+  width: 64px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 1;
+  transition: opacity 200ms var(--ease-editorial);
+}
+
+.library-row__track-wrap::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg), transparent);
+}
+
+.library-row__track-wrap::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg), transparent);
+}
+
+.library-row__track-wrap.is-at-start::before { opacity: 0; }
+.library-row__track-wrap.is-at-end::after { opacity: 0; }
+
+/* Custom scroll progress bar — dark track, discipline-colored marker. */
+.library-row__progress {
+  position: relative;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--color-border);
+  margin-top: var(--space-1);
+  overflow: hidden;
+}
+
+.library-row__progress-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent-current);
+  transition: transform 100ms linear;
 }
 
 .library-row__track .project-card { flex-shrink: 0; }

@@ -287,9 +287,11 @@
             <span class="library-row__thumb">${mediaMarkup(category.cover, category.title)}</span>
             <h2 class="library-row__title">${category.title}</h2>
           </div>
-          <div class="library-row__track">
-            ${shown.map(tileMarkup).join('')}
-            ${hasMore ? `<button class="library-row__more" data-category-btn="${category.id}">More<br>→</button>` : ''}
+          <div class="library-row__track-wrap">
+            <div class="library-row__track">
+              ${shown.map(tileMarkup).join('')}
+              ${hasMore ? `<button class="library-row__more" data-category-btn="${category.id}">More<br>→</button>` : ''}
+            </div>
           </div>
         </div>`;
     }
