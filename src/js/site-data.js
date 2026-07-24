@@ -278,9 +278,6 @@
     }
 
     function libraryRowMarkup(category, categoryProjects) {
-      const ROW_LIMIT = 6;
-      const shown = categoryProjects.slice(0, ROW_LIMIT);
-      const hasMore = categoryProjects.length > ROW_LIMIT;
       return `
         <div class="library-row">
           <div class="library-row__header">
@@ -289,8 +286,8 @@
           </div>
           <div class="library-row__track-wrap">
             <div class="library-row__track">
-              ${shown.map(tileMarkup).join('')}
-              ${hasMore ? `<button class="library-row__more" data-category-btn="${category.id}">More<br>→</button>` : ''}
+              ${categoryProjects.map(tileMarkup).join('')}
+              <button class="library-row__more" data-category-btn="${category.id}">More<br>→</button>
             </div>
           </div>
         </div>`;
