@@ -79,12 +79,47 @@
     let startX = 0;
     let startScrollLeft = 0;
 
+    // Velocity tracking for momentum — recent (time, x) samples, used to
+    // estimate release speed so the scroll can keep gliding and
+    // decelerate afterward instead of stopping dead the instant the
+    // mouse is released, which is what felt clunky before.
+    let history = [];
+    let momentumFrame = null;
+
+    function stopMomentum() {
+      if (momentumFrame) { cancelAnimationFrame(momentumFrame); momentumFrame = null; }
+    }
+
+    function runMomentum(initialVelocity) {
+      let velocity = initialVelocity; // px/ms
+      const friction = 0.94; // per-frame decay — tuned to feel like a natural glide, not a long drift
+      let lastTime = performance.now();
+
+      function step(now) {
+        const dt = now - lastTime;
+        lastTime = now;
+        velocity *= Math.pow(friction, dt / 16.7); // normalize decay to ~60fps regardless of actual frame rate
+        track.scrollLeft -= velocity * dt;
+
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const hitBound = track.scrollLeft <= 0 || track.scrollLeft >= maxScroll;
+        if (Math.abs(velocity) < 0.02 || hitBound) {
+          momentumFrame = null;
+          return;
+        }
+        momentumFrame = requestAnimationFrame(step);
+      }
+      momentumFrame = requestAnimationFrame(step);
+    }
+
     track.addEventListener('pointerdown', (e) => {
       if (e.pointerType !== 'mouse') return;
+      stopMomentum();
       isPointerDown = true;
       isDragging = false;
       startX = e.clientX;
       startScrollLeft = track.scrollLeft;
+      history = [{ t: performance.now(), x: e.clientX }];
     });
 
     track.addEventListener('pointermove', (e) => {
@@ -96,6 +131,8 @@
       }
       if (isDragging) {
         track.scrollLeft = startScrollLeft - delta;
+        history.push({ t: performance.now(), x: e.clientX });
+        if (history.length > 6) history.shift(); // only need recent samples for velocity
       }
     });
 
@@ -109,6 +146,16 @@
         const suppressClick = (ev) => { ev.preventDefault(); ev.stopPropagation(); };
         track.addEventListener('click', suppressClick, { capture: true, once: true });
         setTimeout(() => track.removeEventListener('click', suppressClick, { capture: true }), 0);
+
+        // Estimate release velocity from the last couple of samples
+        // (not the whole drag — only recent motion reflects how fast
+        // the hand was actually moving at the moment of release).
+        const recent = history[history.length - 1];
+        const earlier = history[0];
+        if (recent && earlier && recent.t !== earlier.t) {
+          const vx = (recent.x - earlier.x) / (recent.t - earlier.t); // px/ms
+          if (Math.abs(vx) > 0.05) runMomentum(vx);
+        }
       }
       isDragging = false;
       track.classList.remove('is-dragging');

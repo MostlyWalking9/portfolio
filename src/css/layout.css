@@ -959,9 +959,12 @@ body.is-home-view .site-footer { display: none; }
 }
 
 .library-row__track {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, 160px);
   gap: var(--space-3);
   overflow-x: auto;
+  overflow-y: hidden;
   padding-bottom: var(--space-2);
   cursor: grab;
   /* Hide the native scrollbar — replaced by .library-row__progress below. */
@@ -1033,10 +1036,10 @@ body.is-home-view .site-footer { display: none; }
   transition: transform 100ms linear;
 }
 
-.library-row__track .project-card { flex-shrink: 0; }
+.library-row__track .project-card { min-width: 0; }
 
 .library-row__more {
-  flex-shrink: 0;
+  grid-row: span 2;
   width: 90px;
   display: flex;
   align-items: center;
@@ -1059,16 +1062,27 @@ body.is-home-view .site-footer { display: none; }
   border-color: var(--accent-current);
 }
 
-/* Wide/long "auto array" tile formats — a fixed row height, width
-   driven by aspect-ratio, so wide and long tiles sit naturally
-   side by side at different widths within the same row. */
-.library-row__track .project-card--wide,
-.library-grid .project-card--wide {
-  aspect-ratio: 16 / 10;
+/* Wide/long "auto array" tile formats. Wide (16:9) takes one grid row;
+   two wide tiles stack to occupy the same column as one long tile.
+   Long (2:3) spans both rows for the full column height. Width is
+   left to auto — aspect-ratio derives it from the fixed row height(s),
+   so each tile's natural proportions size the column correctly. */
+.library-row__track .project-card--wide {
+  grid-row: span 1;
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  width: auto;
 }
 
-.library-row__track .project-card--wide { height: 220px; width: auto; aspect-ratio: 16 / 10; }
-.library-row__track .project-card--long { height: 220px; width: auto; aspect-ratio: 3 / 4.6; }
+.library-row__track .project-card--long {
+  grid-row: span 2;
+  aspect-ratio: 2 / 3;
+  height: 100%;
+  width: auto;
+}
+
+.library-grid .project-card--wide { aspect-ratio: 16 / 9; }
+.library-grid .project-card--long { aspect-ratio: 2 / 3; }
 
 .library-grid {
   display: grid;
@@ -1076,9 +1090,6 @@ body.is-home-view .site-footer { display: none; }
   gap: var(--space-4);
   align-items: start;
 }
-
-.library-grid .project-card--wide { aspect-ratio: 16 / 10; }
-.library-grid .project-card--long { aspect-ratio: 3 / 4.6; }
 
 /* --- Project detail page --- */
 .project-detail__hero {
