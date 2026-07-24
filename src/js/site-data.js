@@ -16,8 +16,8 @@
   function mediaMarkup(src, alt, attrs) {
     if (!src) return '';
     return isVideo(src)
-      ? `<video src="${src}" ${attrs || ''} muted loop playsinline autoplay></video>`
-      : `<img src="${src}" alt="${alt}" ${attrs || ''} loading="lazy">`;
+      ? `<video src="${src}" ${attrs || ''} muted loop playsinline autoplay draggable="false"></video>`
+      : `<img src="${src}" alt="${alt}" ${attrs || ''} loading="lazy" draggable="false">`;
   }
 
   // Used for media-group grid tiles: uniform cover-fill sizing like
@@ -266,7 +266,7 @@
       const formatClass = p.tileFormat === 'long' ? 'project-card--long' : 'project-card--wide';
       const tagsHtml = (p.tags || []).slice(0, 3).map((t) => `<span class="project-card__tag">#${tagLabel(t)}</span>`).join('');
       return `
-        <a class="project-card ${formatClass}" href="project.html?slug=${encodeURIComponent(p.slug)}" data-reveal>
+        <a class="project-card ${formatClass}" href="project.html?slug=${encodeURIComponent(p.slug)}" data-reveal draggable="false">
           <span class="project-card__blackfill" aria-hidden="true"></span>
           ${mediaMarkup(src, p.title)}
           <div class="project-card__info">

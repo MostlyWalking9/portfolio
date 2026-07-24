@@ -63,6 +63,15 @@
     track.addEventListener('scroll', sync, { passive: true });
     window.addEventListener('resize', sync);
 
+    // Belt-and-braces: images/links have their own native "drag to move
+    // this" behavior that intercepts the gesture before our pointer
+    // handlers below ever see it (this was the actual bug — dragging
+    // while over a project worked nowhere except the empty gaps between
+    // cards, since only bare track background isn't natively
+    // draggable). draggable="false" on the markup handles most of it;
+    // this catches anything that slips through regardless of element.
+    track.addEventListener('dragstart', (e) => e.preventDefault());
+
     // Click-and-drag scroll, desktop only (touch already scrolls
     // natively and shouldn't fight with this).
     let isPointerDown = false;

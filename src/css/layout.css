@@ -181,28 +181,27 @@
   justify-content: center;
   text-align: center;
   padding: var(--space-2);
-  color: #FFFFFF;
-  border: 1px solid color-mix(in srgb, var(--btn-fill, var(--color-surface)) 50%, transparent);
+  color: #F5F0E8;
+  border: 1px solid #F5F0E8;
   border-radius: var(--radius-md);
   font-size: 0.85rem;
   font-weight: 600;
   line-height: 1.2;
-  background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 20%, transparent);
+  background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 13%, transparent);
   transition: transform 200ms var(--ease-editorial),
               border-width 100ms linear,
-              border-color 150ms var(--ease-editorial),
               background 200ms var(--ease-editorial);
 }
 
 .discipline-switch__btn:hover:not(.is-current) {
   transform: scale(1.1);
   border-width: 2px;
-  border-color: var(--btn-fill, var(--color-surface));
   background: var(--btn-fill, var(--color-surface));
 }
 
 .discipline-switch__btn.is-current {
-  border-color: #A8A8A8;
+  color: #B7ADA5;
+  border-color: #B7ADA5;
   background: transparent;
   transform: scale(0.9);
   cursor: default;
@@ -968,6 +967,10 @@ body.is-home-view .site-footer { display: none; }
   /* Hide the native scrollbar — replaced by .library-row__progress below. */
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.library-row__track * {
+  -webkit-user-drag: none;
 }
 
 .library-row__track::-webkit-scrollbar {
