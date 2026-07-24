@@ -103,11 +103,17 @@
   .principle-card.is-selected .principle-card__box,
   .principle-card.is-selected .principle-card__content,
   .principle-grid.is-transitioning .principle-card:not(.is-selected),
+  .project-card.is-selected,
+  .project-card.is-selected img,
+  .project-card.is-selected video,
+  .work-grid.is-transitioning .project-card:not(.is-selected),
+  .project-grid.is-transitioning .project-card:not(.is-selected),
   .hero__intro.is-fading,
   .hero__eyebrow-row.is-fading {
     animation: none !important;
     transition: none !important;
     transform: none !important;
+    filter: none !important;
     opacity: 1 !important;
   }
 }

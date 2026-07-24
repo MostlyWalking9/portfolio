@@ -600,10 +600,22 @@ body.is-home-view .site-footer { display: none; }
 
 .project-card img,
 .project-card video {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform var(--duration-slow) var(--ease-editorial);
+}
+
+/* Sits behind the cover image at the same size — invisible normally,
+   revealed as the image fades out during the selection transition
+   below, for a "zoom to black" cut instead of just zooming the photo. */
+.project-card__blackfill {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000;
 }
 
 /* Selecting a project plays the same move-to-center-then-fill-screen
@@ -612,16 +624,44 @@ body.is-home-view .site-footer { display: none; }
    the click sound enough time to actually finish playing before the
    real page navigation cuts it off. Project card text is a small
    caption overlay (not big display type), so a uniform scale here
-   doesn't need the same box/text-decoupling the hero cards needed. */
+   doesn't need the same box/text-decoupling the hero cards needed.
+   The cover image also fades out mid-zoom to reveal the black-fill
+   behind it — navigation.js cuts to the new page while this is still
+   mid-motion (already mostly black by then), for a hard-cut, camera-
+   zooming-to-black feel rather than a polished settle-then-cut. */
 .project-card.is-selected {
-  animation: cardMoveThenFill 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
   z-index: 20;
+  animation: cardMoveThenFill 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             cardZoomBlur 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.project-card.is-selected img,
+.project-card.is-selected video {
+  animation: coverFadeToBlack 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes cardMoveThenFill {
   0%   { transform: translate(0, 0) scale(1); }
   40%  { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(1.08); }
   100% { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(var(--fill-scale, 8)); }
+}
+
+@keyframes coverFadeToBlack {
+  0%   { opacity: 1; }
+  35%  { opacity: 1; }
+  75%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* Subtle zoom blur, peaking mid-scale where motion is fastest, mostly
+   cleared by the time the card is fully black — a lightweight stand-in
+   for true motion blur, which CSS can't do directionally, but reads
+   convincingly enough for a uniform "punching in" zoom like this one. */
+@keyframes cardZoomBlur {
+  0%   { filter: blur(0px); }
+  45%  { filter: blur(7px); }
+  80%  { filter: blur(1px); }
+  100% { filter: blur(0px); }
 }
 
 .work-grid.is-transitioning .project-card:not(.is-selected),

@@ -28,7 +28,7 @@
 (function () {
   const STORAGE_KEY = 'studio-sound-on';
   const NAV_DELAY_MS = 180;
-  const TRANSITION_MS = 1100;
+  const PROJECT_CUT_MS = 850; // fires mid-transition, once the cover has already faded to black (keyframe completes fade at 75% = 825ms of the 1100ms animation) — the page cut lands while still "mid-zoom" rather than waiting for the animation to fully settle first
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const sfx = new Audio(new URL('../assets/audio/portal-select.mp3', document.baseURI).href);
@@ -81,7 +81,7 @@
     card.classList.add('is-selected');
     if (grid) grid.classList.add('is-transitioning');
 
-    setTimeout(() => { window.location.href = href; }, TRANSITION_MS);
+    setTimeout(() => { window.location.href = href; }, PROJECT_CUT_MS);
   }
 
   document.addEventListener('click', (e) => {

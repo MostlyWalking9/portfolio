@@ -255,6 +255,7 @@
       const src = p.thumb || p.hero || '';
       return `
         <a class="project-card" href="project.html?slug=${encodeURIComponent(p.slug)}" data-reveal>
+          <span class="project-card__blackfill" aria-hidden="true"></span>
           ${mediaMarkup(src, p.title)}
           <div class="project-card__label">
             <h3>${p.title}</h3>
@@ -344,6 +345,7 @@
       const src = p.thumb || p.hero || '';
       return `
         <a class="project-card project-card--mini" href="project.html?slug=${encodeURIComponent(p.slug)}">
+          <span class="project-card__blackfill" aria-hidden="true"></span>
           ${mediaMarkup(src, p.title)}
           <div class="project-card__label"><h3>${p.title}</h3></div>
         </a>`;
