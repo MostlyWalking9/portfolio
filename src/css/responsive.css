@@ -12,7 +12,9 @@
 @media (min-width: 769px) {
   .site-nav__links {
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
     gap: var(--space-5);
     position: static;
     transform: none;
