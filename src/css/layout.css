@@ -795,6 +795,7 @@ body.is-home-view .site-footer { display: none; }
 @keyframes cardMoveThenFill {
   0%   { transform: translate(0, 0) scale(1); }
   40%  { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(1.08); }
+  80%  { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(var(--fill-scale, 8)); }
   100% { transform: translate(var(--move-x, 0), var(--move-y, 0)) scale(var(--fill-scale, 8)); }
 }
 

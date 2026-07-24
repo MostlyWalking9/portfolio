@@ -103,4 +103,9 @@
   // actually loaded, so back/forward behaves sensibly from the start.
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   window.history.replaceState({ page: currentPage }, '', currentPage);
+
+  window.addEventListener('unload', () => {});
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) window.location.reload();
+  });
 })();

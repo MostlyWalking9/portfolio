@@ -29,7 +29,7 @@
   const STORAGE_KEY = 'studio-sound-on';
   const NAV_DELAY_MS = 180;
   const SWITCH_CUT_MS = 700; // scale+fade window for the discipline-switch buttons — long enough for the click sound to be heard, shorter than the full project transition since it's a smaller UI moment
-  const PROJECT_CUT_MS = 850; // fires mid-transition, once the cover has already faded to black (keyframe completes fade at 75% = 825ms of the 1100ms animation) — the page cut lands while still "mid-zoom" rather than waiting for the animation to fully settle first
+  const PROJECT_CUT_MS = 950; // fires just after the scale-up keyframe completes at 80% (880ms of the 1100ms animation) and the fade-to-black completes at 75% (825ms) — so by the cut, the screen is already fully black and filled, not still mid-growth
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const sfx = new Audio(new URL('../assets/audio/portal-select.mp3', document.baseURI).href);
@@ -98,6 +98,24 @@
     const grid = card.closest('.library-row__track, .library-grid, .project-grid');
     if (grid && grid.classList.contains('is-transitioning')) return; // already mid-transition, ignore extra clicks
     setSelectionVars(card);
+
+    // Real bug fix: library rows scroll horizontally, which means they
+    // (and their wrapper, for the vignette) clip anything that
+    // overflows their bounds — including this card's own huge scale-up
+    // transform. Without this, the "zoom to black" only ever filled
+    // the row's small strip instead of the whole screen. Fix: pull the
+    // card out to be a direct child of <body>, pinned with position:
+    // fixed at exactly its current on-screen position first, so there
+    // is no visual jump — then the scale-up plays out unclipped.
+    const rect = card.getBoundingClientRect();
+    card.style.position = 'fixed';
+    card.style.top = `${rect.top}px`;
+    card.style.left = `${rect.left}px`;
+    card.style.width = `${rect.width}px`;
+    card.style.height = `${rect.height}px`;
+    card.style.margin = '0';
+    document.body.appendChild(card);
+
     card.classList.add('is-selected');
     if (grid) grid.classList.add('is-transitioning');
 
@@ -125,4 +143,14 @@
   // restore — see portal-sfx.js for the full reasoning. Same fix here
   // for the project-card transition, which had the same glitch.
   window.addEventListener('unload', () => {});
+
+  // Extra safeguard specifically for mobile Safari, whose bfcache
+  // behavior doesn't always fully respect the unload-listener opt-out
+  // above the same way Chrome does. If a bfcache restore is ever
+  // detected anyway, force a genuine hard reload rather than trust the
+  // frozen snapshot — guarantees a clean page every time, at the cost
+  // of a brief extra reload on the rare case this fires.
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) window.location.reload();
+  });
 })();

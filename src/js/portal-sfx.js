@@ -101,4 +101,14 @@
   // instead, which starts from clean state every time — no restore,
   // no stale animation frame, nothing to glitch.
   window.addEventListener('unload', () => {});
+
+  // Extra safeguard specifically for mobile Safari, whose bfcache
+  // behavior doesn't always fully respect the unload-listener opt-out
+  // above the same way Chrome does. If a bfcache restore is ever
+  // detected anyway, force a genuine hard reload rather than trust the
+  // frozen snapshot — guarantees a clean page every time, at the cost
+  // of a brief extra reload on the rare case this fires.
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted) window.location.reload();
+  });
 })();
