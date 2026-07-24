@@ -40,10 +40,18 @@
 
   // Mobile menu toggle
   const menuToggle = document.querySelector('.site-nav__toggle');
+  const menuClose = document.querySelector('[data-nav-close]');
+  const menuScrim = document.querySelector('[data-nav-scrim]');
   if (menuToggle && nav) {
     menuToggle.addEventListener('click', () => {
       const open = nav.classList.toggle('is-menu-open');
       menuToggle.setAttribute('aria-expanded', String(open));
     });
   }
+  function closeMenu() {
+    nav.classList.remove('is-menu-open');
+    if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+  }
+  if (menuClose) menuClose.addEventListener('click', closeMenu);
+  if (menuScrim) menuScrim.addEventListener('click', closeMenu);
 })();

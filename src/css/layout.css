@@ -63,10 +63,24 @@
 }
 
 .site-nav__links {
-  display: none;
+  display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(80vw, 340px);
+  background: var(--color-bg);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--content-pad);
+  transform: translateX(100%);
+  transition: transform 280ms var(--ease-editorial);
+  z-index: 150;
 }
 
 .site-nav__links a {
@@ -99,14 +113,35 @@
 }
 
 .site-nav.is-menu-open .site-nav__links {
-  display: flex;
+  transform: translateX(0);
+}
+
+.site-nav__close {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--content-pad);
+  font-size: 1.6rem;
+  line-height: 1;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: var(--space-1);
+}
+
+.site-nav__scrim {
   position: fixed;
-  inset: var(--nav-height) 0 0 0;
-  background: var(--color-bg);
-  flex-direction: column;
-  align-items: flex-start;
-  padding: var(--space-5) var(--content-pad);
-  gap: var(--space-4);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms var(--ease-editorial);
+  z-index: 140;
+}
+
+.site-nav.is-menu-open .site-nav__scrim {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* MENU + Sound sit together at the right, always visible regardless of
@@ -190,13 +225,15 @@
   background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 13%, transparent);
   transition: transform 200ms var(--ease-editorial),
               border-width 100ms linear,
-              background 200ms var(--ease-editorial);
+              border-color 150ms var(--ease-editorial),
+              color 150ms var(--ease-editorial);
 }
 
 .discipline-switch__btn:hover:not(.is-current) {
   transform: scale(1.1);
   border-width: 2px;
-  background: var(--btn-fill, var(--color-surface));
+  color: var(--btn-fill, var(--color-surface));
+  border-color: var(--btn-fill, var(--color-surface));
 }
 
 .discipline-switch__btn.is-current {
