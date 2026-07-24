@@ -87,6 +87,11 @@
   .media-group__grid { grid-template-columns: 1fr; }
   .media-group__item img,
   .media-group__item video { aspect-ratio: 16 / 10; }
+
+  .library-row__track .project-card--wide,
+  .library-row__track .project-card--long { height: 160px; }
+  .library-row__thumb { width: 36px; height: 36px; }
+  .library-row__title { font-size: 1.1rem; }
 }
 
 /* Safety net for short viewports (small phones in landscape, split-screen

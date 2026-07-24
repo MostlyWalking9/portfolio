@@ -189,7 +189,7 @@
   line-height: 1.2;
   background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 80%, transparent);
   transition: transform 200ms var(--ease-editorial),
-              border-width 200ms var(--ease-editorial),
+              border-width 100ms linear,
               background 200ms var(--ease-editorial);
 }
 
@@ -588,9 +588,9 @@ body.is-home-view .site-footer { display: none; }
 }
 
 /* Card labels inherit the chapter's identity too, at reading size */
-[data-chapter="creative"] .project-card__label h3 { font-family: var(--font-display-creative); font-style: italic; }
-[data-chapter="design"] .project-card__label h3 { font-family: var(--font-display-design); font-weight: 600; }
-[data-chapter="technical"] .project-card__label h3 { font-family: var(--font-display-technical); font-weight: 500; }
+[data-chapter="creative"] .project-card__info h3 { font-family: var(--font-display-creative); font-style: italic; }
+[data-chapter="design"] .project-card__info h3 { font-family: var(--font-display-design); font-weight: 600; }
+[data-chapter="technical"] .project-card__info h3 { font-family: var(--font-display-technical); font-weight: 500; }
 
 .chapter__intro {
   color: var(--color-text-muted);
@@ -661,7 +661,7 @@ body.is-home-view .site-footer { display: none; }
    mid-motion (already mostly black by then), for a hard-cut, camera-
    zooming-to-black feel rather than a polished settle-then-cut. */
 .project-card.is-selected {
-  z-index: 20;
+  z-index: 200;
   animation: cardMoveThenFill 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards,
              cardZoomBlur 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -671,23 +671,13 @@ body.is-home-view .site-footer { display: none; }
   animation: coverFadeToBlack 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.project-card.is-selected .project-card__label {
-  animation: labelFadeOut 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes labelFadeOut {
-  0%   { opacity: 1; }
-  40%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-/* Text label fades out fast and completely during the move-to-center
-   phase only (0-40%) — fully gone before the big upscale in phase 2
-   starts, so it never stretches with the zoom. */
-.project-card.is-selected .project-card__label {
+.project-card.is-selected .project-card__info {
   animation: labelFadeOutEarly 1100ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* Text fades out fast and completely during the move-to-center phase
+   only (0-40%) — fully gone before the big upscale in phase 2 starts,
+   so it never stretches with the zoom. */
 @keyframes labelFadeOutEarly {
   0%   { opacity: 1; }
   40%  { opacity: 0; }
@@ -718,7 +708,8 @@ body.is-home-view .site-footer { display: none; }
   100% { filter: blur(0px); }
 }
 
-.work-grid.is-transitioning .project-card:not(.is-selected),
+.library-row__track.is-transitioning .project-card:not(.is-selected),
+.library-grid.is-transitioning .project-card:not(.is-selected),
 .project-grid.is-transitioning .project-card:not(.is-selected) {
   opacity: 0.2;
   transform: scale(0.92);
@@ -793,26 +784,55 @@ body.is-home-view .site-footer { display: none; }
   color: var(--accent-current);
 }
 
-.project-card__label {
+/* Project tile info: hidden by default, revealed on hover/focus over an
+   opaque block with an accent-colored left border. Thumbnail is all
+   that shows normally — title/role/tags only appear on hover. */
+.project-card__info {
   position: absolute;
   z-index: 3;
   left: 0; right: 0; bottom: 0;
   padding: var(--space-3);
-  background: linear-gradient(to top,
-    color-mix(in srgb, var(--color-bg) 92%, transparent),
-    transparent);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  border-left: 3px solid var(--accent-current);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 200ms var(--ease-editorial), transform 200ms var(--ease-editorial);
+  pointer-events: none;
 }
 
-.project-card__label h3 {
+.project-card:hover .project-card__info,
+.project-card:focus-visible .project-card__info {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card__info h3 {
   font-size: 1.05rem;
 }
 
-.project-card__label span {
+.project-card__role {
   display: block;
   font-family: var(--font-label);
   font-size: var(--type-scale-caption);
   color: var(--color-text-muted);
   margin-top: 2px;
+}
+
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: var(--space-2);
+}
+
+.project-card__tag {
+  font-family: var(--font-label);
+  font-size: 0.65rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 1px 7px;
 }
 
 /* --- About teaser / Contact CTA (studio-neutral — see base.css) --- */
@@ -900,12 +920,93 @@ body.is-home-view .site-footer { display: none; }
   border-color: var(--accent-current);
 }
 
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
-  padding-bottom: var(--space-7);
+.library { padding-bottom: var(--space-7); }
+
+.library-row {
+  margin-bottom: var(--space-6);
 }
+
+.library-row__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.library-row__thumb {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.library-row__thumb img,
+.library-row__thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.library-row__title {
+  font-size: var(--type-scale-h3);
+}
+
+.library-row__track {
+  display: flex;
+  gap: var(--space-3);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+  scrollbar-width: thin;
+}
+
+.library-row__track .project-card { flex-shrink: 0; }
+
+.library-row__more {
+  flex-shrink: 0;
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-label);
+  font-size: var(--type-scale-small);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  background: none;
+  cursor: pointer;
+  transition: color 150ms var(--ease-editorial), border-color 150ms var(--ease-editorial);
+}
+
+.library-row__more:hover {
+  color: var(--accent-current);
+  border-color: var(--accent-current);
+}
+
+/* Wide/long "auto array" tile formats — a fixed row height, width
+   driven by aspect-ratio, so wide and long tiles sit naturally
+   side by side at different widths within the same row. */
+.library-row__track .project-card--wide,
+.library-grid .project-card--wide {
+  aspect-ratio: 16 / 10;
+}
+
+.library-row__track .project-card--wide { height: 220px; width: auto; aspect-ratio: 16 / 10; }
+.library-row__track .project-card--long { height: 220px; width: auto; aspect-ratio: 3 / 4.6; }
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.library-grid .project-card--wide { aspect-ratio: 16 / 10; }
+.library-grid .project-card--long { aspect-ratio: 3 / 4.6; }
 
 /* --- Project detail page --- */
 .project-detail__hero {
@@ -1013,51 +1114,80 @@ body.is-home-view .site-footer { display: none; }
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: var(--space-3);
+  gap: var(--space-4);
   padding-block: var(--space-5);
+  align-items: stretch;
 }
 
 .category-card {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  background: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
   cursor: pointer;
+  text-align: left;
+  padding: 0;
 }
 
-.category-card__img {
-  position: absolute;
-  inset: 0;
+.category-card__thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.category-card__thumb img,
+.category-card__thumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.category-card__label {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
+/* Label is a separate, attached block below the thumbnail — styled
+   like the tag-filter buttons (bordered, fills solid on hover/active)
+   rather than an overlay on the image itself. */
+.category-card__tagbtn {
+  display: block;
+  margin-top: var(--space-2);
   padding: var(--space-2) var(--space-3);
-  background: linear-gradient(to top, rgba(14,13,12,0.9), transparent);
+  border: 1px solid var(--color-border);
   font-family: var(--font-label);
   font-size: var(--type-scale-small);
-  text-align: left;
+  letter-spacing: 0.03em;
+  text-align: center;
+  transition: background 150ms var(--ease-editorial), color 150ms var(--ease-editorial), border-color 150ms var(--ease-editorial);
 }
 
-.category-card.is-active {
+.category-card:hover .category-card__tagbtn,
+.category-card.is-active .category-card__tagbtn {
+  background: var(--accent-current);
+  color: var(--color-bg);
   border-color: var(--accent-current);
 }
 
+/* "All X" card: no thumbnail, centered text filling the same overall
+   height as a thumbnail+label card so the row stays visually aligned. */
 .category-card--all {
-  display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  transition: background 150ms var(--ease-editorial), color 150ms var(--ease-editorial), border-color 150ms var(--ease-editorial);
 }
-.category-card--all .category-card__label {
-  position: static;
-  background: none;
-  padding: 0;
+
+.category-card--all .category-card__all-label {
+  font-family: var(--font-label);
+  font-size: var(--type-scale-small);
+  letter-spacing: 0.03em;
+  text-align: center;
+  padding: var(--space-3);
+}
+
+.category-card--all:hover,
+.category-card--all.is-active {
+  background: var(--accent-current);
+  color: var(--color-bg);
+  border-color: var(--accent-current);
 }
 
 .project-card--mini {

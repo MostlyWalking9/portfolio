@@ -209,7 +209,7 @@
             <a class="discipline-switch__btn${isCurrent ? ' is-current' : ''}"
                href="section.html?section=${s.id}"
                data-discipline="${s.id}"
-               style="--btn-fill:${t.bg};${s.headingFont ? ` font-family:${s.headingFont};` : ''}">
+               style="--btn-fill:${t.border};${s.headingFont ? ` font-family:${s.headingFont};` : ''}">
               ${pick(s.title)}
             </a>`;
         }).join('')}
@@ -230,52 +230,93 @@
 
       <section class="container" data-category-grid-wrap ${nonEmptyCategories.length ? '' : 'hidden'}>
         <div class="category-grid" data-category-grid>
+          <button class="category-card category-card--all is-active" data-category-btn="all">
+            <span class="category-card__all-label">All ${pick(section.title)}</span>
+          </button>
           ${nonEmptyCategories.map((c) => `
             <button class="category-card" data-category-btn="${c.id}">
-              ${mediaMarkup(c.cover, c.title, 'class="category-card__img"')}
-              <span class="category-card__label">${c.title}</span>
+              <span class="category-card__thumb">${mediaMarkup(c.cover, c.title)}</span>
+              <span class="category-card__tagbtn">${c.title}</span>
             </button>`).join('')}
-          <button class="category-card category-card--all is-active" data-category-btn="all">
-            <span class="category-card__label">All ${pick(section.title)}</span>
-          </button>
         </div>
       </section>
 
       <section class="container">
-        <div class="work-grid" data-work-grid></div>
+        <div class="library" data-library></div>
       </section>
     `;
 
     const filterBtns = root.querySelectorAll('[data-tag-filters] button');
-    const categoryBtns = root.querySelectorAll('[data-category-btn]');
     let activeTag = 'all';
     let activeCategory = 'all';
 
-    function cardMarkup(p) {
+    // Manual "order" (set in the admin tool) wins when present; otherwise
+    // falls back to newest-first by date.
+    function sortProjects(items) {
+      return items.slice().sort((a, b) => {
+        if (a.order != null && b.order != null) return a.order - b.order;
+        if (a.order != null) return -1;
+        if (b.order != null) return 1;
+        return (b.date || '').localeCompare(a.date || '');
+      });
+    }
+
+    function tileMarkup(p) {
       const src = p.thumb || p.hero || '';
+      const formatClass = p.tileFormat === 'long' ? 'project-card--long' : 'project-card--wide';
+      const tagsHtml = (p.tags || []).slice(0, 3).map((t) => `<span class="project-card__tag">#${tagLabel(t)}</span>`).join('');
       return `
-        <a class="project-card" href="project.html?slug=${encodeURIComponent(p.slug)}" data-reveal>
+        <a class="project-card ${formatClass}" href="project.html?slug=${encodeURIComponent(p.slug)}" data-reveal>
           <span class="project-card__blackfill" aria-hidden="true"></span>
           ${mediaMarkup(src, p.title)}
-          <div class="project-card__label">
+          <div class="project-card__info">
             <h3>${p.title}</h3>
-            <span>${p.role || ''}</span>
+            ${p.role ? `<span class="project-card__role">${p.role}</span>` : ''}
+            ${tagsHtml ? `<div class="project-card__tags">${tagsHtml}</div>` : ''}
           </div>
         </a>`;
     }
 
+    function libraryRowMarkup(category, categoryProjects) {
+      const ROW_LIMIT = 6;
+      const shown = categoryProjects.slice(0, ROW_LIMIT);
+      const hasMore = categoryProjects.length > ROW_LIMIT;
+      return `
+        <div class="library-row">
+          <div class="library-row__header">
+            <span class="library-row__thumb">${mediaMarkup(category.cover, category.title)}</span>
+            <h2 class="library-row__title">${category.title}</h2>
+          </div>
+          <div class="library-row__track">
+            ${shown.map(tileMarkup).join('')}
+            ${hasMore ? `<button class="library-row__more" data-category-btn="${category.id}">More<br>→</button>` : ''}
+          </div>
+        </div>`;
+    }
+
     function paint() {
+      const lib = root.querySelector('[data-library]');
+
       let items = sectionProjects;
       if (activeCategory !== 'all') items = items.filter((p) => p.category === activeCategory);
       if (activeTag !== 'all') items = items.filter((p) => (p.tags || []).includes(activeTag));
 
-      const grid = root.querySelector('[data-work-grid]');
-      grid.innerHTML = items.length
-        ? items.map(cardMarkup).join('')
-        : `<p class="empty-state">No projects match this filter yet.</p>`;
+      if (activeTag !== 'all' || activeCategory !== 'all') {
+        // Filtered view: one flat auto-array grid (wide/long tiles mixed).
+        const sorted = sortProjects(items);
+        lib.innerHTML = sorted.length
+          ? `<div class="library-grid">${sorted.map(tileMarkup).join('')}</div>`
+          : `<p class="empty-state">No projects match this filter yet.</p>`;
+      } else {
+        // Default view: the library — one row per non-empty category.
+        lib.innerHTML = nonEmptyCategories.map((c) => {
+          const catProjects = sortProjects(sectionProjects.filter((p) => p.category === c.id));
+          return libraryRowMarkup(c, catProjects);
+        }).join('') || `<p class="empty-state">No projects yet.</p>`;
+      }
 
       filterBtns.forEach((b) => b.classList.toggle('is-active', b.dataset.tag === activeTag));
-      categoryBtns.forEach((b) => b.classList.toggle('is-active', b.dataset.categoryBtn === activeCategory));
+      root.querySelectorAll('[data-category-btn]').forEach((b) => b.classList.toggle('is-active', b.dataset.categoryBtn === activeCategory));
 
       document.dispatchEvent(new CustomEvent('content-injected'));
     }
@@ -283,8 +324,15 @@
     filterBtns.forEach((btn) => {
       btn.addEventListener('click', () => { activeTag = btn.dataset.tag; paint(); });
     });
-    categoryBtns.forEach((btn) => {
-      btn.addEventListener('click', () => { activeCategory = btn.dataset.categoryBtn; paint(); });
+
+    // Category buttons AND each row's "More" button share this handler
+    // (both set activeCategory and re-paint) — delegated so it also
+    // catches "More" buttons that get created/replaced by paint() itself.
+    root.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-category-btn]');
+      if (!btn) return;
+      activeCategory = btn.dataset.categoryBtn;
+      paint();
     });
 
     paint();
@@ -347,7 +395,7 @@
         <a class="project-card project-card--mini" href="project.html?slug=${encodeURIComponent(p.slug)}">
           <span class="project-card__blackfill" aria-hidden="true"></span>
           ${mediaMarkup(src, p.title)}
-          <div class="project-card__label"><h3>${p.title}</h3></div>
+          <div class="project-card__info"><h3>${p.title}</h3></div>
         </a>`;
     }
 

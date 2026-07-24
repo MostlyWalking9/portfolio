@@ -95,7 +95,7 @@
       return;
     }
 
-    const grid = card.closest('.work-grid, .project-grid');
+    const grid = card.closest('.library-row__track, .library-grid, .project-grid');
     if (grid && grid.classList.contains('is-transitioning')) return; // already mid-transition, ignore extra clicks
     setSelectionVars(card);
     card.classList.add('is-selected');

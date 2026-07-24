@@ -60,7 +60,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "robot-concepts",
@@ -101,7 +103,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "elemental-characters",
@@ -152,7 +156,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "environment-illustrations",
@@ -202,7 +208,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "doodle-illustrations",
@@ -246,7 +254,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "rob-and-rob",
@@ -289,7 +299,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "sechser-logo",
@@ -326,7 +338,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "artray-logo",
@@ -349,7 +363,9 @@
     ],
     "heroScale": "full",
     "mediaGroups": [],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "english-works-logo",
@@ -372,7 +388,9 @@
     ],
     "heroScale": "full",
     "mediaGroups": [],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "weinco-campaign",
@@ -429,7 +447,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "drbohl-interview-thumbnails",
@@ -469,7 +489,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "drbohl-schnitzel-intro",
@@ -493,7 +515,9 @@
     ],
     "heroScale": "full",
     "mediaGroups": [],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "drbohl-merch-video",
@@ -517,7 +541,9 @@
     ],
     "heroScale": "full",
     "mediaGroups": [],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "griechenbeisl-website",
@@ -555,7 +581,9 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   },
   {
     "slug": "drbohl-website",
@@ -599,6 +627,8 @@
         ]
       }
     ],
-    "date": ""
+    "date": "",
+    "tileFormat": "wide",
+    "order": null
   }
 ]

@@ -110,7 +110,8 @@
   .discipline-switch__btn.is-selected,
   .discipline-switch.is-transitioning .discipline-switch__btn:not(.is-selected),
   .project-card.is-selected .project-card__label,
-  .work-grid.is-transitioning .project-card:not(.is-selected),
+  .library-row__track.is-transitioning .project-card:not(.is-selected),
+  .library-grid.is-transitioning .project-card:not(.is-selected),
   .project-grid.is-transitioning .project-card:not(.is-selected),
   .hero__intro.is-fading,
   .hero__eyebrow-row.is-fading {
