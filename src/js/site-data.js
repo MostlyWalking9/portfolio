@@ -139,7 +139,7 @@
     const grid = document.querySelector('[data-portal-grid]');
     if (!grid) return;
 
-    const chapterWord = currentLang() === 'de' ? 'Kapitel' : 'Chapter';
+    const chapterWord = currentLang() === 'de' ? 'Disziplin' : 'Discipline';
     grid.innerHTML = config.sections.map((s, i) => `
       <a class="principle-card principle-card--${s.id}" href="section.html?section=${s.id}">
         <span class="principle-card__box" aria-hidden="true"></span>
@@ -194,23 +194,18 @@
 
     const allTags = Array.from(new Set(sectionProjects.flatMap((p) => p.tags || []))).sort();
 
-    const SECTION_TOKENS = {
-      creative:  { bg: 'var(--creative-bg)',  text: 'var(--creative-text)',  border: 'var(--creative-accent)' },
-      design:    { bg: 'var(--design-bg)',    text: 'var(--design-text)',    border: 'var(--design-blue)' },
-      technical: { bg: 'var(--tech-bg)',       text: 'var(--tech-text)',      border: 'var(--tech-green)' },
-    };
-
     const switcher = `
       <div class="discipline-switch container">
         ${config.sections.map((s) => {
-          const t = SECTION_TOKENS[s.id] || {};
           const isCurrent = s.id === sectionId;
+          const titleHtml = s.id === 'technical'
+            ? `<span class="discipline-switch__btn-title"><span class="discipline-switch__caret">&gt;</span> ${pick(s.title)}<span class="discipline-switch__cursor">_</span></span>`
+            : `<span class="discipline-switch__btn-title">${pick(s.title)}</span>`;
           return `
-            <a class="discipline-switch__btn${isCurrent ? ' is-current' : ''}"
+            <a class="discipline-switch__btn discipline-switch__btn--${s.id}${isCurrent ? ' is-current' : ''}"
                href="section.html?section=${s.id}"
-               data-discipline="${s.id}"
-               style="--btn-fill:${t.border};${s.headingFont ? ` font-family:${s.headingFont};` : ''}">
-              ${pick(s.title)}
+               data-discipline="${s.id}">
+              ${titleHtml}
             </a>`;
         }).join('')}
       </div>`;

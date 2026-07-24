@@ -216,32 +216,102 @@
   justify-content: center;
   text-align: center;
   padding: var(--space-2);
-  color: #F5F0E8;
-  border: 1px solid #F5F0E8;
-  border-radius: var(--radius-md);
-  font-size: 0.85rem;
-  font-weight: 600;
-  line-height: 1.2;
-  background: color-mix(in srgb, var(--btn-fill, var(--color-surface)) 13%, transparent);
+  border: 1px solid var(--color-border);
   transition: transform 200ms var(--ease-editorial),
               border-width 100ms linear,
               border-color 150ms var(--ease-editorial),
-              color 150ms var(--ease-editorial);
+              background 150ms var(--ease-editorial),
+              filter 150ms var(--ease-editorial);
+}
+
+.discipline-switch__btn-title {
+  font-size: 0.85rem;
+  line-height: 1.2;
 }
 
 .discipline-switch__btn:hover:not(.is-current) {
   transform: scale(1.1);
   border-width: 2px;
-  color: var(--btn-fill, var(--color-surface));
-  border-color: var(--btn-fill, var(--color-surface));
 }
 
+/* Creative — same warm, organic-corner identity as the homepage card,
+   scaled down to a compact button. */
+.discipline-switch__btn--creative {
+  background: var(--creative-bg);
+  color: var(--creative-text);
+  border-color: var(--creative-border);
+  border-radius: 14px 4px 14px 4px;
+}
+.discipline-switch__btn--creative .discipline-switch__btn-title {
+  font-family: var(--font-heading-creative);
+  font-style: italic;
+  font-weight: 600;
+}
+.discipline-switch__btn--creative:hover:not(.is-current) {
+  border-color: var(--creative-accent);
+}
+
+/* Design — crisp, geometric, thicker border. */
+.discipline-switch__btn--design {
+  background: var(--design-bg);
+  color: var(--design-text);
+  border-color: var(--design-border);
+  border-width: 2px;
+  border-radius: 0;
+}
+.discipline-switch__btn--design .discipline-switch__btn-title {
+  font-family: var(--font-heading-design);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: 0.8rem;
+}
+.discipline-switch__btn--design:hover:not(.is-current) {
+  border-color: var(--design-blue);
+}
+
+/* Technical — terminal register, dashed border, caret + blinking cursor. */
+.discipline-switch__btn--technical {
+  background: var(--tech-bg);
+  color: var(--tech-text);
+  border-color: var(--tech-border);
+  border-style: dashed;
+  border-radius: 2px;
+}
+.discipline-switch__btn--technical .discipline-switch__btn-title {
+  font-family: var(--font-heading-tech);
+  font-weight: 500;
+  text-transform: lowercase;
+  font-size: 0.78rem;
+}
+.discipline-switch__caret,
+.discipline-switch__cursor {
+  color: var(--tech-green);
+}
+.discipline-switch__cursor {
+  animation: blink 1.1s step-end infinite;
+}
+.discipline-switch__btn--technical:hover:not(.is-current) {
+  border-color: var(--tech-green);
+  border-style: solid;
+}
+
+/* Active/current discipline: muted grey, no fill, no hover, slightly
+   smaller — overrides the variant's own colors regardless of which
+   discipline it is. */
 .discipline-switch__btn.is-current {
   color: #B7ADA5;
   border-color: #B7ADA5;
   background: transparent;
+  border-style: solid;
+  border-width: 1px;
   transform: scale(0.9);
   cursor: default;
+}
+.discipline-switch__btn.is-current .discipline-switch__caret,
+.discipline-switch__btn.is-current .discipline-switch__cursor {
+  color: inherit;
+  animation: none;
 }
 
 /* Selecting a discipline: this button scales up 15% while the other two
