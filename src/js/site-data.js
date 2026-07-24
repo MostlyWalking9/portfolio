@@ -205,11 +205,11 @@
         ${config.sections.map((s) => {
           const t = SECTION_TOKENS[s.id] || {};
           const isCurrent = s.id === sectionId;
-          const borderStyle = isCurrent ? '' : `border-color:${t.border};`;
           return `
             <a class="discipline-switch__btn${isCurrent ? ' is-current' : ''}"
                href="section.html?section=${s.id}"
-               style="background:${t.bg}; color:${t.text}; ${borderStyle}${s.headingFont ? ` font-family:${s.headingFont};` : ''}">
+               data-discipline="${s.id}"
+               style="--btn-fill:${t.bg};${s.headingFont ? ` font-family:${s.headingFont};` : ''}">
               ${pick(s.title)}
             </a>`;
         }).join('')}

@@ -28,6 +28,7 @@
 (function () {
   const STORAGE_KEY = 'studio-sound-on';
   const NAV_DELAY_MS = 180;
+  const SWITCH_CUT_MS = 700; // scale+fade window for the discipline-switch buttons — long enough for the click sound to be heard, shorter than the full project transition since it's a smaller UI moment
   const PROJECT_CUT_MS = 850; // fires mid-transition, once the cover has already faded to black (keyframe completes fade at 75% = 825ms of the 1100ms animation) — the page cut lands while still "mid-zoom" rather than waiting for the animation to fully settle first
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -65,6 +66,25 @@
     setTimeout(() => { window.location.href = link.href; }, NAV_DELAY_MS);
   }
 
+  function disciplineSwitchNavigate(e, btn) {
+    if (btn.classList.contains('is-current')) return; // already on this discipline, let it no-op
+    e.preventDefault();
+    const href = btn.href;
+    playSfx();
+
+    const switcher = btn.closest('.discipline-switch');
+    if (reduceMotion) {
+      setTimeout(() => { window.location.href = href; }, soundIsOn() ? 200 : 0);
+      return;
+    }
+    if (switcher && switcher.classList.contains('is-transitioning')) return;
+
+    btn.classList.add('is-selected');
+    if (switcher) switcher.classList.add('is-transitioning');
+
+    setTimeout(() => { window.location.href = href; }, SWITCH_CUT_MS);
+  }
+
   function projectCardNavigate(e, card) {
     e.preventDefault();
     const href = card.href;
@@ -90,18 +110,19 @@
       projectCardNavigate(e, projectCard);
       return;
     }
-    const quickLink = e.target.closest('.discipline-switch__btn, .site-nav__links a[data-nav-link]');
-    if (quickLink && quickLink.href) {
-      quickNavigate(e, quickLink);
+    const switchBtn = e.target.closest('.discipline-switch__btn');
+    if (switchBtn && switchBtn.href) {
+      disciplineSwitchNavigate(e, switchBtn);
+      return;
+    }
+    const navLink = e.target.closest('.site-nav__links a[data-nav-link]');
+    if (navLink && navLink.href) {
+      quickNavigate(e, navLink);
     }
   });
 
-  // Same bfcache fix as the homepage: a restored page could have a
-  // project card stuck mid-transition from right before the user
-  // clicked through — reset it so the page isn't left looking frozen.
-  window.addEventListener('pageshow', (e) => {
-    if (!e.persisted) return;
-    document.querySelectorAll('.work-grid.is-transitioning, .project-grid.is-transitioning').forEach((g) => g.classList.remove('is-transitioning'));
-    document.querySelectorAll('.project-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
-  });
+  // Force a full fresh reload on back/forward rather than a bfcache
+  // restore — see portal-sfx.js for the full reasoning. Same fix here
+  // for the project-card transition, which had the same glitch.
+  window.addEventListener('unload', () => {});
 })();

@@ -107,6 +107,8 @@
   .project-card.is-selected img,
   .project-card.is-selected video,
   .project-card.is-selected .project-card__label,
+  .discipline-switch__btn.is-selected,
+  .discipline-switch.is-transitioning .discipline-switch__btn:not(.is-selected),
   .project-card.is-selected .project-card__label,
   .work-grid.is-transitioning .project-card:not(.is-selected),
   .project-grid.is-transitioning .project-card:not(.is-selected),

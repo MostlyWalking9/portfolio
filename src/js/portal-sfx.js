@@ -88,21 +88,17 @@
   bindCards();
   document.addEventListener('content-injected', bindCards);
 
-  // Fix for a real bug: navigating back via browser back/forward can
-  // restore this exact page from the back/forward cache (bfcache) —
-  // including the is-selected/is-transitioning classes still applied
-  // from right before the user clicked through. Without this, the page
-  // comes back visually stuck (one card scaled up, others dimmed) AND
-  // functionally broken (the click handler above refuses new clicks
-  // while is-transitioning is present). `pageshow` with `persisted`
-  // true is the standard signal for "this is a bfcache restore, not a
-  // fresh load" — reset everything when that happens.
-  window.addEventListener('pageshow', (e) => {
-    if (!e.persisted) return;
-    const grid = document.querySelector('[data-portal-grid]');
-    if (!grid) return;
-    grid.classList.remove('is-transitioning');
-    grid.querySelectorAll('.principle-card.is-selected').forEach((el) => el.classList.remove('is-selected'));
-    document.querySelectorAll('.hero__intro.is-fading, .hero__eyebrow-row.is-fading').forEach((el) => el.classList.remove('is-fading'));
-  });
+  // Force a full fresh reload on back/forward instead of letting the
+  // browser restore this exact page from its back/forward cache
+  // (bfcache). The earlier fix (resetting stuck is-selected/
+  // is-transitioning classes on 'pageshow') stopped the page from
+  // staying visibly broken, but there was still a brief flash of the
+  // stale mid-transition state before that JS could run — especially
+  // noticeable on mobile. An empty 'unload' listener is the standard,
+  // deliberate way to opt a page out of bfcache entirely: browsers
+  // treat any unload listener as a signal the page can't be safely
+  // frozen-and-resumed, so back/forward always does a full fresh load
+  // instead, which starts from clean state every time — no restore,
+  // no stale animation frame, nothing to glitch.
+  window.addEventListener('unload', () => {});
 })();
