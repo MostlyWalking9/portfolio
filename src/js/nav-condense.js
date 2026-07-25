@@ -7,7 +7,7 @@
    Reverses the moment the switcher scrolls back into view. */
 
 (function () {
-  const CONTRACT_MS = 380; // must match the --mark-rest max-width transition duration in CSS
+  const CONTRACT_MS = 456; // must match the --mark-rest max-width transition duration in CSS
 
   function init() {
     const nav = document.querySelector('.site-nav');
@@ -99,8 +99,21 @@
       return logoLetterCenterFromOrigin - initialCenterFromOrigin;
     }
 
-    const shiftX = measureShift();
-    textEl.style.setProperty('--mark-shift-x', `${shiftX}px`);
+    function applyMeasuredShift() {
+      const shiftX = measureShift();
+      textEl.style.setProperty('--mark-shift-x', `${shiftX}px`);
+    }
+
+    // Measure once immediately (better than nothing if fonts are already
+    // cached/loaded), then re-measure once the real web font is
+    // confirmed loaded — measuring too early means measuring against
+    // the fallback font's metrics, which don't match the real font's
+    // glyph width/position once it swaps in, and that mismatch is
+    // exactly the kind of small persistent misalignment being reported.
+    applyMeasuredShift();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(applyMeasuredShift);
+    }
 
     const toggleIcon = document.querySelector('.site-nav__toggle-icon');
 

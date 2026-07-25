@@ -56,7 +56,7 @@
    slide in to take the name's place. */
 .site-nav__mark-text {
   display: inline-flex;
-  transition: transform 380ms var(--ease-editorial);
+  transition: transform 456ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .site-nav.is-condensed .site-nav__mark-text {
@@ -68,7 +68,7 @@
   max-width: 260px;
   overflow: hidden;
   white-space: nowrap;
-  transition: max-width 380ms var(--ease-editorial);
+  transition: max-width 456ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .site-nav.is-condensed .site-nav__mark-rest {
@@ -91,8 +91,9 @@
 .site-nav__mark-logo {
   display: none;
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 0;
+  transform: translateY(-50%);
   align-items: center;
   justify-content: center;
   width: 1.7em;
@@ -120,7 +121,7 @@
 }
 
 .site-nav__mark-logo.is-drawing .site-nav__mark-logo-ring circle {
-  animation: navLogoDraw 420ms var(--ease-editorial) forwards;
+  animation: navLogoDraw 504ms cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 @keyframes navLogoDraw {
@@ -148,7 +149,7 @@
   opacity: 0;
   transform: scaleX(0);
   transform-origin: center center;
-  transition: max-width 350ms var(--ease-editorial), transform 350ms var(--ease-editorial), opacity 250ms var(--ease-editorial), margin 350ms var(--ease-editorial);
+  transition: max-width 420ms cubic-bezier(0.65, 0, 0.35, 1), transform 420ms cubic-bezier(0.65, 0, 0.35, 1), opacity 300ms cubic-bezier(0.65, 0, 0.35, 1), margin 420ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .site-nav.is-switcher-visible .site-nav__mini-switch {
@@ -204,6 +205,7 @@
 .site-nav__mark-name {
   position: relative;
   display: inline-block;
+  height: 1.9rem;
   font-size: 1.32rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -333,7 +335,7 @@
   overflow: hidden;
   white-space: nowrap;
   text-align: right;
-  transition: max-width 380ms var(--ease-editorial);
+  transition: max-width 456ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .site-nav.is-condensed .site-nav__toggle-text {
@@ -350,7 +352,7 @@
   white-space: nowrap;
   text-align: right;
   font-size: 1.2rem;
-  transition: max-width 380ms var(--ease-editorial);
+  transition: max-width 456ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .site-nav__toggle-icon.is-visible {
