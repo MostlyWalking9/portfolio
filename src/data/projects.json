@@ -28,40 +28,50 @@
         "title": "Gallery",
         "items": [
           {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1784896241313-50m5.png",
+            "caption": "Final design",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1784896241244-dtoa.png",
+            "caption": "Horror emphasized redesign",
+            "scale": "full"
+          },
+          {
             "src": "../assets/images/creative/raven-horror-concept/detail-01.jpg",
-            "caption": "",
+            "caption": "Sculpt anatomy details",
             "scale": "full"
           },
           {
             "src": "../assets/images/creative/raven-horror-concept/detail-02.jpg",
-            "caption": "",
+            "caption": "sculpt concept",
             "scale": "full"
           },
           {
             "src": "../assets/images/creative/raven-horror-concept/detail-03.jpg",
-            "caption": "",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/creative/raven-horror-concept/detail-04.jpg",
-            "caption": "",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/creative/raven-horror-concept/detail-05.jpg",
-            "caption": "",
+            "caption": "Thumbnails - silhouette exploration",
             "scale": "full"
           },
           {
             "src": "../assets/images/creative/raven-horror-concept/detail-06.jpg",
-            "caption": "",
+            "caption": "Thumbnails - silhouette exploration 2",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-04.jpg",
+            "caption": "Exploration of thumbnails",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-05.jpg",
+            "caption": "Horror redesign concepts",
             "scale": "full"
           }
         ]
       }
     ],
     "date": "",
-    "tileFormat": "wide",
+    "tileFormat": "long",
     "order": null
   },
   {
@@ -74,7 +84,9 @@
     ],
     "process": "",
     "outcome": "",
-    "tasks": [],
+    "tasks": [
+      "Concepting and Design for main character of indie short animated Movie"
+    ],
     "liveUrl": "",
     "thumb": "../assets/images/creative/robot-concepts/thumb.jpg",
     "hero": "../assets/images/creative/robot-concepts/hero.jpg",
@@ -82,7 +94,8 @@
     "tags": [
       "concept_art",
       "character_design",
-      "sci_fi"
+      "sci_fi",
+      "stylized"
     ],
     "heroScale": "full",
     "mediaGroups": [
@@ -90,6 +103,11 @@
         "id": "gallery",
         "title": "Gallery",
         "items": [
+          {
+            "src": "../assets/images/creative/robot-concepts/detail-1784896826348-j6lx.png",
+            "caption": "",
+            "scale": "full"
+          },
           {
             "src": "../assets/images/creative/robot-concepts/detail-01.jpg",
             "caption": "",
@@ -104,7 +122,7 @@
       }
     ],
     "date": "",
-    "tileFormat": "wide",
+    "tileFormat": "long",
     "order": null
   },
   {
@@ -132,32 +150,11 @@
       {
         "id": "gallery",
         "title": "Gallery",
-        "items": [
-          {
-            "src": "../assets/images/creative/elemental-characters/detail-01.jpg",
-            "caption": "",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/creative/elemental-characters/detail-02.jpg",
-            "caption": "",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/creative/elemental-characters/detail-03.jpg",
-            "caption": "",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/creative/elemental-characters/detail-04.jpg",
-            "caption": "",
-            "scale": "full"
-          }
-        ]
+        "items": []
       }
     ],
     "date": "",
-    "tileFormat": "wide",
+    "tileFormat": "long",
     "order": null
   },
   {
@@ -630,5 +627,81 @@
     "date": "",
     "tileFormat": "wide",
     "order": null
+  },
+  {
+    "slug": "spiritbound-wind-spirit",
+    "domain": "creative",
+    "category": "concept-art-illustrations",
+    "title": "Wind Spirit",
+    "role": "Illustrator",
+    "tools": [
+      "Photoshop"
+    ],
+    "tags": [
+      "concept_art",
+      "character_art",
+      "illustration",
+      "game_art"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "date": "",
+    "tileFormat": "long",
+    "order": null,
+    "heroScale": "full",
+    "thumb": "../assets/images/creative/spiritbound-wind-spirit/thumb.jpg",
+    "hero": "../assets/images/creative/spiritbound-wind-spirit/hero.jpg",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/spiritbound-wind-spirit/detail-1784897782855-5jia.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "graphic-novel-kira",
+    "domain": "creative",
+    "category": "concept-art-illustrations",
+    "title": "Kira",
+    "role": "Illustrator",
+    "tools": [
+      "Photoshop"
+    ],
+    "tags": [
+      "illustration",
+      "concept_art"
+    ],
+    "process": "",
+    "outcome": "",
+    "tasks": [],
+    "liveUrl": "",
+    "date": "",
+    "tileFormat": "wide",
+    "order": null,
+    "heroScale": "full",
+    "thumb": "../assets/images/creative/graphic-novel-kira/thumb.jpg",
+    "hero": "../assets/images/creative/graphic-novel-kira/hero.jpg",
+    "mediaGroups": [
+      {
+        "id": "gallery",
+        "title": "Gallery",
+        "items": [
+          {
+            "src": "../assets/images/creative/graphic-novel-kira/detail-1784898129245-0m9q.jpg",
+            "caption": "",
+            "scale": "full"
+          }
+        ]
+      }
+    ]
   }
 ]
