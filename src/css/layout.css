@@ -46,10 +46,18 @@
   text-decoration: none;
 }
 
-/* Condensed state (past the discipline switcher on a section page):
-   the name contracts from the right down to just its first letter,
-   which then gets a circular border — reads like a logo mark — while
-   compact discipline buttons slide in to take its place. */
+/* Condensed state (past the discipline switcher on a section page).
+   Phase 1: the name contracts from the right down to just its first
+   letter — plain text throughout, same flow as normal, so there's no
+   gap or separate "badge" look while this is happening.
+   Phase 2 (triggered by JS once phase 1 finishes): the plain text is
+   swapped for a small separate logo mark — the letter with a circle
+   drawn around it from the top — while compact discipline buttons
+   slide in to take the name's place. */
+.site-nav__mark-text {
+  display: inline-flex;
+}
+
 .site-nav__mark-rest {
   display: inline-block;
   max-width: 260px;
@@ -58,28 +66,62 @@
   transition: max-width 380ms var(--ease-editorial), opacity 260ms var(--ease-editorial);
 }
 
-.site-nav__mark-initial {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.6em;
-  height: 1.6em;
-  border-radius: 50%;
-  border: 1px solid transparent;
-  transition: border-color 380ms var(--ease-editorial) 120ms;
-}
-
 .site-nav.is-condensed .site-nav__mark-rest {
   max-width: 0;
   opacity: 0;
 }
 
-.site-nav.is-condensed .site-nav__mark-initial {
-  border-color: var(--color-text);
-}
-
 .site-nav.is-condensed .site-nav__mark-tagline {
   display: none;
+}
+
+/* Phase 2: the logo mark — hidden until JS adds is-visible (right when
+   the text contraction finishes), then is-drawing plays the circle. */
+.site-nav__mark-logo {
+  display: none;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 1.7em;
+  height: 1.7em;
+}
+
+.site-nav__mark-logo.is-visible {
+  display: inline-flex;
+}
+
+.site-nav.is-condensed .site-nav__mark-text {
+  display: none;
+}
+
+.site-nav__mark-logo-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* so the stroke starts drawing from the top (12 o'clock) instead of the default 3 o'clock */
+}
+
+.site-nav__mark-logo-ring circle {
+  fill: none;
+  stroke: var(--color-text);
+  stroke-width: 1.5;
+  stroke-dasharray: 113;
+  stroke-dashoffset: 113;
+}
+
+.site-nav__mark-logo.is-drawing .site-nav__mark-logo-ring circle {
+  animation: navLogoDraw 420ms var(--ease-editorial) forwards;
+}
+
+@keyframes navLogoDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+.site-nav__mark-logo-letter {
+  position: relative;
+  z-index: 1;
+  font-size: 0.95em;
 }
 
 .site-nav__mini-switch {
@@ -101,13 +143,40 @@
   width: 84px !important;
   height: 34px !important;
   flex-shrink: 0;
+  padding: 2px 4px !important;
+}
+
+.site-nav__mini-btn .discipline-switch__btn-title {
+  /* Small fixed size, verified to fit every discipline name at this
+     button width ("Design & Digital Media" is the longest). */
+  font-size: 0.5rem !important;
+  line-height: 1.15 !important;
+}
+
+/* Fold-out menu: discipline buttons get their own divider line and
+   sit in a consistent-width vertical stack, not a wrapping row. */
+.site-nav__foldout-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-3) 0;
 }
 
 .site-nav__foldout-switch {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: var(--space-2);
-  margin-top: var(--space-3);
+  width: 100%;
+}
+
+.site-nav__foldout-switch .discipline-switch__btn {
+  width: 100% !important;
+  max-width: 220px;
+  flex-shrink: 0;
+}
+
+.site-nav__foldout-switch .discipline-switch__btn.is-current {
+  transform: none;
 }
 
 .site-nav__mark-name {
@@ -142,6 +211,7 @@
   justify-content: center;
   gap: var(--space-4);
   padding: var(--space-5) var(--content-pad);
+  overflow-y: auto;
   transform: translateX(100%);
   transition: transform 280ms var(--ease-editorial);
   z-index: 150;
