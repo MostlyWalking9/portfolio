@@ -16,7 +16,7 @@
   height: var(--nav-height);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-inline: var(--content-pad);
   background: transparent;
   border-bottom: 1px solid transparent;
@@ -142,6 +142,7 @@
   display: flex;
   gap: 6px;
   align-items: center;
+  justify-content: center;
   max-width: 0;
   overflow: hidden;
   opacity: 0;
@@ -151,15 +152,12 @@
 }
 
 .site-nav.is-switcher-visible .site-nav__mini-switch {
+  flex: 1 1 auto;
   max-width: 600px;
   opacity: 1;
   transform: scaleX(1);
   margin-left: 9px;
   margin-right: 9px;
-}
-
-.site-nav.is-condensed {
-  justify-content: flex-start;
 }
 
 .site-nav__mini-btn.discipline-switch__btn {
@@ -314,6 +312,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  margin-left: auto;
 }
 
 .site-nav__toggle {

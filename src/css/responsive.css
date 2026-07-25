@@ -20,6 +20,10 @@
     transform: none;
     background: none;
     padding: 0;
+    order: 1;
+  }
+  .site-nav__controls {
+    order: 2;
   }
   .site-nav__toggle,
   .site-nav__close,
