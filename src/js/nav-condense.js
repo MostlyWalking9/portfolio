@@ -71,22 +71,30 @@
     const logoEl = markName.querySelector('.site-nav__mark-logo');
     let swapTimer = null;
 
+    const textEl = markName.querySelector('.site-nav__mark-text');
+
     function condense() {
       clearTimeout(swapTimer);
-      nav.classList.add('is-condensed'); // starts the text contraction
+      nav.classList.add('is-condensed'); // starts the visible text contraction only
       swapTimer = setTimeout(() => {
+        textEl.style.display = 'none';
         logoEl.classList.add('is-visible');
         // Force a reflow before adding the drawing class, so the circle
         // animation reliably restarts from the beginning every time.
         void logoEl.offsetWidth;
         logoEl.classList.add('is-drawing');
+        // Only now does the mini-switcher start sliding in — its space
+        // (the logo's width) is already stable at this point, so the
+        // buttons don't shift position after they've started appearing.
+        nav.classList.add('is-switcher-visible');
       }, CONTRACT_MS);
     }
 
     function uncondense() {
       clearTimeout(swapTimer);
       logoEl.classList.remove('is-visible', 'is-drawing');
-      nav.classList.remove('is-condensed'); // text expands back
+      textEl.style.display = '';
+      nav.classList.remove('is-condensed', 'is-switcher-visible');
     }
 
     const observer = new IntersectionObserver((entries) => {

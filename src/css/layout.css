@@ -63,12 +63,11 @@
   max-width: 260px;
   overflow: hidden;
   white-space: nowrap;
-  transition: max-width 380ms var(--ease-editorial), opacity 260ms var(--ease-editorial);
+  transition: max-width 380ms var(--ease-editorial);
 }
 
 .site-nav.is-condensed .site-nav__mark-rest {
   max-width: 0;
-  opacity: 0;
 }
 
 .site-nav.is-condensed .site-nav__mark-tagline {
@@ -76,7 +75,11 @@
 }
 
 /* Phase 2: the logo mark — hidden until JS adds is-visible (right when
-   the text contraction finishes), then is-drawing plays the circle. */
+   the text contraction finishes, at which point JS also hides
+   .site-nav__mark-text directly via inline style — not tied to
+   is-condensed directly, so the text stays visible and animating
+   throughout phase 1 instead of vanishing the instant scrolling
+   triggers condense). */
 .site-nav__mark-logo {
   display: none;
   position: relative;
@@ -88,10 +91,6 @@
 
 .site-nav__mark-logo.is-visible {
   display: inline-flex;
-}
-
-.site-nav.is-condensed .site-nav__mark-text {
-  display: none;
 }
 
 .site-nav__mark-logo-ring {
@@ -124,24 +123,29 @@
   font-size: 0.95em;
 }
 
+/* Mini discipline buttons in the nav bar: reveal is gated by
+   is-switcher-visible, which JS only adds at the exact same moment the
+   logo swap happens — not the instant is-condensed starts — so the
+   buttons don't start sliding in (and shifting layout) before the S
+   has already taken its final, stable position. */
 .site-nav__mini-switch {
   display: flex;
-  gap: var(--space-2);
+  gap: 6px;
   align-items: center;
   max-width: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-width 420ms var(--ease-editorial) 100ms, opacity 300ms var(--ease-editorial) 150ms;
+  transition: max-width 350ms var(--ease-editorial), opacity 250ms var(--ease-editorial);
 }
 
-.site-nav.is-condensed .site-nav__mini-switch {
+.site-nav.is-switcher-visible .site-nav__mini-switch {
   max-width: 600px;
   opacity: 1;
 }
 
 .site-nav__mini-btn.discipline-switch__btn {
-  width: 84px !important;
-  height: 34px !important;
+  width: 62px !important;
+  height: 30px !important;
   flex-shrink: 0;
   padding: 2px 4px !important;
 }
@@ -149,8 +153,9 @@
 .site-nav__mini-btn .discipline-switch__btn-title {
   /* Small fixed size, verified to fit every discipline name at this
      button width ("Design & Digital Media" is the longest). */
-  font-size: 0.5rem !important;
-  line-height: 1.15 !important;
+  font-size: 0.38rem !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 !important;
 }
 
 /* Fold-out menu: discipline buttons get their own divider line and
@@ -442,7 +447,7 @@
   background: transparent;
   border-style: solid;
   border-width: 1px;
-  transform: scale(0.9);
+  transform: scale(0.75);
   cursor: default;
 }
 .discipline-switch__btn.is-current .discipline-switch__caret,
