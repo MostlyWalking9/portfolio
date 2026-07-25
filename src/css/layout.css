@@ -131,8 +131,6 @@
   position: relative;
   z-index: 1;
   font-size: 0.95em;
-  line-height: 1;
-  transform: translateY(0.08em);
 }
 
 /* Mini discipline buttons in the nav bar: reveal is gated by
@@ -147,12 +145,21 @@
   max-width: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-width 350ms var(--ease-editorial), opacity 250ms var(--ease-editorial);
+  transform: scaleX(0);
+  transform-origin: center center;
+  transition: max-width 350ms var(--ease-editorial), transform 350ms var(--ease-editorial), opacity 250ms var(--ease-editorial), margin 350ms var(--ease-editorial);
 }
 
 .site-nav.is-switcher-visible .site-nav__mini-switch {
   max-width: 600px;
   opacity: 1;
+  transform: scaleX(1);
+  margin-left: 9px;
+  margin-right: 9px;
+}
+
+.site-nav.is-condensed {
+  justify-content: flex-start;
 }
 
 .site-nav__mini-btn.discipline-switch__btn {
@@ -316,6 +323,39 @@
   font-size: 1.05rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* MENU text contracts left-to-right until it's fully gone (unlike the
+   name, which stops at one letter) — anchored right so the box
+   narrowing from the left clips M, E, N first and U last. */
+.site-nav__toggle-text {
+  display: inline-block;
+  max-width: 70px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+  transition: max-width 380ms var(--ease-editorial);
+}
+
+.site-nav.is-condensed .site-nav__toggle-text {
+  max-width: 0;
+}
+
+/* Burger icon: hidden until JS reveals it right after the text
+   finishes contracting, growing in anchored from the right so it
+   reads as emerging "right to left" — the mirror of the name's swap. */
+.site-nav__toggle-icon {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+  font-size: 1.2rem;
+  transition: max-width 380ms var(--ease-editorial);
+}
+
+.site-nav__toggle-icon.is-visible {
+  max-width: 40px;
 }
 
 /* --- Sound toggle --- */

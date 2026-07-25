@@ -102,9 +102,11 @@
     const shiftX = measureShift();
     textEl.style.setProperty('--mark-shift-x', `${shiftX}px`);
 
+    const toggleIcon = document.querySelector('.site-nav__toggle-icon');
+
     function condense() {
       clearTimeout(swapTimer);
-      nav.classList.add('is-condensed'); // starts the visible text contraction + shift
+      nav.classList.add('is-condensed'); // starts the visible text contraction + shift (name AND MENU)
       swapTimer = setTimeout(() => {
         textEl.style.display = 'none';
         logoEl.classList.add('is-visible');
@@ -116,6 +118,7 @@
         // (the logo's width) is already stable at this point, so the
         // buttons don't shift position after they've started appearing.
         nav.classList.add('is-switcher-visible');
+        if (toggleIcon) toggleIcon.classList.add('is-visible');
       }, CONTRACT_MS);
     }
 
@@ -123,6 +126,7 @@
       clearTimeout(swapTimer);
       logoEl.classList.remove('is-visible', 'is-drawing');
       textEl.style.display = '';
+      if (toggleIcon) toggleIcon.classList.remove('is-visible');
       nav.classList.remove('is-condensed', 'is-switcher-visible');
     }
 
