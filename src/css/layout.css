@@ -46,6 +46,70 @@
   text-decoration: none;
 }
 
+/* Condensed state (past the discipline switcher on a section page):
+   the name contracts from the right down to just its first letter,
+   which then gets a circular border — reads like a logo mark — while
+   compact discipline buttons slide in to take its place. */
+.site-nav__mark-rest {
+  display: inline-block;
+  max-width: 260px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: max-width 380ms var(--ease-editorial), opacity 260ms var(--ease-editorial);
+}
+
+.site-nav__mark-initial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  transition: border-color 380ms var(--ease-editorial) 120ms;
+}
+
+.site-nav.is-condensed .site-nav__mark-rest {
+  max-width: 0;
+  opacity: 0;
+}
+
+.site-nav.is-condensed .site-nav__mark-initial {
+  border-color: var(--color-text);
+}
+
+.site-nav.is-condensed .site-nav__mark-tagline {
+  display: none;
+}
+
+.site-nav__mini-switch {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-width 420ms var(--ease-editorial) 100ms, opacity 300ms var(--ease-editorial) 150ms;
+}
+
+.site-nav.is-condensed .site-nav__mini-switch {
+  max-width: 600px;
+  opacity: 1;
+}
+
+.site-nav__mini-btn.discipline-switch__btn {
+  width: 84px !important;
+  height: 34px !important;
+  flex-shrink: 0;
+}
+
+.site-nav__foldout-switch {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
 .site-nav__mark-name {
   font-size: 1.32rem;
   font-weight: 700;
@@ -70,7 +134,7 @@
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
+  height: 100dvh;
   width: min(80vw, 340px);
   background: var(--color-bg);
   flex-direction: column;
@@ -131,7 +195,10 @@
 
 .site-nav__scrim {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100dvh;
   background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
@@ -1142,7 +1209,6 @@ body.is-home-view .site-footer { display: none; }
   height: 100%;
   border-radius: 999px;
   background: var(--accent-current);
-  transition: transform 100ms linear;
 }
 
 .library-row__track .project-card { min-width: 0; }
