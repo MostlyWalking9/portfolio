@@ -56,7 +56,6 @@
     padding: 4px 8px;
     font-size: 0;
   }
-  .sound-toggle::before { margin: 0; }
   .sound-toggle [data-sound-label] {
     font-size: 0;
   }

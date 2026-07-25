@@ -69,13 +69,42 @@
     switcher.dataset.condenseBound = '1';
 
     const logoEl = markName.querySelector('.site-nav__mark-logo');
+    const textEl = markName.querySelector('.site-nav__mark-text');
+    const initialEl = markName.querySelector('.site-nav__mark-initial');
+    const logoLetterEl = markName.querySelector('.site-nav__mark-logo-letter');
     let swapTimer = null;
 
-    const textEl = markName.querySelector('.site-nav__mark-text');
+    // Measure exactly how far off the two S's are from each other, so
+    // the contraction can shift the text by that precise amount — by
+    // the time it finishes, the remaining S sits exactly where the
+    // logo's S will appear, and the swap becomes imperceptible instead
+    // of an obvious jump. Measured once (fonts/metrics don't change),
+    // with the logo briefly shown off-screen (not visible, not
+    // affecting layout) purely to read its real rendered position.
+    function measureShift() {
+      const prevCss = logoEl.style.cssText;
+      logoEl.style.cssText = 'display:inline-flex; position:absolute; visibility:hidden; left:-9999px; top:0;';
+      const logoLetterRect = logoLetterEl.getBoundingClientRect();
+      const logoRect = logoEl.getBoundingClientRect();
+      logoEl.style.cssText = prevCss;
+
+      const initialRect = initialEl.getBoundingClientRect();
+      const markRect = markName.getBoundingClientRect();
+
+      // Both text and logo are anchored to markName's own left edge
+      // (position:absolute, left:0) — so compare each S's center
+      // relative to that same shared origin.
+      const initialCenterFromOrigin = (initialRect.left - markRect.left) + initialRect.width / 2;
+      const logoLetterCenterFromOrigin = (logoLetterRect.left - logoRect.left) + logoLetterRect.width / 2;
+      return logoLetterCenterFromOrigin - initialCenterFromOrigin;
+    }
+
+    const shiftX = measureShift();
+    textEl.style.setProperty('--mark-shift-x', `${shiftX}px`);
 
     function condense() {
       clearTimeout(swapTimer);
-      nav.classList.add('is-condensed'); // starts the visible text contraction only
+      nav.classList.add('is-condensed'); // starts the visible text contraction + shift
       swapTimer = setTimeout(() => {
         textEl.style.display = 'none';
         logoEl.classList.add('is-visible');

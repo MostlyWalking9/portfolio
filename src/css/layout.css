@@ -56,6 +56,11 @@
    slide in to take the name's place. */
 .site-nav__mark-text {
   display: inline-flex;
+  transition: transform 380ms var(--ease-editorial);
+}
+
+.site-nav.is-condensed .site-nav__mark-text {
+  transform: translateX(var(--mark-shift-x, 0px));
 }
 
 .site-nav__mark-rest {
@@ -79,10 +84,15 @@
    .site-nav__mark-text directly via inline style — not tied to
    is-condensed directly, so the text stays visible and animating
    throughout phase 1 instead of vanishing the instant scrolling
-   triggers condense). */
+   triggers condense). Absolutely positioned so it shares the exact
+   same top-left anchor as the text (both live inside the same
+   position:relative .site-nav__mark-name), which combined with the
+   measured shift above is what makes the swap imperceptible. */
 .site-nav__mark-logo {
   display: none;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   align-items: center;
   justify-content: center;
   width: 1.7em;
@@ -121,6 +131,8 @@
   position: relative;
   z-index: 1;
   font-size: 0.95em;
+  line-height: 1;
+  transform: translateY(0.08em);
 }
 
 /* Mini discipline buttons in the nav bar: reveal is gated by
@@ -144,8 +156,8 @@
 }
 
 .site-nav__mini-btn.discipline-switch__btn {
-  width: 62px !important;
-  height: 30px !important;
+  width: 72px !important;
+  height: 32px !important;
   flex-shrink: 0;
   padding: 2px 4px !important;
 }
@@ -153,7 +165,7 @@
 .site-nav__mini-btn .discipline-switch__btn-title {
   /* Small fixed size, verified to fit every discipline name at this
      button width ("Design & Digital Media" is the longest). */
-  font-size: 0.38rem !important;
+  font-size: 0.42rem !important;
   line-height: 1.1 !important;
   letter-spacing: 0 !important;
 }
@@ -185,6 +197,8 @@
 }
 
 .site-nav__mark-name {
+  position: relative;
+  display: inline-block;
   font-size: 1.32rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -292,7 +306,7 @@
 .site-nav__controls {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: 5px;
 }
 
 .site-nav__toggle {
@@ -315,25 +329,22 @@
   text-transform: uppercase;
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 999px;
   transition: color var(--duration-fast) var(--ease-editorial),
-              border-color var(--duration-fast) var(--ease-editorial);
-}
-
-.sound-toggle::before {
-  content: '';
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.5;
+              border-color var(--duration-fast) var(--ease-editorial),
+              transform var(--duration-fast) var(--ease-editorial);
 }
 
 .sound-toggle[aria-pressed="true"] {
   color: var(--accent-current);
   border-color: var(--accent-current);
+  transform: scale(1.03);
 }
-.sound-toggle[aria-pressed="true"]::before { opacity: 1; }
+
+.sound-toggle[aria-pressed="false"] {
+  transform: scale(0.92);
+}
 
 .sound-toggle:hover:not(:disabled) { color: var(--color-text); border-color: var(--color-text-muted); }
 
