@@ -178,19 +178,10 @@
     if (section.headingColor) document.body.style.setProperty('--color-text', section.headingColor);
     if (section.bodyColor) document.body.style.setProperty('--color-text-muted', section.bodyColor);
 
-    const sectionCategories = categories
-      .filter((c) => c.section === sectionId)
-      .sort((a, b) => (a.order || 0) - (b.order || 0));
-
     const sectionProjects = projects
       .filter((p) => p.domain === sectionId)
       .slice()
       .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-
-    // Only categories that actually have at least one project are shown.
-    const nonEmptyCategories = sectionCategories.filter(
-      (c) => sectionProjects.some((p) => p.category === c.id)
-    );
 
     const allTags = Array.from(new Set(sectionProjects.flatMap((p) => p.tags || []))).sort();
 
@@ -223,19 +214,6 @@
           </div>` : ''}
       </section>
 
-      <section class="container" data-category-grid-wrap ${nonEmptyCategories.length ? '' : 'hidden'}>
-        <div class="category-grid" data-category-grid>
-          <button class="category-card category-card--all is-active" data-category-btn="all">
-            <span class="category-card__all-label">All ${pick(section.title)}</span>
-          </button>
-          ${nonEmptyCategories.map((c) => `
-            <button class="category-card" data-category-btn="${c.id}">
-              <span class="category-card__thumb">${mediaMarkup(c.cover, c.title)}</span>
-              <span class="category-card__tagbtn">${c.title}</span>
-            </button>`).join('')}
-        </div>
-      </section>
-
       <section class="container">
         <div class="library" data-library></div>
       </section>
@@ -243,7 +221,6 @@
 
     const filterBtns = root.querySelectorAll('[data-tag-filters] button');
     let activeTag = 'all';
-    let activeCategory = 'all';
 
     // Manual "order" (set in the admin tool) wins when present; otherwise
     // falls back to newest-first by date.
@@ -272,45 +249,25 @@
         </a>`;
     }
 
-    function libraryRowMarkup(category, categoryProjects) {
-      return `
+    function paint() {
+      const lib = root.querySelector('[data-library]');
+      let items = sectionProjects;
+      if (activeTag !== 'all') items = items.filter((p) => (p.tags || []).includes(activeTag));
+      const sorted = sortProjects(items);
+
+      lib.innerHTML = sorted.length ? `
         <div class="library-row">
           <div class="library-row__header">
-            <span class="library-row__thumb">${mediaMarkup(category.cover, category.title)}</span>
-            <h2 class="library-row__title">${category.title}</h2>
+            <h2 class="library-row__title">Projects</h2>
           </div>
           <div class="library-row__track-wrap">
             <div class="library-row__track">
-              ${categoryProjects.map(tileMarkup).join('')}
-              <button class="library-row__more" data-category-btn="${category.id}">More<br>→</button>
+              ${sorted.map(tileMarkup).join('')}
             </div>
           </div>
-        </div>`;
-    }
-
-    function paint() {
-      const lib = root.querySelector('[data-library]');
-
-      let items = sectionProjects;
-      if (activeCategory !== 'all') items = items.filter((p) => p.category === activeCategory);
-      if (activeTag !== 'all') items = items.filter((p) => (p.tags || []).includes(activeTag));
-
-      if (activeTag !== 'all' || activeCategory !== 'all') {
-        // Filtered view: one flat auto-array grid (wide/long tiles mixed).
-        const sorted = sortProjects(items);
-        lib.innerHTML = sorted.length
-          ? `<div class="library-grid">${sorted.map(tileMarkup).join('')}</div>`
-          : `<p class="empty-state">No projects match this filter yet.</p>`;
-      } else {
-        // Default view: the library — one row per non-empty category.
-        lib.innerHTML = nonEmptyCategories.map((c) => {
-          const catProjects = sortProjects(sectionProjects.filter((p) => p.category === c.id));
-          return libraryRowMarkup(c, catProjects);
-        }).join('') || `<p class="empty-state">No projects yet.</p>`;
-      }
+        </div>` : `<p class="empty-state">No projects match this filter yet.</p>`;
 
       filterBtns.forEach((b) => b.classList.toggle('is-active', b.dataset.tag === activeTag));
-      root.querySelectorAll('[data-category-btn]').forEach((b) => b.classList.toggle('is-active', b.dataset.categoryBtn === activeCategory));
 
       document.dispatchEvent(new CustomEvent('content-injected'));
     }
@@ -319,18 +276,9 @@
       btn.addEventListener('click', () => { activeTag = btn.dataset.tag; paint(); });
     });
 
-    // Category buttons AND each row's "More" button share this handler
-    // (both set activeCategory and re-paint) — delegated so it also
-    // catches "More" buttons that get created/replaced by paint() itself.
-    root.addEventListener('click', (e) => {
-      const btn = e.target.closest('[data-category-btn]');
-      if (!btn) return;
-      activeCategory = btn.dataset.categoryBtn;
-      paint();
-    });
-
     paint();
   }
+
 
   // ---------------------------------------------------------------------
   // Project detail page: tags, similar projects, cross-section similar

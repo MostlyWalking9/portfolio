@@ -5,12 +5,11 @@
    full-width column with prominent media.
    ========================================================================== */
 
-/* Desktop: the MENU toggle only exists to save space on small screens —
-   on desktop there's room for Home/About/Contact inline, no hamburger
-   needed. Below this, the mobile breakpoint further down takes over
-   with the collapsed/slide-in menu. */
+/* Desktop, NOT condensed (top of a section page, or any other page):
+   full inline nav — Home/About/Contact/EN-DE and Sound all visible,
+   no hamburger needed, since there's room for everything. */
 @media (min-width: 769px) {
-  .site-nav__links {
+  .site-nav:not(.is-condensed) .site-nav__links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,15 +21,45 @@
     padding: 0;
     order: 1;
   }
+
   .site-nav__controls {
     order: 2;
   }
-  .site-nav__toggle,
-  .site-nav__close,
-  .site-nav__scrim {
+
+  .site-nav:not(.is-condensed) .site-nav__toggle,
+  .site-nav:not(.is-condensed) .site-nav__close,
+  .site-nav:not(.is-condensed) .site-nav__scrim {
     display: none;
   }
+
+  /* Desktop, CONDENSED (scrolled past the discipline switcher): same
+     idea as mobile's Menu-to-burger swap, but scaled up to the whole
+     inline control set — Home/About/Contact/EN-DE AND Sound collapse
+     away together, replaced by the burger icon, freeing the space for
+     the mini discipline-switcher buttons that slide in instead. */
+  .site-nav.is-condensed .site-nav__controls .sound-toggle {
+    display: none;
+  }
+
+  .site-nav.is-condensed .site-nav__toggle {
+    transform: scale(1.15);
+  }
+
+  .site-nav.is-condensed .site-nav__toggle-icon.is-visible {
+    max-width: 48px;
+    font-size: 1.4rem;
+  }
+
+  .site-nav__mini-btn.discipline-switch__btn {
+    width: 100px !important;
+    height: 40px !important;
+  }
+
+  .site-nav__mini-btn .discipline-switch__btn-title {
+    font-size: 0.55rem !important;
+  }
 }
+
 
 @media (max-width: 1280px) {
   .project-grid, .work-grid { grid-template-columns: repeat(3, 1fr); }

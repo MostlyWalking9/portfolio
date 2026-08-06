@@ -116,6 +116,8 @@
     }
 
     const toggleIcon = document.querySelector('.site-nav__toggle-icon');
+    const soundToggle = document.querySelector('.sound-toggle');
+    const soundHomeSlot = document.querySelector('.site-nav__controls'); // where sound normally lives, so it can move back
 
     function condense() {
       clearTimeout(swapTimer);
@@ -132,6 +134,14 @@
         // buttons don't shift position after they've started appearing.
         nav.classList.add('is-switcher-visible');
         if (toggleIcon) toggleIcon.classList.add('is-visible');
+        // Desktop-condensed: Sound moves into the fold-out menu (CSS
+        // hides it from its normal spot at this state) — reparented
+        // rather than cloned so it keeps its real, live click handler
+        // and on/off state instead of becoming a dead duplicate.
+        const links = document.querySelector('.site-nav__links');
+        if (soundToggle && links && window.innerWidth >= 769) {
+          links.insertBefore(soundToggle, links.firstChild);
+        }
       }, CONTRACT_MS);
     }
 
@@ -141,6 +151,10 @@
       textEl.style.display = '';
       if (toggleIcon) toggleIcon.classList.remove('is-visible');
       nav.classList.remove('is-condensed', 'is-switcher-visible');
+      // Move sound back to its normal spot in the controls group.
+      if (soundToggle && soundHomeSlot && soundToggle.parentElement !== soundHomeSlot) {
+        soundHomeSlot.appendChild(soundToggle);
+      }
     }
 
     const observer = new IntersectionObserver((entries) => {
