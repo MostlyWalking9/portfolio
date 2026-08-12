@@ -1,3 +1,1 @@
-# Retry test
-
-Verifying stale-SHA retry logic. Safe to delete.
+# updated content v2
