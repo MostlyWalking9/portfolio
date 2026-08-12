@@ -543,46 +543,6 @@
     "order": null
   },
   {
-    "slug": "griechenbeisl-website",
-    "domain": "technical",
-    "title": "Griechenbeisl — Website",
-    "role": "Web Designer",
-    "tools": [],
-    "process": "",
-    "outcome": "",
-    "tasks": [],
-    "liveUrl": "https://griechenbeisl-vienna.wegic.net/",
-    "thumb": "../assets/images/technical/griechenbeisl-website/thumb.jpg",
-    "hero": "../assets/images/technical/griechenbeisl-website/hero.jpg",
-    "category": "development",
-    "tags": [
-      "web_design",
-      "web_development"
-    ],
-    "heroScale": "full",
-    "mediaGroups": [
-      {
-        "id": "gallery",
-        "title": "Gallery",
-        "items": [
-          {
-            "src": "../assets/images/technical/griechenbeisl-website/detail-01.jpg",
-            "caption": "",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/technical/griechenbeisl-website/detail-02.jpg",
-            "caption": "",
-            "scale": "full"
-          }
-        ]
-      }
-    ],
-    "date": "",
-    "tileFormat": "wide",
-    "order": null
-  },
-  {
     "slug": "drbohl-website",
     "domain": "technical",
     "title": "Dr.Bohl — Official Website",
