@@ -14,65 +14,96 @@
 .sound-toggle { order: 1; }
 .site-nav__toggle { order: 2; }
 
-/* Desktop, NOT condensed (top of a section page, or any other page):
-   left = mark, center = Sound (full button, standalone), right =
-   Home/About/Contact/EN-DE as plain inline links — no hamburger, no
-   fold-out involved at all at this state. */
+/* ==========================================================================
+   DESKTOP NAV (>900px)
+
+   DOM order inside .site-nav is: mark, controls (Sound + Menu), scrim,
+   links (Home/About/Contact/EN-DE). Flex `order` is used to lay these
+   out visually as: mark | ...gap... | links | controls.
+
+   NOT CONDENSED  -> left: mark | centre: Sound | right: links
+   CONDENSED      -> left: S logo | centre: discipline buttons |
+                     right: Sound icon + burger
+
+   The previous implementation collapsed .site-nav__controls to width:0
+   in the uncondensed state (Sound absolutely positioned out of flow,
+   Menu display:none) — an empty zero-width box carrying margin-left:auto,
+   which is why the links ended up stranded next to the mark instead of
+   pushed right. Fixed by putting the auto-margin on whichever element
+   is actually the first right-hand-side item in each state.
+   ========================================================================== */
 @media (min-width: 901px) {
+
+  /* ---- Shared: visual ordering ---- */
+  .site-nav__links { order: 1; }
+  .site-nav__controls { order: 2; }
+
+  /* ---------- NOT CONDENSED ---------- */
+
+  /* Links render as a normal inline row, pushed to the right edge by
+     their own auto-margin (they are the first right-hand item here,
+     since controls is effectively empty in this state). */
   .site-nav:not(.is-condensed) .site-nav__links {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-end;
     gap: var(--space-5);
     position: static;
     transform: none;
     background: none;
     padding: 0;
-    order: 1;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    margin-left: auto;
   }
 
-  .site-nav__controls {
-    order: 2;
+  /* Controls carries no auto-margin while uncondensed — it holds only
+     the absolutely-positioned Sound button, so leaving the auto-margin
+     on it would consume all the free space and strand the links. */
+  .site-nav:not(.is-condensed) .site-nav__controls {
+    margin-left: 0;
   }
 
+  /* Hamburger, close button and scrim belong to the fold-out only. */
   .site-nav:not(.is-condensed) .site-nav__toggle,
   .site-nav:not(.is-condensed) .site-nav__close,
   .site-nav:not(.is-condensed) .site-nav__scrim {
     display: none;
   }
 
-  /* The fold-out-only content (discipline button clones + divider)
-     belongs strictly to the sliding fold-out panel, never to the
-     inline top-bar version of the links — without this, they were
-     rendering inline alongside Home/About/Contact too, at their full
-     fold-out size, corrupting the bar's height and width. */
+  /* Fold-out-only content (discipline button clones + divider) must
+     never appear in the inline top-bar version of the links. */
   .site-nav:not(.is-condensed) .site-nav__foldout-switch,
   .site-nav:not(.is-condensed) .site-nav__foldout-divider {
     display: none;
   }
 
-  /* Sound floats to the dead center of the bar, independent of the
-     mark/links either side, only while not condensed — but only once
-     there's genuinely enough room for it. Below this, centering
-     collides with Home/About/Contact needing that same space, so it
-     falls back to sitting normally in the controls group instead
-     (still on the right, just not centered) rather than overlapping. */
-  @media (min-width: 1150px) {
-    .site-nav:not(.is-condensed) .sound-toggle {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
+  /* Sound sits dead centre of the bar, out of flow so it is centred on
+     the viewport rather than on whatever space is left over. */
+  .site-nav:not(.is-condensed) .sound-toggle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
-  /* Desktop, CONDENSED (scrolled past the discipline switcher): the
-     name contracts to its logo mark (existing animation), the
-     Home/About/Contact/EN-DE links collapse away and are replaced by
-     the burger — and Sound, no longer centered, drops back into its
-     natural place in the controls group as a compact icon, joining
-     the burger on the right. */
+  /* ---------- CONDENSED ---------- */
+
+  /* Links collapse back into the sliding fold-out panel (they inherit
+     the base mobile panel styles again) and the burger takes over. */
+  .site-nav.is-condensed .site-nav__toggle {
+    display: inline-flex;
+  }
+
+  /* Controls is now the real right-hand group (Sound icon + burger),
+     so the auto-margin lives here to push it to the right edge. */
+  .site-nav.is-condensed .site-nav__controls {
+    margin-left: auto;
+  }
+
+  /* Sound rejoins the controls group as a compact note-only icon. */
   .site-nav.is-condensed .sound-toggle {
     position: static;
     transform: none;
@@ -83,12 +114,8 @@
     font-size: 0;
   }
   .site-nav.is-condensed .sound-toggle [data-sound-label]::before {
-    content: '♪';
+    content: '\266A';
     font-size: 0.9rem;
-  }
-
-  .site-nav.is-condensed .site-nav__toggle {
-    transform: scale(1.15);
   }
 
   .site-nav.is-condensed .site-nav__toggle-icon.is-visible {
@@ -96,6 +123,7 @@
     font-size: 1.4rem;
   }
 
+  /* Discipline buttons are bigger on desktop than on mobile. */
   .site-nav__mini-btn.discipline-switch__btn {
     width: 100px !important;
     height: 40px !important;
