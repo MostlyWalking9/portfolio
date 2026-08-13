@@ -42,13 +42,29 @@
     display: none;
   }
 
+  /* The fold-out-only content (discipline button clones + divider)
+     belongs strictly to the sliding fold-out panel, never to the
+     inline top-bar version of the links — without this, they were
+     rendering inline alongside Home/About/Contact too, at their full
+     fold-out size, corrupting the bar's height and width. */
+  .site-nav:not(.is-condensed) .site-nav__foldout-switch,
+  .site-nav:not(.is-condensed) .site-nav__foldout-divider {
+    display: none;
+  }
+
   /* Sound floats to the dead center of the bar, independent of the
-     mark/links either side, only while not condensed. */
-  .site-nav:not(.is-condensed) .sound-toggle {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+     mark/links either side, only while not condensed — but only once
+     there's genuinely enough room for it. Below this, centering
+     collides with Home/About/Contact needing that same space, so it
+     falls back to sitting normally in the controls group instead
+     (still on the right, just not centered) rather than overlapping. */
+  @media (min-width: 1150px) {
+    .site-nav:not(.is-condensed) .sound-toggle {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   /* Desktop, CONDENSED (scrolled past the discipline switcher): the
