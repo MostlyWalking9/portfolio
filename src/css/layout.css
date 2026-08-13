@@ -317,6 +317,14 @@
   margin-left: auto;
 }
 
+.site-nav__controls .sound-toggle {
+  order: 1;
+}
+
+.site-nav__controls .site-nav__toggle {
+  order: 2;
+}
+
 .site-nav__toggle {
   display: inline-flex;
   align-items: center;

@@ -1,14 +1,24 @@
 /* ==========================================================================
-   Responsive — 480 / 768 / 1024 / 1280 / 1440
+   Responsive — 480 / 768 / 900 / 1024 / 1280 / 1440
+   Nav breakpoint: mobile/tablet ≤900px, desktop >900px.
    Category selector: desktop = 3-in-a-row (default grid, no query needed),
    tablet (≤1024) = horizontal snap carousel, mobile (≤480) = single
    full-width column with prominent media.
    ========================================================================== */
 
+/* Sound always sits before Menu/burger in the controls group, on every
+   breakpoint and every condensed state. */
+.site-nav__controls {
+  flex-direction: row;
+}
+.sound-toggle { order: 1; }
+.site-nav__toggle { order: 2; }
+
 /* Desktop, NOT condensed (top of a section page, or any other page):
-   full inline nav — Home/About/Contact/EN-DE and Sound all visible,
-   no hamburger needed, since there's room for everything. */
-@media (min-width: 769px) {
+   left = mark, center = Sound (full button, standalone), right =
+   Home/About/Contact/EN-DE as plain inline links — no hamburger, no
+   fold-out involved at all at this state. */
+@media (min-width: 901px) {
   .site-nav:not(.is-condensed) .site-nav__links {
     display: flex;
     flex-direction: row;
@@ -32,13 +42,33 @@
     display: none;
   }
 
-  /* Desktop, CONDENSED (scrolled past the discipline switcher): same
-     idea as mobile's Menu-to-burger swap, but scaled up to the whole
-     inline control set — Home/About/Contact/EN-DE AND Sound collapse
-     away together, replaced by the burger icon, freeing the space for
-     the mini discipline-switcher buttons that slide in instead. */
-  .site-nav.is-condensed .site-nav__controls .sound-toggle {
-    display: none;
+  /* Sound floats to the dead center of the bar, independent of the
+     mark/links either side, only while not condensed. */
+  .site-nav:not(.is-condensed) .sound-toggle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Desktop, CONDENSED (scrolled past the discipline switcher): the
+     name contracts to its logo mark (existing animation), the
+     Home/About/Contact/EN-DE links collapse away and are replaced by
+     the burger — and Sound, no longer centered, drops back into its
+     natural place in the controls group as a compact icon, joining
+     the burger on the right. */
+  .site-nav.is-condensed .sound-toggle {
+    position: static;
+    transform: none;
+    padding: 4px 8px;
+    font-size: 0;
+  }
+  .site-nav.is-condensed .sound-toggle [data-sound-label] {
+    font-size: 0;
+  }
+  .site-nav.is-condensed .sound-toggle [data-sound-label]::before {
+    content: '♪';
+    font-size: 0.9rem;
   }
 
   .site-nav.is-condensed .site-nav__toggle {
@@ -78,13 +108,11 @@
   .project-detail__meta { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 480px) {
-  .project-grid, .work-grid { grid-template-columns: 1fr; }
-
-  .site-nav__mark-tagline { display: none; }
-  .site-nav__mark-name { font-size: 0.95rem; }
-
-  /* Compact icon-only Sound button to save space next to MENU. */
+/* Mobile/tablet (≤900px): Sound always shows as a compact icon-only
+   button next to Menu — never the full "Sound: Off" text — since
+   Home/About/Contact/EN-DE never show inline at this width; they're
+   always behind the fold-out. */
+@media (max-width: 900px) {
   .sound-toggle {
     padding: 4px 8px;
     font-size: 0;
@@ -96,6 +124,13 @@
     content: '♪';
     font-size: 0.9rem;
   }
+}
+
+@media (max-width: 480px) {
+  .project-grid, .work-grid { grid-template-columns: 1fr; }
+
+  .site-nav__mark-tagline { display: none; }
+  .site-nav__mark-name { font-size: 0.95rem; }
 
   .project-detail__meta { grid-template-columns: 1fr; }
   .hero__title { max-width: 100%; font-size: clamp(1.3rem, 6vw, 1.8rem); }
