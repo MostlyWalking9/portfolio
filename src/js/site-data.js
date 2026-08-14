@@ -62,6 +62,24 @@
     return (tag || '').replace(/_/g, ' ');
   }
 
+  // Section headings read as titles ("Character Design"), not as raw
+  // slugs. Known acronyms/dimension prefixes stay fully uppercase so
+  // "3d" renders as "3D" rather than "3d".
+  const TAG_ACRONYMS = new Set([
+    '2d', '3d', 'ui', 'ux', 'vfx', 'sfx', 'cg', 'cgi', 'ai', 'ar', 'vr', 'xr',
+    'pbr', 'hdr', 'ip', 'api', 'ui/ux', 'nft', 'css', 'html', 'js', 'db', 'ml',
+  ]);
+
+  function tagHeading(tag) {
+    return (tag || '')
+      .split('_')
+      .filter(Boolean)
+      .map((w) => (TAG_ACRONYMS.has(w.toLowerCase())
+        ? w.toUpperCase()
+        : w.charAt(0).toUpperCase() + w.slice(1)))
+      .join(' ');
+  }
+
   function applyConfigText(config) {
     document.querySelectorAll('[data-config]').forEach((el) => {
       const path = el.dataset.config.split('.');
@@ -209,7 +227,7 @@
         <p class="chapter__intro" style="margin-top: var(--space-3); max-width: 65ch;">${pick(section.introText)}</p>
         ${allTags.length ? `
           <div class="work-filters" data-tag-filters role="group" aria-label="Filter by tag">
-            <button data-tag="all" class="is-active">All</button>
+            <button data-tag="all" class="is-active">All Projects</button>
             ${allTags.map((t) => `<button data-tag="${t}">#${tagLabel(t)}</button>`).join('')}
           </div>` : ''}
       </section>
@@ -249,23 +267,46 @@
         </a>`;
     }
 
-    function paint() {
-      const lib = root.querySelector('[data-library]');
-      let items = sectionProjects;
-      if (activeTag !== 'all') items = items.filter((p) => (p.tags || []).includes(activeTag));
-      const sorted = sortProjects(items);
-
-      lib.innerHTML = sorted.length ? `
+    function rowMarkup(title, items) {
+      return `
         <div class="library-row">
           <div class="library-row__header">
-            <h2 class="library-row__title">Projects</h2>
+            <h2 class="library-row__title">${title}</h2>
+            <span class="library-row__count">${items.length}</span>
           </div>
           <div class="library-row__track-wrap">
             <div class="library-row__track">
-              ${sorted.map(tileMarkup).join('')}
+              ${items.map(tileMarkup).join('')}
             </div>
           </div>
-        </div>` : `<p class="empty-state">No projects match this filter yet.</p>`;
+        </div>`;
+    }
+
+    // "All Projects" shows one catch-all row followed by one row per
+    // tag. allTags is derived from the section's own projects, so a tag
+    // that exists in the admin tool but is no longer attached to any
+    // project in this section produces neither a filter button nor a
+    // row — ghost tags disappear on their own, and adding/removing a
+    // tag in the admin adds/removes its row on the next load.
+    function paint() {
+      const lib = root.querySelector('[data-library]');
+      const empty = `<p class="empty-state">No projects match this filter yet.</p>`;
+
+      if (activeTag === 'all') {
+        if (!sectionProjects.length) {
+          lib.innerHTML = empty;
+        } else {
+          const rows = [rowMarkup('All Projects', sortProjects(sectionProjects))];
+          allTags.forEach((t) => {
+            const tagged = sectionProjects.filter((p) => (p.tags || []).includes(t));
+            if (tagged.length) rows.push(rowMarkup(tagHeading(t), sortProjects(tagged)));
+          });
+          lib.innerHTML = rows.join('');
+        }
+      } else {
+        const tagged = sortProjects(sectionProjects.filter((p) => (p.tags || []).includes(activeTag)));
+        lib.innerHTML = tagged.length ? rowMarkup(tagHeading(activeTag), tagged) : empty;
+      }
 
       filterBtns.forEach((b) => b.classList.toggle('is-active', b.dataset.tag === activeTag));
 

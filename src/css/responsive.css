@@ -97,40 +97,14 @@
     display: inline-flex;
   }
 
-  /* Controls is now the real right-hand group (Sound icon + burger),
-     so the auto-margin lives here to push it to the right edge. */
-  .site-nav.is-condensed .site-nav__controls {
-    margin-left: auto;
-  }
-
-  /* Sound rejoins the controls group as a compact note-only icon. */
-  .site-nav.is-condensed .sound-toggle {
-    position: static;
-    transform: none;
-    padding: 4px 8px;
-    font-size: 0;
-  }
-  .site-nav.is-condensed .sound-toggle [data-sound-label] {
-    font-size: 0;
-  }
-  .site-nav.is-condensed .sound-toggle [data-sound-label]::before {
-    content: '\266A';
-    font-size: 0.9rem;
-  }
+  /* Controls is the right-hand group (Sound icon + burger). Its
+     placement in the condensed state is handled globally in layout.css
+     (equal-width side columns), so nothing width-related is set here.
+     Sound's condensed icon-only styling is also global now. */
 
   .site-nav.is-condensed .site-nav__toggle-icon.is-visible {
     max-width: 48px;
     font-size: 1.4rem;
-  }
-
-  /* Discipline buttons are bigger on desktop than on mobile. */
-  .site-nav__mini-btn.discipline-switch__btn {
-    width: 100px !important;
-    height: 40px !important;
-  }
-
-  .site-nav__mini-btn .discipline-switch__btn-title {
-    font-size: 0.55rem !important;
   }
 }
 
@@ -152,11 +126,14 @@
   .project-detail__meta { grid-template-columns: 1fr 1fr; }
 }
 
-/* Mobile/tablet (≤900px): Sound always shows as a compact icon-only
-   button next to Menu — never the full "Sound: Off" text — since
-   Home/About/Contact/EN-DE never show inline at this width; they're
-   always behind the fold-out. */
-@media (max-width: 900px) {
+/* Narrow viewports (≤520px): Sound collapses to a compact icon-only
+   button next to Menu instead of the full "Sound: Off" text.
+   This used to fire at 900px, which was far earlier than necessary —
+   at 520–900px the bar only holds the mark, Sound and Menu (the nav
+   links are already behind the fold-out), so there is ample room for
+   the full label. In the CONDENSED state Sound is icon-only at every
+   width; that rule lives in layout.css. */
+@media (max-width: 520px) {
   .sound-toggle {
     padding: 4px 8px;
     font-size: 0;
@@ -174,7 +151,6 @@
   .project-grid, .work-grid { grid-template-columns: 1fr; }
 
   .site-nav__mark-tagline { display: none; }
-  .site-nav__mark-name { font-size: 0.95rem; }
 
   .project-detail__meta { grid-template-columns: 1fr; }
   .hero__title { max-width: 100%; font-size: clamp(1.3rem, 6vw, 1.8rem); }
@@ -225,6 +201,16 @@
   .library-row__track { grid-template-rows: repeat(2, 120px); }
   .library-row__thumb { width: 36px; height: 36px; }
   .library-row__title { font-size: 1.1rem; }
+}
+
+/* Very narrow phones (≤370px) — the only width where the nav bar's own
+   type genuinely has to come down. Everything above this keeps its
+   full size (the mini discipline buttons scale fluidly via clamp() in
+   layout.css rather than stepping at a breakpoint). */
+@media (max-width: 370px) {
+  .site-nav__mark-name { font-size: 0.95rem; }
+  .site-nav__toggle { font-size: 0.9rem; }
+  .site-nav__controls { gap: 3px; }
 }
 
 /* Safety net for short viewports (small phones in landscape, split-screen

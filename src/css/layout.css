@@ -152,8 +152,13 @@
   transition: max-width 420ms cubic-bezier(0.65, 0, 0.35, 1), transform 420ms cubic-bezier(0.65, 0, 0.35, 1), opacity 300ms cubic-bezier(0.65, 0, 0.35, 1), margin 420ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 
+/* flex: 0 1 auto (not 1 1 auto) — the group sizes to its own content
+   and is centred by the equal-width mark/controls columns below,
+   rather than stretching to fill and being "centred" only within
+   whatever leftover space happens to exist between two unequal sides. */
 .site-nav.is-switcher-visible .site-nav__mini-switch {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
+  min-width: 0;
   max-width: none;
   opacity: 1;
   transform: scaleX(1);
@@ -161,17 +166,21 @@
   margin-right: 9px;
 }
 
+/* Fluid sizing rather than a hard step at a breakpoint: the buttons
+   stay at their full 100x40 desktop size all the way down to ~630px
+   and then shrink continuously, instead of jumping to a small size the
+   moment the viewport crosses 900px (which is nowhere near tight). */
 .site-nav__mini-btn.discipline-switch__btn {
-  width: 72px !important;
-  height: 32px !important;
+  width: clamp(56px, 16vw, 100px) !important;
+  height: clamp(28px, 6.4vw, 40px) !important;
   flex-shrink: 0;
   padding: 2px 4px !important;
 }
 
 .site-nav__mini-btn .discipline-switch__btn-title {
-  /* Small fixed size, verified to fit every discipline name at this
+  /* Upper bound verified to fit every discipline name at the full
      button width ("Design & Digital Media" is the longest). */
-  font-size: 0.42rem !important;
+  font-size: clamp(0.40rem, 1.4vw, 0.55rem) !important;
   line-height: 1.1 !important;
   letter-spacing: 0 !important;
 }
@@ -315,6 +324,45 @@
   align-items: center;
   gap: 5px;
   margin-left: auto;
+}
+
+/* ---- True centring of the mini discipline switcher (condensed) ----
+   The switcher is NOT put in a shared container with the sound/burger
+   controls — that would only move the off-centre problem around, since
+   the left mark and the right controls are different widths.
+   Instead the two side groups are given identical flex-basis 0 +
+   grow 1, so they always occupy exactly equal shares of the free
+   space. A fixed-width centre element between two equal columns is
+   mathematically centred on the bar, regardless of how wide the S
+   logo or the sound+burger pair actually are.
+   Scoped to .is-condensed so the uncondensed layout (mark left, sound
+   absolutely centred, links right) is untouched. */
+.site-nav.is-condensed .site-nav__mark {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.site-nav.is-condensed .site-nav__controls {
+  flex: 1 1 0;
+  min-width: 0;
+  justify-content: flex-end;
+  margin-left: 0;
+}
+
+/* Condensed sound button is the compact note icon at every width, not
+   just >900px — the bar is at its tightest in this state. */
+.site-nav.is-condensed .sound-toggle {
+  position: static;
+  transform: none;
+  padding: 4px 8px;
+  font-size: 0;
+}
+.site-nav.is-condensed .sound-toggle [data-sound-label] {
+  font-size: 0;
+}
+.site-nav.is-condensed .sound-toggle [data-sound-label]::before {
+  content: '\266A';
+  font-size: 0.9rem;
 }
 
 .site-nav__controls .sound-toggle {
@@ -1262,6 +1310,19 @@ body.is-home-view .site-footer { display: none; }
 
 .library-row__title {
   font-size: var(--type-scale-h3);
+}
+
+/* Small muted count beside each row title, so a tag row reads as a
+   real section rather than an unlabelled strip of cards. */
+.library-row__count {
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  padding: 1px 8px;
+  line-height: 1.6;
 }
 
 .library-row__track-wrap {
