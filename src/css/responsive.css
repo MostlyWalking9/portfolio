@@ -106,6 +106,72 @@
     max-width: 48px;
     font-size: 1.4rem;
   }
+
+  /* ---------- CONDENSED: principle switcher, desktop ----------
+     The mini boxed buttons (kept for mobile/tablet, where a tap
+     target beats a text link) are swapped for plain text labels —
+     grey divider lines between them, each title underlined in its
+     own principle colour — and the row is allowed to grow so it
+     actually uses the centre of the bar instead of huddling into a
+     tiny content-sized cluster. Centring itself still comes from the
+     equal-width mark/controls side columns above; giving this row
+     flex-grow too doesn't unbalance that (both sides grow equally
+     regardless of what the middle takes), it just lets the middle
+     claim more of the space that would otherwise sit idle. */
+  .site-nav.is-switcher-visible .site-nav__mini-switch {
+    flex: 1 1 auto;
+    max-width: 560px;
+    gap: 0;
+    justify-content: space-evenly;
+  }
+
+  .site-nav__mini-btn.discipline-switch__btn {
+    width: auto !important;
+    height: auto !important;
+    flex: 0 1 auto;
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 4px 0 !important;
+  }
+
+  .site-nav__mini-btn.discipline-switch__btn:hover:not(.is-current) {
+    transform: none !important;
+  }
+
+  .site-nav__mini-btn.discipline-switch__btn.is-current {
+    transform: none !important;
+  }
+
+  /* Grey separator between labels — a border on the element itself
+     (rather than a pseudo-element) so it never needs repositioning
+     as the row's width changes with the viewport. */
+  .site-nav__mini-btn.discipline-switch__btn + .site-nav__mini-btn.discipline-switch__btn {
+    border-left: 1px solid var(--color-border) !important;
+    padding-left: 22px !important;
+  }
+  .site-nav__mini-btn.discipline-switch__btn:not(:last-child) {
+    padding-right: 22px !important;
+  }
+
+  .site-nav__mini-btn .discipline-switch__btn-title {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.03em !important;
+    line-height: 1.2 !important;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 150ms var(--ease-editorial);
+  }
+
+  .site-nav__mini-btn.discipline-switch__btn--creative .discipline-switch__btn-title {
+    border-bottom-color: var(--creative-accent);
+  }
+  .site-nav__mini-btn.discipline-switch__btn--design .discipline-switch__btn-title {
+    border-bottom-color: var(--design-blue);
+  }
+  .site-nav__mini-btn.discipline-switch__btn--technical .discipline-switch__btn-title {
+    border-bottom-color: var(--tech-green);
+  }
 }
 
 

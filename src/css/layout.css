@@ -164,6 +164,12 @@
   transform: scaleX(1);
   margin-left: 9px;
   margin-right: 9px;
+  /* Once expanded, content must be allowed to render at its natural
+     size again — overflow:hidden is only needed while max-width is
+     animating the collapsed->expanded transition, otherwise a hovered
+     button's scale(1.1) (see .discipline-switch__btn:hover) gets its
+     top/bottom sliced off by this box instead of rendering in full. */
+  overflow: visible;
 }
 
 /* Fluid sizing rather than a hard step at a breakpoint: the buttons
@@ -172,7 +178,7 @@
    moment the viewport crosses 900px (which is nowhere near tight). */
 .site-nav__mini-btn.discipline-switch__btn {
   width: clamp(56px, 16vw, 100px) !important;
-  height: clamp(28px, 6.4vw, 40px) !important;
+  height: clamp(40px, 6.4vw, 50px) !important;
   flex-shrink: 0;
   padding: 2px 4px !important;
 }
