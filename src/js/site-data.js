@@ -142,12 +142,16 @@
   }
 
   async function fetchAll() {
-    const [config, categories, projects] = await Promise.all([
+    // rows.json is loaded defensively: it's a newer file, and if it is
+    // missing or malformed the whole page should still render with just
+    // the All Projects row rather than the entire data layer rejecting.
+    const [config, categories, projects, rows] = await Promise.all([
       fetch(BASE + 'site-config.json').then((r) => r.json()),
       fetch(BASE + 'categories.json').then((r) => r.json()),
       fetch(BASE + 'projects.json').then((r) => r.json()),
+      fetch(BASE + 'rows.json').then((r) => (r.ok ? r.json() : [])).catch(() => []),
     ]);
-    return { config, categories, projects };
+    return { config, categories, projects, rows: Array.isArray(rows) ? rows : [] };
   }
 
   // ---------------------------------------------------------------------
@@ -174,7 +178,7 @@
   // ---------------------------------------------------------------------
   // Section page: intro, tag filter, category grid, project grid
   // ---------------------------------------------------------------------
-  function renderSectionPage({ config, categories, projects }) {
+  function renderSectionPage({ config, categories, projects, rows }) {
     const root = document.querySelector('[data-section-page]');
     if (!root) return;
 
@@ -282,12 +286,22 @@
         </div>`;
     }
 
-    // "All Projects" shows one catch-all row followed by one row per
-    // tag. allTags is derived from the section's own projects, so a tag
-    // that exists in the admin tool but is no longer attached to any
-    // project in this section produces neither a filter button nor a
-    // row — ghost tags disappear on their own, and adding/removing a
-    // tag in the admin adds/removes its row on the next load.
+    // "All Projects" shows one catch-all row followed by whatever
+    // custom rows have been defined for this discipline in the admin
+    // tool. A row whose projects have all since been deleted or moved
+    // to another discipline resolves to nothing and is skipped, so
+    // stale rows never render as empty strips.
+    function customRows() {
+      return (rows || [])
+        .filter((r) => r && r.domain === sectionId)
+        .map((r) => {
+          const bySlug = new Map(sectionProjects.map((p) => [p.slug, p]));
+          const items = (r.projects || []).map((slug) => bySlug.get(slug)).filter(Boolean);
+          return { title: pick(r.title) || 'Untitled row', items };
+        })
+        .filter((r) => r.items.length > 0);
+    }
+
     function paint() {
       const lib = root.querySelector('[data-library]');
       const empty = `<p class="empty-state">No projects match this filter yet.</p>`;
@@ -296,12 +310,11 @@
         if (!sectionProjects.length) {
           lib.innerHTML = empty;
         } else {
-          const rows = [rowMarkup('All Projects', sortProjects(sectionProjects))];
-          allTags.forEach((t) => {
-            const tagged = sectionProjects.filter((p) => (p.tags || []).includes(t));
-            if (tagged.length) rows.push(rowMarkup(tagHeading(t), sortProjects(tagged)));
-          });
-          lib.innerHTML = rows.join('');
+          const blocks = [rowMarkup('All Projects', sortProjects(sectionProjects))];
+          // Custom rows keep the exact project order set by dragging in
+          // the admin tool — they are NOT re-sorted by date/order here.
+          customRows().forEach((r) => blocks.push(rowMarkup(r.title, r.items)));
+          lib.innerHTML = blocks.join('');
         }
       } else {
         const tagged = sortProjects(sectionProjects.filter((p) => (p.tags || []).includes(activeTag)));
