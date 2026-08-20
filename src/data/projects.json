@@ -24,47 +24,79 @@
     "heroScale": "full",
     "mediaGroups": [
       {
-        "id": "gallery",
-        "title": "Gallery",
+        "id": "3d-anatomy-sculpts",
+        "title": "3D Artwork",
         "items": [
           {
-            "src": "../assets/images/creative/raven-horror-concept/detail-1784896241313-50m5.png",
-            "caption": "Final design",
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787250818193-09p0.png",
+            "caption": "Final rendition, Sculpt, render and overpaint of splash art",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166794091-ngq7.png",
+            "caption": "1st sculpt draft",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166790612-39le.png",
+            "caption": "Anatomy sculpt",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166792436-kcew.png",
+            "caption": "Anatomy sculpt",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787164203638-lxmi.jpg",
+            "caption": "Clothes draft",
+            "scale": "full"
+          }
+        ]
+      },
+      {
+        "id": "gallery",
+        "title": "Illustrations",
+        "items": [
+          {
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787250848687-2f6d.png",
+            "caption": "",
             "scale": "full"
           },
           {
             "src": "../assets/images/creative/raven-horror-concept/detail-1784896241244-dtoa.png",
             "caption": "Horror emphasized redesign",
             "scale": "full"
-          },
+          }
+        ]
+      },
+      {
+        "id": "concept-art",
+        "title": "Concept Art",
+        "items": [
           {
-            "src": "../assets/images/creative/raven-horror-concept/detail-01.jpg",
-            "caption": "Sculpt anatomy details",
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166885193-1ph6.jpg",
+            "caption": "Thumbnailing process",
             "scale": "full"
           },
           {
-            "src": "../assets/images/creative/raven-horror-concept/detail-02.jpg",
-            "caption": "sculpt concept",
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166885271-2fr1.jpg",
+            "caption": "Thumbnails exploration",
             "scale": "full"
           },
           {
-            "src": "../assets/images/creative/raven-horror-concept/detail-03.jpg",
-            "caption": "Thumbnails - silhouette exploration",
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166885413-5z1h.jpg",
+            "caption": "Thumbnails exploration 2",
             "scale": "full"
           },
           {
-            "src": "../assets/images/creative/raven-horror-concept/detail-06.jpg",
-            "caption": "Thumbnails - silhouette exploration 2",
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787166885341-eayv.jpg",
+            "caption": "Horror design exploration",
             "scale": "full"
           },
           {
-            "src": "../assets/images/creative/raven-horror-concept/detail-04.jpg",
-            "caption": "Exploration of thumbnails",
-            "scale": "full"
-          },
-          {
-            "src": "../assets/images/creative/raven-horror-concept/detail-05.jpg",
-            "caption": "Horror redesign concepts",
+            "src": "../assets/images/creative/raven-horror-concept/detail-1787251389377-8lvg.png",
+            "caption": "Final concept refinement",
             "scale": "full"
           }
         ]
@@ -72,7 +104,7 @@
     ],
     "date": "",
     "tileFormat": "long",
-    "order": null
+    "order": 0
   },
   {
     "slug": "robot-concepts",
@@ -123,39 +155,7 @@
     ],
     "date": "",
     "tileFormat": "long",
-    "order": null
-  },
-  {
-    "slug": "elemental-characters",
-    "domain": "creative",
-    "title": "Elemental Characters — Illustration Series",
-    "role": "Illustrator",
-    "tools": [
-      "Photoshop",
-      "Procreate"
-    ],
-    "process": "",
-    "outcome": "",
-    "tasks": [],
-    "liveUrl": "",
-    "thumb": "../assets/images/creative/elemental-characters/thumb.jpg",
-    "hero": "../assets/images/creative/elemental-characters/hero.jpg",
-    "category": "concept-art-illustrations",
-    "tags": [
-      "illustration",
-      "character_design"
-    ],
-    "heroScale": "full",
-    "mediaGroups": [
-      {
-        "id": "gallery",
-        "title": "Gallery",
-        "items": []
-      }
-    ],
-    "date": "",
-    "tileFormat": "long",
-    "order": null
+    "order": 4
   },
   {
     "slug": "environment-illustrations",
@@ -207,7 +207,7 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 3
   },
   {
     "slug": "doodle-illustrations",
@@ -253,7 +253,7 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 5
   },
   {
     "slug": "rob-and-rob",
@@ -298,7 +298,7 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 6
   },
   {
     "slug": "sechser-logo",
@@ -337,7 +337,7 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 7
   },
   {
     "slug": "artray-logo",
@@ -362,32 +362,7 @@
     "mediaGroups": [],
     "date": "",
     "tileFormat": "wide",
-    "order": null
-  },
-  {
-    "slug": "english-works-logo",
-    "domain": "design",
-    "title": "English Works — Logo Design",
-    "role": "Brand Designer",
-    "tools": [
-      "Illustrator"
-    ],
-    "process": "",
-    "outcome": "",
-    "tasks": [],
-    "liveUrl": "",
-    "thumb": "../assets/images/design/english-works-logo/thumb.jpg",
-    "hero": "../assets/images/design/english-works-logo/hero.jpg",
-    "category": "branding",
-    "tags": [
-      "logo_design",
-      "branding"
-    ],
-    "heroScale": "full",
-    "mediaGroups": [],
-    "date": "",
-    "tileFormat": "wide",
-    "order": null
+    "order": 8
   },
   {
     "slug": "weinco-campaign",
@@ -446,7 +421,7 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 9
   },
   {
     "slug": "drbohl-interview-thumbnails",
@@ -488,7 +463,7 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 10
   },
   {
     "slug": "drbohl-schnitzel-intro",
@@ -514,7 +489,7 @@
     "mediaGroups": [],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 11
   },
   {
     "slug": "drbohl-merch-video",
@@ -539,8 +514,8 @@
     "heroScale": "full",
     "mediaGroups": [],
     "date": "",
-    "tileFormat": "wide",
-    "order": null
+    "tileFormat": "long",
+    "order": 12
   },
   {
     "slug": "drbohl-website",
@@ -586,13 +561,13 @@
     ],
     "date": "",
     "tileFormat": "wide",
-    "order": null
+    "order": 13
   },
   {
     "slug": "spiritbound-wind-spirit",
     "domain": "creative",
     "category": "concept-art-illustrations",
-    "title": "Wind Spirit",
+    "title": "Spiritbound illustrations",
     "role": "Illustrator",
     "tools": [
       "Photoshop"
@@ -609,7 +584,7 @@
     "liveUrl": "",
     "date": "",
     "tileFormat": "long",
-    "order": null,
+    "order": 2,
     "heroScale": "full",
     "thumb": "../assets/images/creative/spiritbound-wind-spirit/thumb.jpg",
     "hero": "../assets/images/creative/spiritbound-wind-spirit/hero.jpg",
@@ -619,8 +594,29 @@
         "title": "Gallery",
         "items": [
           {
+            "src": "../assets/images/creative/spiritbound-wind-spirit/detail-1787251546289-5dga.jpg",
+            "caption": "Eclipse Archer",
+            "scale": "full"
+          },
+          {
             "src": "../assets/images/creative/spiritbound-wind-spirit/detail-1784897782855-5jia.jpg",
-            "caption": "",
+            "caption": "Wind Spirit",
+            "scale": "full"
+          },
+          {
+            "src": "../assets/images/creative/spiritbound-wind-spirit/detail-1787251546224-mn8w.jpg",
+            "caption": "Dark Cosmos",
+            "scale": "full"
+          }
+        ]
+      },
+      {
+        "id": "concepts-wip",
+        "title": "Concepts / WIP",
+        "items": [
+          {
+            "src": "../assets/images/creative/spiritbound-wind-spirit/detail-1787251628879-r3nf.png",
+            "caption": "Deep Sea Reaper",
             "scale": "full"
           }
         ]
@@ -646,7 +642,7 @@
     "liveUrl": "",
     "date": "",
     "tileFormat": "wide",
-    "order": null,
+    "order": 1,
     "heroScale": "full",
     "thumb": "../assets/images/creative/graphic-novel-kira/thumb.jpg",
     "hero": "../assets/images/creative/graphic-novel-kira/hero.jpg",
